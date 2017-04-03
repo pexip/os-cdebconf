@@ -142,7 +142,7 @@ int main(int argc, char **argv)
 
 		while((q = qdb->methods.iterate(qdb, &iter)) != NULL)
 		{
-			const char seen = (q->flags & DC_QFLAG_SEEN)?'*':' ';
+			const char seen = question_get_flag(q, DC_QFLAG_SEEN)?'*':' ';
 			const char *type = q->template->type?q->template->type:"";
 			const char *value = strcmp("password", type)?q->value:"(password omitted)";
 

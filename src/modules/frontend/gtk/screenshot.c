@@ -62,20 +62,22 @@ static gboolean save_screenshot(GdkWindow * gdk_window,
                                 const gchar * screenshot_path)
 {
     GdkPixbuf * pixbuf;
-    gint x;
-    gint y;
     gint width;
     gint height;
-    gint depth;
     gboolean success;
 
     g_assert(NULL != gdk_window);
     g_assert(NULL != screenshot_path);
 
-    gdk_window_get_geometry(gdk_window, &x, &y, &width, &height, &depth);
+    width = gdk_window_get_width(gdk_window);
+    height = gdk_window_get_height(gdk_window);
+#if GTK_CHECK_VERSION(3,0,0)
+    pixbuf = gdk_pixbuf_get_from_window(gdk_window,
+#else
     pixbuf = gdk_pixbuf_get_from_drawable(
         NULL /* allocate a new pixbuf */, gdk_window,
         gdk_colormap_get_system(), 0 /* src_x */, 0 /* src_y */,
+#endif
         0 /* dest_x */, 0 /* dest_y */, width, height);
     if (NULL == pixbuf) {
         g_warning("gdk_pixbuf_get_from_drawable failed.");

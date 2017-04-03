@@ -19,15 +19,15 @@
 # Alastair McKinstry <mckinstry@computer.org>, 2001.
 # Christian Rose <menthos@menthos.com>, 2004.
 # Daniel Nylander <po@danielnylander.se>, 2007.
-# Martin Bagge <martin.bagge@bthstudent.se>, 2008.
+# Martin Bagge <martin.bagge@bthstudent.se>, 2008, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
-"POT-Creation-Date: 2012-10-18 06:02+0000\n"
-"PO-Revision-Date: 2012-04-09 12:32+0100\n"
-"Last-Translator: Martin Bagge (brother) <brother@bsnet.se>\n"
+"POT-Creation-Date: 2016-06-05 14:47+0000\n"
+"PO-Revision-Date: 2016-01-26 22:19+0100\n"
+"Last-Translator: Martin Bagge / brother <brother@bsnet.se>\n"
 "Language-Team: Swedish <debian-l10n-swedish@lists.debian.org>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
@@ -145,7 +145,7 @@ msgstr "Gå tillbaka"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:3001 ../cdebconf-gtk-udeb.templates:3001
-#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:7001
+#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:10001
 msgid "Yes"
 msgstr "Ja"
 
@@ -157,7 +157,7 @@ msgstr "Ja"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:4001 ../cdebconf-gtk-udeb.templates:4001
-#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:8001
+#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:11001
 msgid "No"
 msgstr "Nej"
 
@@ -187,6 +187,14 @@ msgstr "<Tab> flyttar, <Blanksteg> väljer, <Enter> aktiverar knappar"
 msgid "<F1> for help; <Tab> moves; <Space> selects; <Enter> activates buttons"
 msgstr ""
 "<F1> för hjälp, <Tab> flyttar, <Blanksteg> väljer, <Enter> aktiverar knappar"
+
+#. Type: text
+#. Description
+#. Appears as a checkbox in the newt and GTK interfaces.
+#. :sl1:
+#: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
+msgid "Show Password in Clear"
+msgstr "Visa lösenordet"
 
 #. Type: text
 #. Description
@@ -245,7 +253,7 @@ msgstr "NEDSLAG:"
 
 #. Type: text
 #. Description
-#. :sl6:
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:3001
 #, no-c-format
 msgid "'%c'"
@@ -275,7 +283,31 @@ msgstr "Välj en tom post"
 #. Type: text
 #. Description
 #. :sl4:
+#: ../cdebconf-text-udeb.templates:7001
+#, no-c-format
+msgid "Other choices are available with '%c' and '%c'"
+msgstr "Andra alternativ finns tillgängliga med '%c'"
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:8001
+#, no-c-format
+msgid "Previous choices are available with '%c'"
+msgstr "Föregående alternativ finns tillgängliga med '%c'"
+
+#. Type: text
+#. Description
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:9001
+#, no-c-format
+msgid "Next choices are available with '%c'"
+msgstr "Nästföljande alternativ finns tillgängliga med '%c'"
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:12001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%d> "
 msgstr "Val: \"%c\" för hjälp, standardvärde=%d> "
@@ -283,7 +315,7 @@ msgstr "Val: \"%c\" för hjälp, standardvärde=%d> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:10001
+#: ../cdebconf-text-udeb.templates:13001
 #, no-c-format
 msgid "Prompt: '%c' for help> "
 msgstr "Val: \"%c\" för hjälp> "
@@ -291,7 +323,7 @@ msgstr "Val: \"%c\" för hjälp> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:11001
+#: ../cdebconf-text-udeb.templates:14001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%s> "
 msgstr "Val: \"%c\" för hjälp, standardvärde=%s> "
@@ -299,7 +331,7 @@ msgstr "Val: \"%c\" för hjälp, standardvärde=%s> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:12001
+#: ../cdebconf-text-udeb.templates:15001
 msgid "[Press enter to continue]"
 msgstr "[Tryck enter för att fortsätta]"
 

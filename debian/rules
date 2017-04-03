@@ -11,6 +11,7 @@ debbuild=debian/build-deb
 udebbuild=debian/build-udeb
 
 DEB_HOST_ARCH=$(shell dpkg-architecture -qDEB_HOST_ARCH)
+DEB_HOST_ARCH_OS=$(shell dpkg-architecture -qDEB_HOST_ARCH_OS)
 CONFFILE=/etc/cdebconf.conf
 
 #package names
@@ -20,11 +21,17 @@ LIBDEBCONF=libdebconfclient0
 DEB_FRONTENDS=passthrough text newt gtk
 UDEB_FRONTENDS=passthrough text newt gtk
 
+ifeq ($(DEB_HOST_ARCH_OS),linux)
+    SELINUXFLAG=--enable-selinux
+else
+    SELINUXFLAG=--disable-selinux
+endif
+
 SIZEOPTFLAG=-Os
 SPEEDOPTFLAG=-O2
 DEBUG_CONFIGURE_OPT=
 ifneq (,$(findstring debug,$(DEB_BUILD_OPTIONS)))
-	CFLAGS += -g
+	DEBUGOPTFLAG=-g
 	SIZEOPTFLAG=
 	SPEEDOPTFLAG=
 	DEBUG_CONFIGURE_OPT=--with-debug=yes
@@ -39,13 +46,14 @@ configure:
 	dh_autoreconf
 
 $(debbuild)/config.status: configure
-	CFLAGS="$(CFLAGS) $(SPEEDOPTFLAG)" \
+	DEB_CFLAGS_MAINT_APPEND="$(DEBUGOPTFLAG) $(SPEEDOPTFLAG)" \
 	dh_auto_configure -B$(debbuild) -- \
 		--libexecdir=\$${prefix}/lib \
 		--without-rpath \
 		--with-db="textdb rfc822db stack" \
 		--with-frontend="$(DEB_FRONTENDS)" \
 		--with-textwrap \
+		$(SELINUXFLAG) \
 		--with-conffile=$(CONFFILE) \
 		$(DEBUG_CONFIGURE_OPT)
 
@@ -56,7 +64,7 @@ build-deb-stamp: $(debbuild)/config.status
 	touch $@
 
 $(udebbuild)/config.status: configure
-	CFLAGS="$(CFLAGS) $(SIZEOPTFLAG) -fomit-frame-pointer" \
+	DEB_CFLAGS_MAINT_APPEND="$(DEBUGOPTFLAG) $(SIZEOPTFLAG) -fomit-frame-pointer" \
 	dh_auto_configure -B$(udebbuild) -- \
 		--libexecdir=\$${prefix}/lib \
 		--enable-d-i \
@@ -65,6 +73,7 @@ $(udebbuild)/config.status: configure
 		--with-default-frontend=newt \
 		--with-syslog-logging \
 		--with-textwrap \
+		--disable-selinux \
 		--with-conffile=$(CONFFILE) \
 		$(DEBUG_CONFIGURE_OPT)
 
@@ -119,6 +128,7 @@ binary-arch: install-arch
 	dh_installdocs -s
 	dh_installdebconf -s
 	dh_installdirs -s
+	dh_lintian -s
 	dh_strip -s
 	dh_compress -s
 	dh_fixperms -s

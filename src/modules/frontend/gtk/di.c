@@ -40,14 +40,11 @@
 #include <string.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <stdlib.h>
 #include <syslog.h>
 
-#if 0
-#include <directfb.h>
-/* for dfb_input_device_reload_keymap() and dfb_input_device_at() */
-#include <core/input.h>
-#endif
 #include <gtk/gtk.h>
+#include <gdk/gdkkeysyms.h>
 
 #include "question.h"
 #include "database.h"
@@ -159,6 +156,91 @@ static void make_fullscreen(GtkWidget * window)
     gtk_window_fullscreen(GTK_WINDOW(window));
 }
 
+/** Increase or decrease font size
+ * @param factor (> 1 to increase, < 1 to decrease)
+ */
+static void di_change_font_size(struct frontend *fe, float factor)
+{
+    GtkSettings *gsettings;
+    char *font_name;
+    char *size_s, *end;
+    char *sed;
+    long size, newsize;
+
+    gsettings = gtk_settings_get_default ();
+    g_object_get(gsettings, "gtk-font-name", &font_name, NULL);
+    if (!font_name)
+        return;
+
+    size_s = strpbrk(font_name, "0123456789");
+    if (!size_s) {
+        g_free(font_name);
+        return;
+    }
+    size = strtol(size_s, &end, 10);
+    if (end == size_s) {
+        g_free(font_name);
+        return;
+    }
+
+    newsize = size * factor;
+    if (newsize == size) {
+        if (factor < 1) {
+            newsize = size - 1;
+        } else
+            newsize = size + 1;
+    }
+    if (newsize <= 0)
+        newsize = 1;
+
+    asprintf(&sed, "sed -i 's/^gtk-font-name.*$/gtk-font-name = \"%.*s%d%s\"/' "
+            "/etc/gtk-2.0/gtkrc",
+            (int) (size_s - font_name), font_name, (int) newsize, end);
+    system(sed);
+    free(sed);
+    g_free(font_name);
+
+    gtk_rc_reparse_all_for_settings(gsettings, TRUE);
+    cdebconf_gtk_set_answer_notok(fe);
+}
+
+/** Key event handler implementing global key shortcuts.
+ *
+ * @param widget main window
+ * @param key the pressed key
+ * @param fe cdebconf frontend
+ * @return TRUE if "Cancel" was handled, FALSE otherwise
+ */
+static gboolean di_shortcuts(GtkWidget * widget, GdkEventKey * key,
+                             struct frontend * fe)
+{
+    if (GDK_KEY_ZoomIn == key->keyval ||
+            ((GDK_KEY_plus == key->keyval
+              || GDK_KEY_KP_Add == key->keyval)
+                && GDK_CONTROL_MASK & key->state)) {
+        di_change_font_size(fe, 1.25);
+        return TRUE;
+    }
+    if (GDK_KEY_ZoomOut == key->keyval ||
+            ((GDK_KEY_minus == key->keyval
+              || GDK_KEY_KP_Subtract == key->keyval)
+                && GDK_CONTROL_MASK & key->state)) {
+        di_change_font_size(fe, 0.8);
+        return TRUE;
+    }
+    return FALSE;
+}
+
+/** Add global keyboard shortcuts
+ *
+ * @param fe cdebconf frontend
+ */
+static void set_shortcuts(struct frontend *fe)
+{
+    struct frontend_data * fe_data = fe->data;
+    cdebconf_gtk_add_global_key_handler(fe, fe_data->window, G_CALLBACK(di_shortcuts));
+}
+
 /** Setup d-i specific bits.
  *
  * This will create and initialize the relevant data structure.
@@ -190,27 +272,13 @@ gboolean cdebconf_gtk_di_setup(struct frontend * fe)
     (void) g_log_set_default_handler(log_glib_to_syslog,  NULL);
 
     make_fullscreen(fe_data->window);
+    set_shortcuts(fe);
 
-    cursor = gdk_cursor_new(GDK_LEFT_PTR);
+    cursor = gdk_cursor_new_for_display(gdk_display_get_default(), GDK_LEFT_PTR);
     gdk_window_set_cursor(gdk_get_default_root_window(), cursor);
     gdk_cursor_unref(cursor);
 
     return TRUE;
-}
-
-/** Refresh the DirectFB keymap to the one actually in use on consoles.
- *
- * @todo This is a workaround to force dfb to reload keymap at every run,
- *       awaiting for dfb to support automatic keymap change detection and
- *       reloading (see also bug #381979).
- *
- * @param fe cdebconf frontend
- */
-static void refresh_keymap(struct frontend * fe)
-{
-#if 0
-    dfb_input_device_reload_keymap(dfb_input_device_at(DIDID_KEYBOARD));
-#endif
 }
 
 /** Returns the current text direction.
@@ -265,7 +333,6 @@ void cdebconf_gtk_di_run_dialog(struct frontend * fe)
     cdebconf_gtk_update_frontend_title(fe);
     keymap = get_question_value(fe, "debian-installer/keymap");
     if (0 != strcmp(keymap, di_data->previous_keymap)) {
-        refresh_keymap(fe);
         g_free(di_data->previous_keymap);
         di_data->previous_keymap = keymap;
     } else {

@@ -4,13 +4,13 @@
 # DO NOT MODIFY THIS FILE DIRECTLY: SUCH CHANGES WILL BE LOST
 #
 # Serbian/Cyrillic messages for debian-installer.
-# Copyright (C) 2010 Software in the Public Interest, Inc.
+# Copyright (C) 2010-2012 Software in the Public Interest, Inc.
 # Copyright (C) 2008 THE cp6Linux'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the debian-installer package.
-# Karolina Kalic <karolina@resenje.org>, 2010-2011.
-# Janos Guljas <janos@resenje.org>, 2010-2011.
+# Karolina Kalic <karolina@resenje.org>, 2010-2012.
+# Janos Guljas <janos@resenje.org>, 2010-2012.
 # Veselin Mijušković <veselin.mijuskovic@gmail.com>, 2008.
-#
+# Milan Kostic <kosticmilan77@open.telekom.rs>, 2012.
 #
 # Translations from iso-codes:
 #   Aleksandar Jelenak <aleksandar.jelenak@gmail.com>, 2010.
@@ -24,11 +24,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
-"POT-Creation-Date: 2012-10-18 06:02+0000\n"
-"PO-Revision-Date: 2012-10-19 22:10+0100\n"
-"Last-Translator: Karolina Kalic <karolina@resenje.org>\n"
+"POT-Creation-Date: 2016-06-05 14:47+0000\n"
+"PO-Revision-Date: 2016-05-22 12:13+0100\n"
+"Last-Translator: Dragan Filipović <filipovic@tutanota.com>\n"
 "Language-Team: Serbian <debian-l10n-serbian@lists.debian.org>\n"
-"Language: \n"
+"Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -144,7 +144,7 @@ msgstr "Назад"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:3001 ../cdebconf-gtk-udeb.templates:3001
-#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:7001
+#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:10001
 msgid "Yes"
 msgstr "Да"
 
@@ -156,7 +156,7 @@ msgstr "Да"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:4001 ../cdebconf-gtk-udeb.templates:4001
-#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:8001
+#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:11001
 msgid "No"
 msgstr "Не"
 
@@ -188,6 +188,14 @@ msgid "<F1> for help; <Tab> moves; <Space> selects; <Enter> activates buttons"
 msgstr ""
 "<F1> помоћ; <Tab> кретање између опција; <Space> одабира; <Enter> активира "
 "одабрано"
+
+#. Type: text
+#. Description
+#. Appears as a checkbox in the newt and GTK interfaces.
+#. :sl1:
+#: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
+msgid "Show Password in Clear"
+msgstr "Прикажи лозинку"
 
 #. Type: text
 #. Description
@@ -246,7 +254,7 @@ msgstr "ПРИТИСЦИ:"
 
 #. Type: text
 #. Description
-#. :sl6:
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:3001
 #, no-c-format
 msgid "'%c'"
@@ -276,7 +284,31 @@ msgstr "Изабери празан унос"
 #. Type: text
 #. Description
 #. :sl4:
+#: ../cdebconf-text-udeb.templates:7001
+#, no-c-format
+msgid "Other choices are available with '%c' and '%c'"
+msgstr "Други избори су доступни са '%c' и '%c'"
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:8001
+#, no-c-format
+msgid "Previous choices are available with '%c'"
+msgstr "Претходни избори су доступни са '%c'"
+
+#. Type: text
+#. Description
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:9001
+#, no-c-format
+msgid "Next choices are available with '%c'"
+msgstr "Следећи избори су доступни са '%c'"
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:12001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%d> "
 msgstr "Питај: '%c' -- помоћ, подразумевано=%d> "
@@ -284,7 +316,7 @@ msgstr "Питај: '%c' -- помоћ, подразумевано=%d> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:10001
+#: ../cdebconf-text-udeb.templates:13001
 #, no-c-format
 msgid "Prompt: '%c' for help> "
 msgstr "Питај: „%c“ за помоћ> "
@@ -292,7 +324,7 @@ msgstr "Питај: „%c“ за помоћ> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:11001
+#: ../cdebconf-text-udeb.templates:14001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%s> "
 msgstr "Питај: '%c' -- помоћ, подразумевано=%s> "
@@ -300,7 +332,7 @@ msgstr "Питај: '%c' -- помоћ, подразумевано=%s> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:12001
+#: ../cdebconf-text-udeb.templates:15001
 msgid "[Press enter to continue]"
 msgstr "[Притисни „Enter“ за наставак]"
 

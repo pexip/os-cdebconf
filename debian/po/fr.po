@@ -17,7 +17,7 @@
 # Christian Perrier <bubulle@debian.org>, 2005, 2006, 2007, 2008, 2009, 2010, 2011.
 #   Alastair McKinstry <mckinstry@computer.org>, 2001.
 #   Cedric De Wilde <daique@tiscalinet.be>, 2001.
-#   Christian Perrier <bubulle@debian.org>, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2012.
+#   Christian Perrier <bubulle@debian.org>, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2012, 2013, 2014, 2015.
 #   Christophe Fergeau <christophe.fergeau@ensimag.imag.fr>, 2000-2001.
 #   Christophe Merlet (RedFox) <redfox@eikonex.org>, 2001.
 #   Free Software Foundation, Inc., 2000-2001, 2004, 2005, 2006.
@@ -27,8 +27,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
-"POT-Creation-Date: 2012-10-18 06:02+0000\n"
-"PO-Revision-Date: 2012-10-18 07:59+0200\n"
+"POT-Creation-Date: 2016-06-05 14:47+0000\n"
+"PO-Revision-Date: 2016-01-26 09:01+0100\n"
 "Last-Translator: Christian Perrier <bubulle@debian.org>\n"
 "Language-Team: French <debian-l10n-french@lists.debian.org>\n"
 "Language: fr\n"
@@ -149,7 +149,7 @@ msgstr "Revenir en arrière"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:3001 ../cdebconf-gtk-udeb.templates:3001
-#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:7001
+#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:10001
 msgid "Yes"
 msgstr "Oui"
 
@@ -161,7 +161,7 @@ msgstr "Oui"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:4001 ../cdebconf-gtk-udeb.templates:4001
-#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:8001
+#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:11001
 msgid "No"
 msgstr "Non"
 
@@ -191,6 +191,14 @@ msgstr "<Tab> déplacement; <Espace> sélection; <Entrée> activation des bouton
 msgid "<F1> for help; <Tab> moves; <Space> selects; <Enter> activates buttons"
 msgstr ""
 "<F1> aide; <Tab> déplacement; <Espace> sélection; <Entrée> activation boutons"
+
+#. Type: text
+#. Description
+#. Appears as a checkbox in the newt and GTK interfaces.
+#. :sl1:
+#: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
+msgid "Show Password in Clear"
+msgstr "Afficher le mot de passe en clair"
 
 #. Type: text
 #. Description
@@ -249,7 +257,7 @@ msgstr "SÉQUENCES DE TOUCHES :"
 
 #. Type: text
 #. Description
-#. :sl6:
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:3001
 #, no-c-format
 msgid "'%c'"
@@ -279,7 +287,31 @@ msgstr "Choisir une entrée vide"
 #. Type: text
 #. Description
 #. :sl4:
+#: ../cdebconf-text-udeb.templates:7001
+#, no-c-format
+msgid "Other choices are available with '%c' and '%c'"
+msgstr "D'autres choix sont disponibles avec « %c » et « %c »"
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:8001
+#, no-c-format
+msgid "Previous choices are available with '%c'"
+msgstr "Les choix précédents sont disponibles avec « %c »"
+
+#. Type: text
+#. Description
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:9001
+#, no-c-format
+msgid "Next choices are available with '%c'"
+msgstr "Les choix suivants sont disponibles avec « %c »"
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:12001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%d> "
 msgstr "Invite: « %c » pour l'aide, défaut=%d> "
@@ -287,7 +319,7 @@ msgstr "Invite: « %c » pour l'aide, défaut=%d> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:10001
+#: ../cdebconf-text-udeb.templates:13001
 #, no-c-format
 msgid "Prompt: '%c' for help> "
 msgstr "Invite: « %c » pour l'aide> "
@@ -295,7 +327,7 @@ msgstr "Invite: « %c » pour l'aide> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:11001
+#: ../cdebconf-text-udeb.templates:14001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%s> "
 msgstr "Invite: « %c » pour l'aide, défaut=%s> "
@@ -303,7 +335,7 @@ msgstr "Invite: « %c » pour l'aide, défaut=%s> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:12001
+#: ../cdebconf-text-udeb.templates:15001
 msgid "[Press enter to continue]"
 msgstr "[Taper Entrée pour continuer]"
 

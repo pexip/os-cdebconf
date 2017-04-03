@@ -13,6 +13,7 @@
 # Translations from KDE:
 # Andris Maziks <andzha@latnet.lv>
 #
+#
 # Aigars Mahinovs <aigarius@debian.org>, 2006, 2008.
 # Viesturs Zarins <viesturs.zarins@mii.lu.lv>, 2008.
 # Aigars Mahinovs <aigarius@debian.org>, 2006.
@@ -20,17 +21,16 @@
 # Free Software Foundation, Inc., 2002,2004.
 # Juris Kudiņš <cooker@inbox.lv>, 2001.
 # Rihards Priedītis <rprieditis@gmail.com>, 2009, 2010.
-# Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>, 2012.
+# Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>, 2012, 2013.
 # Peteris Krisjanis <pecisk@gmail.com>, 2008, 2012.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: lv\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
-"POT-Creation-Date: 2012-10-18 06:02+0000\n"
-"PO-Revision-Date: 2012-10-08 11:37+0300\n"
+"POT-Creation-Date: 2016-06-05 14:47+0000\n"
+"PO-Revision-Date: 2013-10-06 13:45+0300\n"
 "Last-Translator: Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>\n"
-"Language-Team: Latviešu <locale-l10n@googlegroups.com>\n"
+"Language-Team: Latvian <lata-l10n@googlegroups.com>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -149,7 +149,7 @@ msgstr "Atpakaļ"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:3001 ../cdebconf-gtk-udeb.templates:3001
-#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:7001
+#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:10001
 msgid "Yes"
 msgstr "Jā"
 
@@ -161,7 +161,7 @@ msgstr "Jā"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:4001 ../cdebconf-gtk-udeb.templates:4001
-#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:8001
+#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:11001
 msgid "No"
 msgstr "Nē"
 
@@ -191,6 +191,15 @@ msgstr "<Tab> pārvieto; <Space> izvēlas; <Enter> aktivizē pogas"
 msgid "<F1> for help; <Tab> moves; <Space> selects; <Enter> activates buttons"
 msgstr ""
 "<F1> palīdzībai; <Tab> pārvieto; <Space> izvēlas; <Enter> aktivizē pogas"
+
+#. Type: text
+#. Description
+#. Appears as a checkbox in the newt and GTK interfaces.
+#. :sl1:
+#: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
+#, fuzzy
+msgid "Show Password in Clear"
+msgstr "Kļūda, ievadot paroli"
 
 #. Type: text
 #. Description
@@ -249,7 +258,7 @@ msgstr "TAUSTIŅSITIENI:"
 
 #. Type: text
 #. Description
-#. :sl6:
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:3001
 #, no-c-format
 msgid "'%c'"
@@ -279,7 +288,31 @@ msgstr "Izvēlēties tukšu ierakstu"
 #. Type: text
 #. Description
 #. :sl4:
+#: ../cdebconf-text-udeb.templates:7001
+#, no-c-format
+msgid "Other choices are available with '%c' and '%c'"
+msgstr ""
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:8001
+#, no-c-format
+msgid "Previous choices are available with '%c'"
+msgstr ""
+
+#. Type: text
+#. Description
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:9001
+#, no-c-format
+msgid "Next choices are available with '%c'"
+msgstr ""
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:12001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%d> "
 msgstr "Uzvedne: '%c' palīdzībai, pēc noklusējuma=d%> "
@@ -287,7 +320,7 @@ msgstr "Uzvedne: '%c' palīdzībai, pēc noklusējuma=d%> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:10001
+#: ../cdebconf-text-udeb.templates:13001
 #, no-c-format
 msgid "Prompt: '%c' for help> "
 msgstr "Uzvedne: '%c' palīdzībai> "
@@ -295,7 +328,7 @@ msgstr "Uzvedne: '%c' palīdzībai> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:11001
+#: ../cdebconf-text-udeb.templates:14001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%s> "
 msgstr "Uzvedne: '%c' palīdzībai, pēc noklusējuma=%s> "
@@ -303,7 +336,7 @@ msgstr "Uzvedne: '%c' palīdzībai, pēc noklusējuma=%s> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:12001
+#: ../cdebconf-text-udeb.templates:15001
 msgid "[Press enter to continue]"
 msgstr "[Spiediet 'enter', lai turpinātu]"
 

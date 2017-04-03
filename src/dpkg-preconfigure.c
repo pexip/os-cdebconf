@@ -231,15 +231,18 @@ int main(int argc, char **argv)
     {
         int buflen = 0;
         int offset = 0;
+        int bytesread = 0;
         char *buffer = NULL;
         char *file;
 
-        while (!feof(stdin))
-        {
+        do {
             buflen += 2048;
             buffer = realloc(buffer, buflen);
-            offset += fread(buffer + offset, sizeof(*buffer), buflen - offset, stdin);
-        }
+            bytesread = fread(buffer + offset, 1, buflen - offset, stdin);
+            offset += bytesread;
+        } while (bytesread == 2048);
+
+        buffer[offset] = '\0';
 
         file = strtok(buffer, " \n\t");
 

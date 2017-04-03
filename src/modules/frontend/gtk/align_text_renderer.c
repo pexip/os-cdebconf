@@ -203,7 +203,11 @@ static PangoLayout * get_layout(AlignTextRenderer * renderer,
 }
 
 static void align_text_renderer_get_size(
+#if GTK_CHECK_VERSION(3,0,0)
+    GtkCellRenderer * cell, GtkWidget * widget, const GdkRectangle * cell_area,
+#else
     GtkCellRenderer * cell, GtkWidget * widget, GdkRectangle * cell_area,
+#endif
     gint * x_offset, gint * y_offset, gint * width, gint * height)
 {
     AlignTextRenderer * renderer = ALIGN_TEXT_RENDERER(cell);
@@ -291,9 +295,15 @@ static void find_renderer_glyphs(AlignTextRenderer * renderer, GtkWidget * widge
 }
 
 static void align_text_renderer_render(
+#if GTK_CHECK_VERSION(3,0,0)
+    GtkCellRenderer * cell, cairo_t *cr, GtkWidget * widget,
+    const GdkRectangle * background_area, const GdkRectangle * cell_area,
+    GtkCellRendererState flags)
+#else
     GtkCellRenderer * cell, GdkWindow * window, GtkWidget * widget,
     GdkRectangle * background_area, GdkRectangle * cell_area,
     GdkRectangle * expose_area, guint flags)
+#endif
 {
     AlignTextRenderer * renderer = ALIGN_TEXT_RENDERER(cell);
     PangoLayout * layout;
@@ -310,7 +320,11 @@ static void align_text_renderer_render(
 
     state = get_state(cell, widget, flags);
     gtk_cell_renderer_get_padding(cell, &x_padding, &y_padding);
+#if GTK_CHECK_VERSION(3,0,0)
+    gtk_paint_layout(gtk_widget_get_style(widget), cr, state, TRUE,
+#else
     gtk_paint_layout(gtk_widget_get_style(widget), window, state, TRUE, expose_area,
+#endif
                      widget, "align_text_renderer",
                      cell_area->x + x_offset + x_padding,
                      cell_area->y + y_offset + y_padding,

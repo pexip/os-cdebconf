@@ -35,9 +35,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
-"POT-Creation-Date: 2012-10-18 06:02+0000\n"
-"PO-Revision-Date: 2012-10-18 15:21+0300\n"
-"Last-Translator: Eddy Petrișor <eddy.petrisor@gmail.com>\n"
+"POT-Creation-Date: 2016-06-05 14:47+0000\n"
+"PO-Revision-Date: 2015-04-08 22:04+0300\n"
+"Last-Translator: Ioan Eugen Stan <stan.ieugen@gmail.com>\n"
 "Language-Team: Romanian <debian-l10n-romanian@lists.debian.org>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
@@ -160,7 +160,7 @@ msgstr "Înapoi"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:3001 ../cdebconf-gtk-udeb.templates:3001
-#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:7001
+#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:10001
 msgid "Yes"
 msgstr "Da"
 
@@ -172,7 +172,7 @@ msgstr "Da"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:4001 ../cdebconf-gtk-udeb.templates:4001
-#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:8001
+#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:11001
 msgid "No"
 msgstr "Nu"
 
@@ -202,6 +202,15 @@ msgstr "<Tab> deplasare; <Spațiu> selectează; <Enter> activează butoane"
 msgid "<F1> for help; <Tab> moves; <Space> selects; <Enter> activates buttons"
 msgstr ""
 "<F1> ajutor; <Tab> deplasare; <Spațiu> selectează; <Enter> activează butoane"
+
+#. Type: text
+#. Description
+#. Appears as a checkbox in the newt and GTK interfaces.
+#. :sl1:
+#: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
+#, fuzzy
+msgid "Show Password in Clear"
+msgstr "Eroare la introducerea parolei"
 
 #. Type: text
 #. Description
@@ -260,7 +269,7 @@ msgstr "TASTE:"
 
 #. Type: text
 #. Description
-#. :sl6:
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:3001
 #, no-c-format
 msgid "'%c'"
@@ -290,7 +299,31 @@ msgstr "Selectează o intrare goală"
 #. Type: text
 #. Description
 #. :sl4:
+#: ../cdebconf-text-udeb.templates:7001
+#, no-c-format
+msgid "Other choices are available with '%c' and '%c'"
+msgstr ""
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:8001
+#, no-c-format
+msgid "Previous choices are available with '%c'"
+msgstr ""
+
+#. Type: text
+#. Description
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:9001
+#, no-c-format
+msgid "Next choices are available with '%c'"
+msgstr ""
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:12001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%d> "
 msgstr "Prompt: '%c' pentru ajutor, implicit=%d> "
@@ -298,7 +331,7 @@ msgstr "Prompt: '%c' pentru ajutor, implicit=%d> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:10001
+#: ../cdebconf-text-udeb.templates:13001
 #, no-c-format
 msgid "Prompt: '%c' for help> "
 msgstr "Prompt: '%c' pentru ajutor> "
@@ -306,7 +339,7 @@ msgstr "Prompt: '%c' pentru ajutor> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:11001
+#: ../cdebconf-text-udeb.templates:14001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%s> "
 msgstr "Prompt: '%c' pentru ajutor, implicit=%s> "
@@ -314,7 +347,7 @@ msgstr "Prompt: '%c' pentru ajutor, implicit=%s> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:12001
+#: ../cdebconf-text-udeb.templates:15001
 msgid "[Press enter to continue]"
 msgstr "[Apăsați enter pentru a continua]"
 

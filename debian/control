@@ -8,8 +8,10 @@ Build-Depends:
  libnewt-dev,
  libtextwrap-dev (>= 0.1-5),
  libdebian-installer4-dev (>= 0.41) | libdebian-installer-dev,
+ libglib2.0-dev (>= 2.31),
  libgtk2.0-dev (>= 2.24),
  libcairo2-dev (>= 1.8.10-3),
+ libselinux1-dev (>= 2.3) [linux-any] | libselinux-dev [linux-any],
  dh-autoreconf,
  dh-exec,
 Maintainer: Debian Install System Team <debian-boot@lists.debian.org>
@@ -18,9 +20,9 @@ Uploaders:
  Christian Perrier <bubulle@debian.org>,
  Regis Boudin <regis@debian.org>,
  Cyril Brulebois <kibi@debian.org>
-Standards-Version: 3.9.4
-Vcs-Browser: http://anonscm.debian.org/gitweb/?p=d-i/cdebconf.git
-Vcs-Git: git://anonscm.debian.org/d-i/cdebconf.git
+Standards-Version: 3.9.7
+Vcs-Browser: https://anonscm.debian.org/cgit/d-i/cdebconf.git
+Vcs-Git: https://anonscm.debian.org/git/d-i/cdebconf.git
 
 Package: cdebconf
 Architecture: any
@@ -56,10 +58,9 @@ Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Debian Configuration Management System (C-implementation library)
  Debconf is a configuration management system for Debian packages. It is
  used by some packages to prompt you for information before they are
- installed. This is a reimplementation of the original debconf version
- in C.
+ installed. cdebconf is a reimplementation of the original debconf in C.
  .
- This is the libraries needed by libdebconfclient-dev and cdebconf.
+ This library allows C programs to interface with cdebconf.
 
 Package: libdebconfclient0-dev
 Architecture: any
@@ -72,7 +73,7 @@ Replaces: libdebconf-dev
 Description: Development files for cdebconf
  Debconf is a configuration management system for Debian packages. It is
  used by some packages to prompt you for information before they are
- installed. This is a reimplementation of the original debconf version
+ installed. cdebconf is a reimplementation of the original debconf version
  in C.
  .
  This package contains files needed to do cdebconf development

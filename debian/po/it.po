@@ -4,7 +4,7 @@
 # DO NOT MODIFY THIS FILE DIRECTLY: SUCH CHANGES WILL BE LOST
 #
 # Italian messages for debian-installer.
-# Copyright (C) 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2103, 2014 Software in the Public Interest, Inc.
+# Copyright (C) 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2017 Software in the Public Interest, Inc.
 # This file is distributed under the same license as debian-installer.
 # The translation team (for all four levels):
 # Cristian Rigamonti <cri@linux.it>
@@ -32,14 +32,14 @@
 # Marcello Raffa <mrooth@tiscalinet.it>, 2001
 # Tobias Toedter <t.toedter@gmx.net>, 2007.
 # Translations taken from ICU SVN on 2007-09-09
-# Milo Casagrande <milo@milo.name>, 2008, 2009, 2010, 2011, 2012, 2013, 2014.
+# Milo Casagrande <milo@milo.name>, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
-"POT-Creation-Date: 2012-10-18 06:02+0000\n"
-"PO-Revision-Date: 2012-03-19 21:05+0100\n"
+"POT-Creation-Date: 2016-06-05 14:47+0000\n"
+"PO-Revision-Date: 2017-02-14 11:35+0100\n"
 "Last-Translator: Milo Casagrande <milo@milo.name>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "Language: it\n"
@@ -161,7 +161,7 @@ msgstr "Indietro"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:3001 ../cdebconf-gtk-udeb.templates:3001
-#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:7001
+#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:10001
 msgid "Yes"
 msgstr "Sì"
 
@@ -173,7 +173,7 @@ msgstr "Sì"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:4001 ../cdebconf-gtk-udeb.templates:4001
-#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:8001
+#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:11001
 msgid "No"
 msgstr "No"
 
@@ -203,6 +203,14 @@ msgstr "<Tab> sposta; <Spazio> seleziona; <Invio> attiva i pulsanti"
 msgid "<F1> for help; <Tab> moves; <Space> selects; <Enter> activates buttons"
 msgstr ""
 "<F1> aiuto; <Tab> sposta; <Spazio> seleziona; <Invio> attiva i pulsanti"
+
+#. Type: text
+#. Description
+#. Appears as a checkbox in the newt and GTK interfaces.
+#. :sl1:
+#: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
+msgid "Show Password in Clear"
+msgstr "Mostra password"
 
 #. Type: text
 #. Description
@@ -261,7 +269,7 @@ msgstr "Tasti premuti:"
 
 #. Type: text
 #. Description
-#. :sl6:
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:3001
 #, no-c-format
 msgid "'%c'"
@@ -291,7 +299,31 @@ msgstr "Seleziona una stringa vuota"
 #. Type: text
 #. Description
 #. :sl4:
+#: ../cdebconf-text-udeb.templates:7001
+#, no-c-format
+msgid "Other choices are available with '%c' and '%c'"
+msgstr "Altre opzioni sono disponibili con \"%c\" e \"%c\""
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:8001
+#, no-c-format
+msgid "Previous choices are available with '%c'"
+msgstr "Le scelte precedenti sono disponibili con \"%c\""
+
+#. Type: text
+#. Description
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:9001
+#, no-c-format
+msgid "Next choices are available with '%c'"
+msgstr "Le scelte successive sono disponibili con \"%c\""
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:12001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%d> "
 msgstr "Selezionare: «%c» per aiuto, predefinito=%d>"
@@ -299,7 +331,7 @@ msgstr "Selezionare: «%c» per aiuto, predefinito=%d>"
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:10001
+#: ../cdebconf-text-udeb.templates:13001
 #, no-c-format
 msgid "Prompt: '%c' for help> "
 msgstr "Selezionare: «%c» per aiuto> "
@@ -307,7 +339,7 @@ msgstr "Selezionare: «%c» per aiuto> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:11001
+#: ../cdebconf-text-udeb.templates:14001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%s> "
 msgstr "Selezionare: «%c» per aiuto, predefinito=%s>"
@@ -315,7 +347,7 @@ msgstr "Selezionare: «%c» per aiuto, predefinito=%s>"
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:12001
+#: ../cdebconf-text-udeb.templates:15001
 msgid "[Press enter to continue]"
 msgstr "[Premere Invio per continuare]"
 

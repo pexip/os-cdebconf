@@ -17,16 +17,16 @@
 #   Ossama M. Khayat <okhayat@yahoo.com>, 2006, 2008, 2010.
 #   Tobias Quathamer <toddy@debian.org>, 2007.
 #   Mohammad Gamal <f2c2001@yahoo.com>, 2001.
-# Ossama Khayat <okhayat@yahoo.com>, 2011, 2012.
+# Ossama Khayat <okhayat@yahoo.com>, 2011, 2012, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: ar\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
-"POT-Creation-Date: 2012-10-18 06:02+0000\n"
-"PO-Revision-Date: 2012-10-21 14:04+0300\n"
-"Last-Translator: Ossama Khayat <okhayat@yahoo.com>\n"
-"Language-Team: American English <support@arabeyes.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2016-06-05 14:47+0000\n"
+"PO-Revision-Date: 2013-09-30 11:24+0300\n"
+"Last-Translator: Ossama Khayat <okhayat@gmail.com>\n"
+"Language-Team: American English <okhayat@gmail.com>\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -144,7 +144,7 @@ msgstr "رجوع"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:3001 ../cdebconf-gtk-udeb.templates:3001
-#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:7001
+#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:10001
 msgid "Yes"
 msgstr "نعم"
 
@@ -156,7 +156,7 @@ msgstr "نعم"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:4001 ../cdebconf-gtk-udeb.templates:4001
-#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:8001
+#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:11001
 msgid "No"
 msgstr "لا"
 
@@ -185,6 +185,15 @@ msgstr "<Tab> للتنقل; <Space> للتحديد; <Enter> لتفعيل الأ�
 #: ../cdebconf-newt-udeb.templates:7001
 msgid "<F1> for help; <Tab> moves; <Space> selects; <Enter> activates buttons"
 msgstr "<F1> للمساعدة; <Tab> للتنقل; <Space> للتحديد; <Enter> لتفعيل الأزرار"
+
+#. Type: text
+#. Description
+#. Appears as a checkbox in the newt and GTK interfaces.
+#. :sl1:
+#: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
+#, fuzzy
+msgid "Show Password in Clear"
+msgstr "خطأ في إدخال كلمة المرور"
 
 #. Type: text
 #. Description
@@ -243,7 +252,7 @@ msgstr "ضربات المفاتيح:"
 
 #. Type: text
 #. Description
-#. :sl6:
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:3001
 #, no-c-format
 msgid "'%c'"
@@ -273,7 +282,31 @@ msgstr "اختيار مُدخل فارغ"
 #. Type: text
 #. Description
 #. :sl4:
+#: ../cdebconf-text-udeb.templates:7001
+#, no-c-format
+msgid "Other choices are available with '%c' and '%c'"
+msgstr ""
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:8001
+#, no-c-format
+msgid "Previous choices are available with '%c'"
+msgstr ""
+
+#. Type: text
+#. Description
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:9001
+#, no-c-format
+msgid "Next choices are available with '%c'"
+msgstr ""
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:12001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%d> "
 msgstr "ملقّن: '%c' للمساعدة، الافتراضي=%d> "
@@ -281,7 +314,7 @@ msgstr "ملقّن: '%c' للمساعدة، الافتراضي=%d> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:10001
+#: ../cdebconf-text-udeb.templates:13001
 #, no-c-format
 msgid "Prompt: '%c' for help> "
 msgstr "ملقّن: '%c' للمساعدة> "
@@ -289,7 +322,7 @@ msgstr "ملقّن: '%c' للمساعدة> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:11001
+#: ../cdebconf-text-udeb.templates:14001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%s> "
 msgstr "ملقّن: '%c' للمساعدة، الافتراضي=%s> "
@@ -297,7 +330,7 @@ msgstr "ملقّن: '%c' للمساعدة، الافتراضي=%s> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:12001
+#: ../cdebconf-text-udeb.templates:15001
 msgid "[Press enter to continue]"
 msgstr "[اضغط زر الإدخال للاستمرار]"
 

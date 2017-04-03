@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
-"POT-Creation-Date: 2012-10-18 06:02+0000\n"
+"POT-Creation-Date: 2016-06-05 14:47+0000\n"
 "PO-Revision-Date: 2012-04-14 22:12+0600\n"
 "Last-Translator: Tennom <tankola@ymail.com, tennomyathog@gmail.com>\n"
 "Language-Team: bo <translation-team-bo@lists.sourceforge.net>\n"
@@ -128,7 +128,7 @@ msgstr "ཕྱིར་ལོག"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:3001 ../cdebconf-gtk-udeb.templates:3001
-#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:7001
+#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:10001
 msgid "Yes"
 msgstr "རེད"
 
@@ -140,7 +140,7 @@ msgstr "རེད"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:4001 ../cdebconf-gtk-udeb.templates:4001
-#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:8001
+#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:11001
 msgid "No"
 msgstr "མིན"
 
@@ -169,6 +169,15 @@ msgstr "<Tab> སྤོར་བ; <Space> འདེམས་པ; <Enter> མན�
 #: ../cdebconf-newt-udeb.templates:7001
 msgid "<F1> for help; <Tab> moves; <Space> selects; <Enter> activates buttons"
 msgstr "<F1> རོགས་རམ; <Tab> སྤོར་བ; <Space> འདེམས་པ; <Enter> མནན་མཐེབ་ནུས་ཡོད་བཟོ"
+
+#. Type: text
+#. Description
+#. Appears as a checkbox in the newt and GTK interfaces.
+#. :sl1:
+#: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
+#, fuzzy
+msgid "Show Password in Clear"
+msgstr "གསང་གྲངས་མ་འགྲིག་པ"
 
 #. Type: text
 #. Description
@@ -227,7 +236,7 @@ msgstr ""
 
 #. Type: text
 #. Description
-#. :sl6:
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:3001
 #, no-c-format
 msgid "'%c'"
@@ -252,14 +261,37 @@ msgstr "འདེམས་ཐོའི་ཐོག་ཏུ་ཕྱིར་ལ
 #. Description
 #. :sl4:
 #: ../cdebconf-text-udeb.templates:6001
-#, fuzzy
 msgid "Select an empty entry"
-msgstr "གསོག་སྡེར་ཁག་ཞིག་འདེམས་པ"
+msgstr ""
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:7001
+#, no-c-format
+msgid "Other choices are available with '%c' and '%c'"
+msgstr ""
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:8001
+#, no-c-format
+msgid "Previous choices are available with '%c'"
+msgstr ""
 
 #. Type: text
 #. Description
 #. :sl4:
 #: ../cdebconf-text-udeb.templates:9001
+#, no-c-format
+msgid "Next choices are available with '%c'"
+msgstr ""
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:12001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%d> "
 msgstr ""
@@ -267,7 +299,7 @@ msgstr ""
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:10001
+#: ../cdebconf-text-udeb.templates:13001
 #, no-c-format
 msgid "Prompt: '%c' for help> "
 msgstr ""
@@ -275,7 +307,7 @@ msgstr ""
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:11001
+#: ../cdebconf-text-udeb.templates:14001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%s> "
 msgstr ""
@@ -283,7 +315,7 @@ msgstr ""
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:12001
+#: ../cdebconf-text-udeb.templates:15001
 msgid "[Press enter to continue]"
 msgstr ""
 

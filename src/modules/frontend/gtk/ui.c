@@ -48,9 +48,6 @@
 #include "cdebconf_gtk.h"
 #include "fe_data.h"
 #include "descriptions.h"
-#ifdef DI_UDEB
-# include "di.h"
-#endif
 
 /* documented in cdebconf_gtk.h */
 void cdebconf_gtk_add_common_layout(struct frontend * fe,
@@ -139,10 +136,13 @@ static gboolean handle_exposed_banner(GtkWidget * widget,
         pango_layout_get_pixel_size(layout, &text_width, &text_height);
         window = gtk_widget_get_window(widget);
         /* Left-align, vertically-center */
-        gdk_draw_layout(window, gdk_gc_new(window),
+        cairo_t *cr = gdk_cairo_create(window);
+        cairo_move_to(cr,
                         DEFAULT_PADDING * 2,
-                        (fe_data->logo_height - text_height) / 2,
-                        layout);
+                        (fe_data->logo_height - text_height) / 2);
+        pango_cairo_show_layout(cr, layout);
+        cairo_destroy(cr);
+
         g_object_unref(layout);
         pango_font_description_free(font);
         g_free(message);
@@ -210,13 +210,25 @@ static void create_banner(struct frontend * fe, GtkWidget * container)
     gtk_container_add(GTK_CONTAINER(banner), logo);
 
     /* Remember the logo size: */
-    pixbuf = gtk_image_get_pixbuf(GTK_IMAGE(logo));
-    fe_data->logo_width = gdk_pixbuf_get_width(pixbuf);
-    fe_data->logo_height = gdk_pixbuf_get_height(pixbuf);
-    fe_data->logo_adjusted = FALSE;
+    if (gtk_image_get_storage_type(GTK_IMAGE(logo)) == GTK_IMAGE_PIXBUF)
+    {
+        pixbuf = gtk_image_get_pixbuf(GTK_IMAGE(logo));
+        fe_data->logo_width = gdk_pixbuf_get_width(pixbuf);
+        fe_data->logo_height = gdk_pixbuf_get_height(pixbuf);
+        fe_data->logo_adjusted = FALSE;
+    }
+    else
+    {
+        fe_data->logo_height = 24;
+        fe_data->logo_adjusted = TRUE;
+    }
     fe_data->logo_widget = logo;
 
+#if GTK_CHECK_VERSION(3,0,0)
+    g_signal_connect_after(G_OBJECT(banner), "draw",
+#else
     g_signal_connect_after(G_OBJECT(banner), "expose_event",
+#endif
                            G_CALLBACK(handle_exposed_banner), fe);
 
     gtk_box_pack_start(GTK_BOX(container), banner,
@@ -401,7 +413,11 @@ struct shortcut {
  * @param widget destroyed widget
  * @param shortcut shortcut data
  */
+#if GTK_CHECK_VERSION(3,0,0)
+static void remove_shortcut(GtkWidget * widget, struct shortcut * shortcut)
+#else
 static void remove_shortcut(GtkObject * widget, struct shortcut * shortcut)
+#endif
 {
     g_signal_handler_disconnect(G_OBJECT(shortcut->window),
                                 shortcut->handler_id);

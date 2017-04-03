@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
-"POT-Creation-Date: 2012-10-18 06:02+0000\n"
+"POT-Creation-Date: 2016-06-05 14:47+0000\n"
 "PO-Revision-Date: 2012-02-28 10:16+0530\n"
 "Last-Translator: Danishka Navin <danishka@gmail.com>\n"
 "Language-Team: Sinhala <info@hanthana.org>\n"
@@ -137,7 +137,7 @@ msgstr "ආපසු යන්න"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:3001 ../cdebconf-gtk-udeb.templates:3001
-#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:7001
+#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:10001
 msgid "Yes"
 msgstr "ඔව්"
 
@@ -149,7 +149,7 @@ msgstr "ඔව්"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:4001 ../cdebconf-gtk-udeb.templates:4001
-#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:8001
+#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:11001
 msgid "No"
 msgstr "නැත"
 
@@ -178,6 +178,15 @@ msgstr "<Tab> ගමන් කරයි; <Space> තෝරයි; <Enter> බො
 #: ../cdebconf-newt-udeb.templates:7001
 msgid "<F1> for help; <Tab> moves; <Space> selects; <Enter> activates buttons"
 msgstr "<F1> උදව් සඳහා; <Tab> ගමන් කරයි; <Space> තෝරයි; <Enter> බොත්තම් සක්‍රිය කරයි"
+
+#. Type: text
+#. Description
+#. Appears as a checkbox in the newt and GTK interfaces.
+#. :sl1:
+#: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
+#, fuzzy
+msgid "Show Password in Clear"
+msgstr "මුරපද ආදාන දෝශයක්"
 
 #. Type: text
 #. Description
@@ -236,7 +245,7 @@ msgstr "KEYSTROKES:"
 
 #. Type: text
 #. Description
-#. :sl6:
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:3001
 #, no-c-format
 msgid "'%c'"
@@ -266,7 +275,31 @@ msgstr "හිස් යෙදුමක් තෝරන්න"
 #. Type: text
 #. Description
 #. :sl4:
+#: ../cdebconf-text-udeb.templates:7001
+#, no-c-format
+msgid "Other choices are available with '%c' and '%c'"
+msgstr ""
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:8001
+#, no-c-format
+msgid "Previous choices are available with '%c'"
+msgstr ""
+
+#. Type: text
+#. Description
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:9001
+#, no-c-format
+msgid "Next choices are available with '%c'"
+msgstr ""
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:12001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%d> "
 msgstr "පොරොත්තු: '%c' සහාය සඳහා, පෙරනිමිය=%d> "
@@ -274,7 +307,7 @@ msgstr "පොරොත්තු: '%c' සහාය සඳහා, පෙරන�
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:10001
+#: ../cdebconf-text-udeb.templates:13001
 #, no-c-format
 msgid "Prompt: '%c' for help> "
 msgstr "පොරොත්තුව: '%c' උදව් සඳහා> "
@@ -282,7 +315,7 @@ msgstr "පොරොත්තුව: '%c' උදව් සඳහා> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:11001
+#: ../cdebconf-text-udeb.templates:14001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%s> "
 msgstr "පොරොත්තුව: '%c' උදව් සඳහා, පෙරනිමි=%s> "
@@ -290,7 +323,7 @@ msgstr "පොරොත්තුව: '%c' උදව් සඳහා, පෙර�
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:12001
+#: ../cdebconf-text-udeb.templates:15001
 msgid "[Press enter to continue]"
 msgstr "[ඉදිරියට යාමට enter යොදන්න]"
 

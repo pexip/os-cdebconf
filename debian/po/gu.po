@@ -10,7 +10,7 @@
 # Debian Installer translators, please read the D-I i18n documentation
 # in doc/i18n/i18n.txt
 # Contributor:
-# Kartik Mistry <kartik.mistry@gmail.com>, 2006-2011
+# Kartik Mistry <kartik.mistry@gmail.com>, 2006-2013
 #
 #
 # Translations from iso-codes:
@@ -24,7 +24,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: d-i\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
-"POT-Creation-Date: 2012-10-18 06:02+0000\n"
+"POT-Creation-Date: 2016-06-05 14:47+0000\n"
 "PO-Revision-Date: 2008-08-07 11:42+0530\n"
 "Last-Translator: Kartik Mistry <kartik.mistry@gmail.com>\n"
 "Language-Team: Gujarati <team@utkarsh.org>\n"
@@ -144,7 +144,7 @@ msgstr "પાછા જાઓ"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:3001 ../cdebconf-gtk-udeb.templates:3001
-#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:7001
+#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:10001
 msgid "Yes"
 msgstr "હા"
 
@@ -156,7 +156,7 @@ msgstr "હા"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:4001 ../cdebconf-gtk-udeb.templates:4001
-#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:8001
+#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:11001
 msgid "No"
 msgstr "ના"
 
@@ -185,6 +185,15 @@ msgstr "<Tab> ખસેડો; <Space> પસંદ કરો; <Enter> બટન
 #: ../cdebconf-newt-udeb.templates:7001
 msgid "<F1> for help; <Tab> moves; <Space> selects; <Enter> activates buttons"
 msgstr "<F1> મદદ માટે; <Tab> ખસેડો; <Space> પસંદ કરો; <Enter> બટનો સક્રિય કરો"
+
+#. Type: text
+#. Description
+#. Appears as a checkbox in the newt and GTK interfaces.
+#. :sl1:
+#: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
+#, fuzzy
+msgid "Show Password in Clear"
+msgstr "પાસવર્ડ દાખલ કરવામાં ક્ષતિ"
 
 #. Type: text
 #. Description
@@ -243,7 +252,7 @@ msgstr "કીસ્ટ્રોકસ:"
 
 #. Type: text
 #. Description
-#. :sl6:
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:3001
 #, no-c-format
 msgid "'%c'"
@@ -273,7 +282,31 @@ msgstr "ખાલી જગ્યા પસંદ કરો"
 #. Type: text
 #. Description
 #. :sl4:
+#: ../cdebconf-text-udeb.templates:7001
+#, no-c-format
+msgid "Other choices are available with '%c' and '%c'"
+msgstr ""
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:8001
+#, no-c-format
+msgid "Previous choices are available with '%c'"
+msgstr ""
+
+#. Type: text
+#. Description
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:9001
+#, no-c-format
+msgid "Next choices are available with '%c'"
+msgstr ""
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:12001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%d> "
 msgstr "પૂછો: '%c' મદદ માટે, મૂળભૂત=%d> "
@@ -281,7 +314,7 @@ msgstr "પૂછો: '%c' મદદ માટે, મૂળભૂત=%d> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:10001
+#: ../cdebconf-text-udeb.templates:13001
 #, no-c-format
 msgid "Prompt: '%c' for help> "
 msgstr "પૂછો: '%c' મદદ માટે> "
@@ -289,7 +322,7 @@ msgstr "પૂછો: '%c' મદદ માટે> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:11001
+#: ../cdebconf-text-udeb.templates:14001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%s> "
 msgstr "પૂછો: '%c' મદદ માટે, મૂળભૂત=%s> "
@@ -297,7 +330,7 @@ msgstr "પૂછો: '%c' મદદ માટે, મૂળભૂત=%s> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:12001
+#: ../cdebconf-text-udeb.templates:15001
 msgid "[Press enter to continue]"
 msgstr "[ચાલુ રાખવા માટે એન્ટર કી દબાવો]"
 

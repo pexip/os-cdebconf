@@ -20,6 +20,12 @@
 
 #include <debian-installer.h>
 
+#ifdef SELINUX_ENABLED
+#include <selinux/selinux.h>
+#else
+#define setexecfilecon(filename, fallback) do {} while(0)
+#endif
+
 static commands_t commands[] = {
 #include "commands-list.h"
     { 0, 0 }
@@ -217,6 +223,7 @@ static pid_t confmodule_run(struct confmodule *mod, int argc, char **argv)
             for (i = 1; i < argc; i++)
                 args[i-1] = argv[i];
             args[argc-1] = NULL;
+            setexecfilecon(argv[1],"dpkg_script_t");
             if (execv(argv[1], args) != 0)
                 perror("execv");
             /* should never reach here, otherwise execv failed :( */
@@ -292,7 +299,7 @@ static int confmodule_update_seen_questions(struct confmodule *mod, enum seen_ac
                 if (q == NULL)
                     return DC_NOTOK;
 #ifndef DI_UDEB
-                q->flags |= DC_QFLAG_SEEN;
+                question_set_flag(q, DC_QFLAG_SEEN);
 #endif
                 DELETE(*(mod->seen_questions+i));
             }

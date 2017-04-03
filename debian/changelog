@@ -1,7 +1,295 @@
+cdebconf (0.227) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Croatian (hr.po) by Valentin Vidic
+
+ -- Christian Perrier <bubulle@debian.org>  Mon, 03 Apr 2017 07:58:27 +0200
+
+cdebconf (0.226) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Portuguese (Brazil) (pt_BR.po) by Adriano Rafael Gomes
+
+ -- Christian Perrier <bubulle@debian.org>  Wed, 08 Mar 2017 05:53:47 +0100
+
+cdebconf (0.225) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Belarusian (be.po) by Viktar Siarheichyk
+
+ -- Christian Perrier <bubulle@debian.org>  Fri, 03 Mar 2017 05:56:30 +0100
+
+cdebconf (0.224) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Italian (it.po) by Milo Casagrande
+
+ -- Christian Perrier <bubulle@debian.org>  Mon, 20 Feb 2017 05:52:59 +0100
+
+cdebconf (0.223) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Korean (ko.po) by Changwoo Ryu
+
+ -- Christian Perrier <bubulle@debian.org>  Mon, 13 Feb 2017 07:22:10 +0100
+
+cdebconf (0.222) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Catalan (ca.po) by Jordi Mallach
+
+ -- Christian Perrier <bubulle@debian.org>  Sat, 04 Feb 2017 08:38:36 +0100
+
+cdebconf (0.221) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Spanish (es.po) by Javier Fernández-Sanguino Peña
+
+ -- Christian Perrier <bubulle@debian.org>  Sun, 29 Jan 2017 08:25:08 +0100
+
+cdebconf (0.220) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Bulgarian (bg.po) by Damyan Ivanov
+
+ -- Christian Perrier <bubulle@debian.org>  Mon, 16 Jan 2017 06:47:22 +0100
+
+cdebconf (0.219) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Kazakh (kk.po) by Baurzhan Muftakhidinov
+
+ -- Christian Perrier <bubulle@debian.org>  Tue, 22 Nov 2016 07:41:40 +0100
+
+cdebconf (0.218) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Polish (pl.po) by Michał Kułach
+
+ -- Christian Perrier <bubulle@debian.org>  Sun, 09 Oct 2016 19:55:22 +0200
+
+cdebconf (0.217) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Danish (da.po) by Joe Hansen
+
+ -- Christian Perrier <bubulle@debian.org>  Wed, 21 Sep 2016 08:36:07 +0200
+
+cdebconf (0.216) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Danish (da.po) by Joe Hansen
+
+ -- Christian Perrier <bubulle@debian.org>  Sun, 18 Sep 2016 08:34:59 +0200
+
+cdebconf (0.215) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Russian (ru.po) by Yuri Kozlov
+  * Ukrainian (uk.po) by Anton Gladky
+
+ -- Christian Perrier <bubulle@debian.org>  Thu, 21 Jul 2016 16:16:08 +0200
+
+cdebconf (0.214) unstable; urgency=medium
+
+  * Rebuild with complete translations
+
+ -- Christian Perrier <bubulle@debian.org>  Fri, 15 Jul 2016 19:51:11 +0200
+
+cdebconf (0.213) unstable; urgency=medium
+
+  * Rebuild with translations really back in place...:-)
+
+ -- Christian Perrier <bubulle@debian.org>  Sun, 29 May 2016 17:58:59 +0200
+
+cdebconf (0.212) unstable; urgency=medium
+
+  * Rebuild with translations back in place
+
+ -- Christian Perrier <bubulle@debian.org>  Sun, 29 May 2016 16:26:52 +0200
+
+cdebconf (0.211) unstable; urgency=medium
+
+  [ Updated translations ]
+  * German (de.po) by Holger Wansing
+  * Serbian (sr.po) by Dragan Filipović
+
+ -- Christian Perrier <bubulle@debian.org>  Sat, 28 May 2016 12:33:39 +0200
+
+cdebconf (0.210) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Slovak (sk.po) by ctenar
+
+ -- Christian Perrier <bubulle@debian.org>  Tue, 03 May 2016 10:54:40 +0200
+
+cdebconf (0.209) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Serbian (sr.po) by Dragan Filipović
+
+ -- Christian Perrier <bubulle@debian.org>  Fri, 22 Apr 2016 15:39:45 +0200
+
+cdebconf (0.208) unstable; urgency=medium
+
+  [ Samuel Thibault ]
+  * gtk: Auto-scroll when switching between entries.
+
+ -- Christian Perrier <bubulle@debian.org>  Sat, 02 Apr 2016 08:05:54 +0200
+
+cdebconf (0.207) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Czech (cs.po) by Miroslav Kure
+
+ -- Christian Perrier <bubulle@debian.org>  Tue, 08 Mar 2016 06:52:27 +0100
+
+cdebconf (0.206) unstable; urgency=medium
+
+  [ Regis Boudin ]
+  * Use functions to get, set, and clear flags instead of accessing the
+    structure directly. These take a string instead of the bits fied used
+    internaly, preparing for the capacity to handle any arbitrary flag.
+  * Create methods that let plugins use question as an opaque structure.
+
+  [ Updated translations ]
+  * Japanese (ja.po) by Kenshi Muto
+  * Thai (th.po) by Theppitak Karoonboonyanan
+
+  [ Christian Perrier ]
+  * Update Standards to 3.9.7 (checked)
+
+ -- Christian Perrier <bubulle@debian.org>  Mon, 22 Feb 2016 07:10:34 +0100
+
+cdebconf (0.205) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Dutch (nl.po) by Frans Spiesschaert
+  * Turkish (tr.po) by Mert Dirik
+
+ -- Christian Perrier <bubulle@debian.org>  Mon, 15 Feb 2016 06:58:05 +0100
+
+cdebconf (0.204) unstable; urgency=medium
+
+  [ Colin Watson ]
+  * Use HTTPS for Vcs-* URLs, and link to cgit rather than gitweb.
+
+  [ Regis Boudin ]
+  * Where possible, make the GTK+2 code not use methods which get deprecated
+    later on in GTK+3.
+  * Fix handling of the buffer in dpkg-preconfigure when in apt mode and
+    reading from stdin.
+
+ -- Christian Perrier <bubulle@debian.org>  Mon, 01 Feb 2016 06:56:59 +0100
+
+cdebconf (0.203) unstable; urgency=medium
+
+  [ Regis Boudin ]
+  * Remove conditional code to handle glib pre-2.31, which is pre-wheezy.
+    Add versioned Build-Depends accordingly.
+  * Updake GTK+ plugin to not use deprecated GDK symbols.
+  * Add the possibility to target GTK+2 or GTK+3. Stick to GTK+2 for now.
+
+  [ Samuel Thibault ]
+  * text: Print one screen worth of choices, and use +/- to switch between
+    choices screens. Closes: #809739.
+
+ -- Christian Perrier <bubulle@debian.org>  Thu, 28 Jan 2016 15:40:45 +0100
+
+cdebconf (0.201) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Belarusian (be.po) by Viktar Siarheichyk
+  * Czech (cs.po) by Miroslav Kure
+  * Portuguese (Brazil) (pt_BR.po) by Adriano Rafael Gomes
+
+ -- Christian Perrier <bubulle@debian.org>  Wed, 23 Dec 2015 08:05:30 +0100
+
+cdebconf (0.200) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Croatian (hr.po) by Tomislav Krznar
+
+ -- Christian Perrier <bubulle@debian.org>  Mon, 14 Dec 2015 05:55:56 +0100
+
+cdebconf (0.199) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Thai (th.po) by Theppitak Karoonboonyanan
+
+ -- Christian Perrier <bubulle@debian.org>  Mon, 30 Nov 2015 07:19:19 +0100
+
+cdebconf (0.198) unstable; urgency=medium
+
+  [ Regis Boudin ]
+  * Fix libselinux1-dev dependency to be [linux-any]. It prevented hurd and
+    kFreeBSD from building.
+  * Fix build system so CFLAGS and CPPFLAGS are actually applied. This triggers
+    hardening and a few new warnings, so temporarily disable Werror for the
+    GTK+ module.
+
+  [ Updated translations ]
+  * German (de.po) by Holger Wansing
+  * Bokmål, Norwegian (nb.po) by Hans Fredrik Nordhaug
+  * Portuguese (pt.po) by Miguel Figueiredo
+
+ -- Christian Perrier <bubulle@debian.org>  Thu, 26 Nov 2015 08:57:05 +0100
+
+cdebconf (0.197) unstable; urgency=medium
+
+  [ Regis Boudin ]
+  * Add lintian overrides for malformed-prompt-in-templates, no-debconf-config,
+    and no-debconf-config. The package uses them for translations.
+  * Fix extended descriptions for libdebconfclient0 and libdebconfclient0-dev.
+    Thanks Filipus Klutiero. Closes: #759755.
+  * Allow one to show/hide characters typed in password field with the GTK+ and
+    Newt frontends. Closes: #700924.
+  * Run maintainer scripts in correct selinux context. Only enabled in the
+    non-d-i build. Closes: #752002.
+
+  [ Updated translations ]
+  * Bulgarian (bg.po) by Damyan Ivanov
+  * Slovak (sk.po) by Ivan Masár
+
+ -- Christian Perrier <bubulle@debian.org>  Thu, 19 Nov 2015 08:30:56 +0100
+
+cdebconf (0.196) unstable; urgency=medium
+
+  [ Samuel Thibault ]
+  * Add control-+/- shortcuts to adjust font size.
+
+ -- Christian Perrier <bubulle@debian.org>  Mon, 16 Nov 2015 07:05:20 +0100
+
+cdebconf (0.195) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Turkish (tr.po) by Mert Dirik
+
+ -- Christian Perrier <bubulle@debian.org>  Thu, 23 Jul 2015 09:23:10 +0200
+
+cdebconf (0.194) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Turkish (tr.po) by Mert Dirik
+
+ -- Christian Perrier <bubulle@debian.org>  Mon, 15 Jun 2015 07:21:59 +0200
+
+cdebconf (0.193) unstable; urgency=medium
+
+  [ Christian Perrier ]
+  * Fix memory leaks spotted by cppcheck. Closes: #783411
+  * Update Standards to 3.9.6 (checked)
+
+  [ Samuel Thibault ]
+  * In text frontend, allow the Choices-C value in addition to the numbers.
+    Closes: #781439
+
+ -- Christian Perrier <bubulle@debian.org>  Wed, 13 May 2015 06:59:16 +0200
+
 cdebconf (0.192) unstable; urgency=low
 
   * Drop cdebconf-slang-udeb from debian/control instead of using the
-    "Architecture: disabled" hack (no tsupported by dak)
+    "Architecture: disabled" hack (not supported by dak)
 
   [ Updated translations ]
   * Danish (da.po) by Joe Hansen

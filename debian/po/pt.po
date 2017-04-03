@@ -7,24 +7,24 @@
 # Copyright (C) 2003 Software in the Public Interest, Inc.
 # Console-setup strings translations:
 # (identified by "./console-setup.templates")
-# Copyright (C) 2003-2012 Miguel Figueiredo <elmig@debianpt.org>
+# Copyright (C) 2003-2014 Miguel Figueiredo <elmig@debianpt.org>
 # This file is distributed under the same license as debian-installer.
 #
 #
 # Translations from iso-codes:
 #   Tobias Quathamer <toddy@debian.org>, 2007.
 #     Translations taken from ICU SVN on 2007-09-09
-#   Miguel Figueiredo <elmig@debianpt.org>, 2005, 2006, 2008, 2009, 2010
 #   Free Software Foundation, Inc., 2001,2004
 #   Filipe Maia <fmaia@gmx.net>, 2001.
 #   Alastair McKinstry <mckinstry@computer.org>, 2001.
+#   Miguel Figueiredo <elmig@debianpt.org>, 2005-2015
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
-"POT-Creation-Date: 2012-10-18 06:02+0000\n"
-"PO-Revision-Date: 2012-10-18 20:42+0100\n"
+"POT-Creation-Date: 2016-06-05 14:47+0000\n"
+"PO-Revision-Date: 2016-01-26 22:37+0000\n"
 "Last-Translator:  Miguel Figueiredo <elmig@debianpt.org>\n"
 "Language-Team:  Portuguese <traduz@debianpt.org>\n"
 "Language: pt\n"
@@ -145,7 +145,7 @@ msgstr "Voltar atrás"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:3001 ../cdebconf-gtk-udeb.templates:3001
-#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:7001
+#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:10001
 msgid "Yes"
 msgstr "Sim"
 
@@ -157,7 +157,7 @@ msgstr "Sim"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:4001 ../cdebconf-gtk-udeb.templates:4001
-#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:8001
+#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:11001
 msgid "No"
 msgstr "Não"
 
@@ -187,6 +187,14 @@ msgstr "<Tab> mover; <Espaço> escolher; <Enter> activar botões"
 msgid "<F1> for help; <Tab> moves; <Space> selects; <Enter> activates buttons"
 msgstr ""
 "<F1> para ajuda; <Tab>> mover; <Espaço> escolher; <Enter> activar botões"
+
+#. Type: text
+#. Description
+#. Appears as a checkbox in the newt and GTK interfaces.
+#. :sl1:
+#: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
+msgid "Show Password in Clear"
+msgstr "Mostrar palavra-passe"
 
 #. Type: text
 #. Description
@@ -245,7 +253,7 @@ msgstr "KEYSTROKES:"
 
 #. Type: text
 #. Description
-#. :sl6:
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:3001
 #, no-c-format
 msgid "'%c'"
@@ -275,7 +283,31 @@ msgstr "Escolher uma entrada vazia"
 #. Type: text
 #. Description
 #. :sl4:
+#: ../cdebconf-text-udeb.templates:7001
+#, no-c-format
+msgid "Other choices are available with '%c' and '%c'"
+msgstr "Outras escolhas estão disponíveis com '%c' e '%c'"
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:8001
+#, no-c-format
+msgid "Previous choices are available with '%c'"
+msgstr "As escolhas anteriores estão disponíveis com '%c'"
+
+#. Type: text
+#. Description
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:9001
+#, no-c-format
+msgid "Next choices are available with '%c'"
+msgstr "As próximas escolhas estão disponíveis com '%c'"
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:12001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%d> "
 msgstr "Prompt: '%c' para ajuda, por omissão=%d> "
@@ -283,7 +315,7 @@ msgstr "Prompt: '%c' para ajuda, por omissão=%d> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:10001
+#: ../cdebconf-text-udeb.templates:13001
 #, no-c-format
 msgid "Prompt: '%c' for help> "
 msgstr "Prompt: '%c' para ajuda> "
@@ -291,7 +323,7 @@ msgstr "Prompt: '%c' para ajuda> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:11001
+#: ../cdebconf-text-udeb.templates:14001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%s> "
 msgstr "Prompt: '%c' para ajuda, por omissão=%s> "
@@ -299,7 +331,7 @@ msgstr "Prompt: '%c' para ajuda, por omissão=%s> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:12001
+#: ../cdebconf-text-udeb.templates:15001
 msgid "[Press enter to continue]"
 msgstr "[Pressione enter para continuar]"
 

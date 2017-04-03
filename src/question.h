@@ -5,8 +5,7 @@
 #ifndef _QUESTION_H_
 #define _QUESTION_H_
 
-#define DC_QFLAG_SEEN		(1 << 0)
-#define DC_QFLAG_DONTPARSE	(1 << 1)
+#define DC_QFLAG_SEEN		"seen"
 
 #define q_get_extended_description(fe, q)  question_get_field((fe), (q), "", "extended_description")
 #define q_get_description(fe, q)           question_get_field((fe), (q), "", "description")
@@ -71,8 +70,14 @@ void question_variable_delete(struct question *q, const char *var,
 	const char *value);
 const char *question_get_variable(const struct question *q, const char *var);
 
+const char *question_get_priority(const struct question *q);
+const char *question_get_tag(const struct question *q);
+
 void question_owner_add(struct question *q, const char *owner);
 void question_owner_delete(struct question *q, const char *owner);
+void question_set_flag(struct question *q, const char *flag);
+void question_clear_flag(struct question *q, const char *flag);
+int question_get_flag(const struct question *q, const char *flag);
 char *question_get_raw_field(const struct question *q, const char *lang,
 	const char *field);
 char *question_get_field(struct frontend *obj, const struct question *q,

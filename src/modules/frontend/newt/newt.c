@@ -183,6 +183,12 @@ help_text_f1(struct frontend *obj)
     return question_get_text(obj, "debconf/help-line-f1", "<F1> for help; <Tab> moves; <Space> selects; <Enter> activates buttons");
 }
 
+static const char *
+show_password_text(struct frontend *obj)
+{
+    return question_get_text(obj, "debconf/show-password", "Show Password in Clear");
+}
+
 void
 cdebconf_newt_setup(void)
 {
@@ -468,11 +474,18 @@ show_separate_window(struct frontend *obj, struct question *q, int is_help)
     return ret;
 }
 
+static void checkbox_callback(newtComponent co, void * data)
+{
+    char value = newtCheckboxGetValue(co);
+    newtComponent entry = (newtComponent)data;
+    newtEntrySetFlags(entry, NEWT_FLAG_PASSWORD, (value == '*') ? NEWT_FLAGS_RESET : NEWT_FLAGS_SET);
+}
+
 static int
 generic_handler_string(struct frontend *obj, struct question *q, int eflags)
 {
-    newtComponent form, textbox, bOk, bCancel, entry, cRet;
-    int width = 80, height = 24, t_height, t_width, win_width, win_height;
+    newtComponent form, textbox, bOk, bCancel, entry, checkbox, cRet;
+    int width = 80, height = 24, t_height, t_width, win_width, win_height, win_height_margin = 6;
     int t_width_scroll = 0, t_width_title, t_width_buttons;
     int ret;
 #ifdef HAVE_LIBTEXTWRAP
@@ -501,14 +514,16 @@ generic_handler_string(struct frontend *obj, struct question *q, int eflags)
         t_height = cdebconf_newt_get_text_height(full_description, win_width);
     else
         t_height = 0;
-    if (t_height + 6 <= height-5)
-        win_height = t_height + 6;
+    if (eflags & NEWT_FLAG_PASSWORD)
+        win_height_margin += 2;
+    if (t_height + win_height_margin <= height-5)
+        win_height = t_height + win_height_margin;
     else {
         win_height = height - 5;
         tflags |= NEWT_FLAG_SCROLL;
         t_width_scroll = 2;
     }
-    t_height = win_height - 6;
+    t_height = win_height - win_height_margin;
     t_width = cdebconf_newt_get_text_width(full_description);
     t_width_buttons = 2*BUTTON_PADDING + cdebconf_newt_get_text_width(continue_text(obj)) + 2;
     if (obj->methods.can_go_back(obj, q))
@@ -538,12 +553,19 @@ generic_handler_string(struct frontend *obj, struct question *q, int eflags)
     if (obj->methods.can_go_back(obj, q)) {
         bOk     = newtCompactButton(win_width - TEXT_PADDING - BUTTON_PADDING - strwidth(continue_text(obj)) - 3, win_height-2, continue_text(obj));
         bCancel = newtCompactButton(TEXT_PADDING + BUTTON_PADDING - 1, win_height-2, goback_text(obj));
-        newtFormAddComponents(form, bCancel, textbox, entry, bOk, NULL);
+        newtFormAddComponent(form, bCancel);
     } else {
         bOk     = newtCompactButton((win_width-strwidth(continue_text(obj))-2)/2 - 1, win_height-2, continue_text(obj));
         bCancel = NULL;
-        newtFormAddComponents(form, textbox, entry, bOk, NULL);
     }
+    newtFormAddComponents(form, textbox, entry, NULL);
+    if (eflags & NEWT_FLAG_PASSWORD)
+    {
+        checkbox = newtCheckbox(1, win_height-4, show_password_text(obj), ' ', " *", NULL);
+        newtComponentAddCallback(checkbox, checkbox_callback, entry);
+        newtFormAddComponent(form, checkbox);
+    }
+    newtFormAddComponent(form, bOk);
     newtFormSetCurrent(form, entry);
     cRet = newtRunForm(form);
     if ((cRet == NULL) || (bCancel != NULL && cRet == bCancel))

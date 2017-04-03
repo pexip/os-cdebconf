@@ -378,7 +378,7 @@ static int question_db_is_visible(struct question_db *db, const char *name,
         return DC_NO;
     }
     
-    if (q != NULL && (q->flags & DC_QFLAG_SEEN) != 0)
+    if (q != NULL && question_get_flag(q, DC_QFLAG_SEEN))
     {
         ret = DC_NO;
         showold = config->get(config, "_cmdline::showold", NULL);

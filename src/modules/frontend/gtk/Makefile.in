@@ -19,7 +19,9 @@ endif
 MODCFLAGS = @GTK_X11_CFLAGS@
 LIBS = @GTK_X11_LIBS@
 
-MODCFLAGS += -DGTK_DISABLE_DEPRECATED
+# Allow deprecated now that we can build for GTK+3
+#MODCFLAGS += -DGTK_DISABLE_DEPRECATED
+#MODCFLAGS += -DGDK_DISABLE_DEPRECATED
 MODCFLAGS += -DGSEAL_ENABLE
 
 # XXX: Does not work because of a path issue, needs to be fixed.
@@ -35,6 +37,10 @@ MODCFLAGS += -Wall
 MODCFLAGS += -W
 # treat warnings as errors
 MODCFLAGS += -Werror
+# (XXX: temporary disabled as we ignore return values from asprintf and system)
+MODCFLAGS += -Wno-error=unused-result
+# (XXX: temporary disabled so we can build GTK+3 with deprecated symbols)
+MODCFLAGS += -Wno-error=deprecated-declarations
 # warn about undefined preprocessor identifiers
 MODCFLAGS += -Wundef
 # warn about casting of pointers to increased alignment requirements

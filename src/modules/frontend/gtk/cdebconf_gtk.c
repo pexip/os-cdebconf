@@ -196,31 +196,8 @@ static gboolean create_frontend_data(struct frontend * fe)
 
     fe_data = fe->data;
 
-#if GLIB_CHECK_VERSION(2, 31, 0)
-    /* This could be a lot neater once we no longer need to support glib <=
-     * 2.30, as we can just put GCond and GMutex structures directly in
-     * struct frontend_data.
-     */
-    if (NULL == (fe_data->answer_cond = g_slice_new(GCond))) {
-        g_critical("Unable to allocate fe_data->answer_cond.");
-        goto failed;
-    }
-    g_cond_init(fe_data->answer_cond);
-    if (NULL == (fe_data->answer_mutex = g_slice_new(GMutex))) {
-        g_critical("g_mutex_new failed.");
-        goto failed;
-    }
-    g_mutex_init(fe_data->answer_mutex);
-#else
-    if (NULL == (fe_data->answer_cond = g_cond_new())) {
-        g_critical("g_cond_new failed.");
-        goto failed;
-    }
-    if (NULL == (fe_data->answer_mutex = g_mutex_new())) {
-        g_critical("g_mutex_new failed.");
-        goto failed;
-    }
-#endif
+    g_cond_init(&(fe_data->answer_cond));
+    g_mutex_init(&(fe_data->answer_mutex));
     fe_data->plugins = g_hash_table_new_full(
         g_str_hash, g_str_equal, g_free /* key destroy function (strings) */,
         (GDestroyNotify) plugin_delete /* value destroy function (plugin) */);
@@ -284,9 +261,9 @@ int cdebconf_gtk_get_answer(struct frontend * fe)
     struct frontend_data * fe_data = fe->data;
     int answer;
 
-    g_mutex_lock(fe_data->answer_mutex);
+    g_mutex_lock(&(fe_data->answer_mutex));
     answer = fe_data->answer;
-    g_mutex_unlock(fe_data->answer_mutex);
+    g_mutex_unlock(&(fe_data->answer_mutex));
     return answer;
 }
 
@@ -295,10 +272,10 @@ void cdebconf_gtk_set_answer(struct frontend * fe, int answer)
 {
     struct frontend_data * fe_data = fe->data;
 
-    g_mutex_lock(fe_data->answer_mutex);
+    g_mutex_lock(&(fe_data->answer_mutex));
     fe_data->answer = answer;
-    g_cond_broadcast(fe_data->answer_cond);
-    g_mutex_unlock(fe_data->answer_mutex);
+    g_cond_broadcast(&(fe_data->answer_cond));
+    g_mutex_unlock(&(fe_data->answer_mutex));
 }
 
 /* documented in cdebconf_gtk.h */
@@ -349,7 +326,6 @@ static gboolean create_event_listener_thread(struct frontend * fe)
 
     g_assert(NULL == fe_data->event_listener);
 
-#if GLIB_CHECK_VERSION(2, 31, 0)
     fe_data->event_listener = g_thread_try_new(
         "event_listener", (GThreadFunc) handle_gtk_events, NULL /* no data */,
         &error);
@@ -358,16 +334,6 @@ static gboolean create_event_listener_thread(struct frontend * fe)
         g_error_free(error);
         return FALSE;
     }
-#else
-    fe_data->event_listener = g_thread_create(
-        (GThreadFunc) handle_gtk_events, NULL /* no data */,
-        TRUE /* joinable thread */, &error);
-    if (NULL == fe_data->event_listener) {
-        g_critical("g_thread_create failed: %s", error->message);
-        g_error_free(error);
-        return FALSE;
-    }
-#endif
     return TRUE;
 }
 
@@ -382,13 +348,6 @@ static int cdebconf_gtk_initialize(struct frontend * fe,
                                    struct configuration * conf)
 {
     /* INFO(INFO_DEBUG, "GTK_DI - gtk_initialize() called"); */
-#if !GLIB_CHECK_VERSION(2, 31, 0)
-    g_thread_init(NULL /* default thread functions */);
-    if (!g_thread_supported()) {
-        g_critical("Threads not supported by this glib.");
-        return DC_NOTOK;
-    }
-#endif
     gdk_threads_init();
     gtk_init(NULL /* no argc */, NULL /* no argv */);
 
