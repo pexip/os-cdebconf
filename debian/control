@@ -12,8 +12,9 @@ Build-Depends:
  libcairo2-dev (>= 1.8.10-3),
  dh-autoreconf,
  dh-exec,
-Maintainer: Debian Install System Team <debian-boot@lists.debian.org>
-Uploaders:
+Maintainer: Pexip AS <packaging@pexip.com>
+XSBC-Pexip-Original-Maintainer: Debian Install System Team <debian-boot@lists.debian.org>
+XSBC-Pexip-Original-Uploaders:
  Colin Watson <cjwatson@debian.org>,
  Christian Perrier <bubulle@debian.org>,
  Regis Boudin <regis@debian.org>,
@@ -21,6 +22,7 @@ Uploaders:
 Standards-Version: 3.9.4
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=d-i/cdebconf.git
 Vcs-Git: git://anonscm.debian.org/d-i/cdebconf.git
+XS-Pexip-Upstream: http://ftp.debian.org/debian/ jessie
 
 Package: cdebconf
 Architecture: any

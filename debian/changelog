@@ -1,3 +1,9 @@
+cdebconf (0.192pexip1) pexip; urgency=low
+
+  * Prepare Pexip packaging
+
+ -- John-Mark Bell <jmb@pexip.com>  Mon, 10 Apr 2017 23:38:03 +0000
+
 cdebconf (0.192) unstable; urgency=low
 
   * Drop cdebconf-slang-udeb from debian/control instead of using the
