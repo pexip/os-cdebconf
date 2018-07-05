@@ -22,7 +22,7 @@ XSBC-Pexip-Original-Uploaders:
 Standards-Version: 3.9.4
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=d-i/cdebconf.git
 Vcs-Git: git://anonscm.debian.org/d-i/cdebconf.git
-XS-Pexip-Upstream: http://ftp.debian.org/debian/ jessie
+XS-Pexip-Upstream: http://ftp.debian.org/debian/ stretch
 
 Package: cdebconf
 Architecture: any
