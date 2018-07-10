@@ -1,3 +1,9 @@
+cdebconf (0.227pexip1) pexip; urgency=medium
+
+  * Migrate to Stretch
+
+ -- John-Mark Bell <jmb@pexip.com>  Tue, 10 Jul 2018 00:48:03 +0000
+
 cdebconf (0.227) unstable; urgency=medium
 
   [ Updated translations ]
