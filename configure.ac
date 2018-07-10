@@ -117,6 +117,13 @@ AC_ARG_ENABLE([d_i], [AS_HELP_STRING([--enable-d-i], [build cdebconf for the deb
 AC_SUBST([TARGET])
 
 dnl Check for libraries
+
+AC_ARG_ENABLE([selinux], [AS_HELP_STRING([--enable-selinux], [build cdebconf with SELinux support])],
+[if test "$enableval" = "yes"; then
+   PKG_CHECK_MODULES([SELINUX], [libselinux >= 2.3])
+   AC_DEFINE_UNQUOTED([SELINUX_ENABLED], ["1"], [SELinux enabled])
+ fi])
+
 PKG_CHECK_MODULES([DI],[libdebian-installer])
 AC_CHECK_LIB([dl], [dlopen])
 
@@ -135,21 +142,29 @@ if test -z "$FRONTEND_MODULES"; then
     FRONTEND_MODULES="passthrough text"
 
     AC_CHECK_LIB([bogl], [bowl_flush], [FRONTEND_MODULES="$FRONTEND_MODULES bogl"], [AC_MSG_WARN([cannot build BOGL frontend])])
-    PKG_CHECK_EXISTS([glib-2.0 gtk+-x11-2.0 >= 2.24 pango gdk-pixbuf-2.0], [FRONTEND_MODULES="$FRONTEND_MODULES gtk"], [AC_MSG_WARN([cannot build GTK frontend])])
+    PKG_CHECK_EXISTS([glib-2.0 >= 2.31 gtk+-x11-2.0 >= 2.24 pango gdk-pixbuf-2.0], [FRONTEND_MODULES="$FRONTEND_MODULES gtk"], [AC_MSG_WARN([cannot build GTK frontend])])
     PKG_CHECK_EXISTS([ncurses], [FRONTEND_MODULES="$FRONTEND_MODULES ncurses"], [AC_MSG_WARN([cannot build ncurses frontend])])
     PKG_CHECK_EXISTS([libnewt slang], [FRONTEND_MODULES="$FRONTEND_MODULES newt"], [AC_MSG_WARN([cannot build Newt frontend])])
     PKG_CHECK_EXISTS([slang], [FRONTEND_MODULES="$FRONTEND_MODULES slang"], [AC_MSG_WARN([cannot build Slang frontend])])
 fi
 
+FRONTEND_MODULES_BUILD=""
 for frontend in $FRONTEND_MODULES; do
     case $frontend in
-      gtk) PKG_CHECK_MODULES([GTK_X11],[glib-2.0 gtk+-x11-2.0 >= 2.24 pango gdk-pixbuf-2.0]);;
-      ncurses) PKG_CHECK_MODULES([NCURSES],[ncurses]);;
-      newt) PKG_CHECK_MODULES([NEWT],[libnewt slang]);;
-      slang) PKG_CHECK_MODULES([SLANG],[slang]);;
-      *);;
+      gtk|gtk2) PKG_CHECK_MODULES([GTK_X11],[glib-2.0 >= 2.31 gtk+-x11-2.0 >= 2.24 pango gdk-pixbuf-2.0],
+                                  [FRONTEND_MODULES_BUILD="$FRONTEND_MODULES_BUILD gtk"]);;
+      gtk3)     PKG_CHECK_MODULES([GTK_X11],[glib-2.0 >= 2.31 gtk+-x11-3.0 pango gdk-pixbuf-2.0],
+                                  [FRONTEND_MODULES_BUILD="$FRONTEND_MODULES_BUILD gtk"]);;
+      ncurses)  PKG_CHECK_MODULES([NCURSES],[ncurses],
+                                  [FRONTEND_MODULES_BUILD="$FRONTEND_MODULES_BUILD ncurses"]);;
+      newt)     PKG_CHECK_MODULES([NEWT],[libnewt slang],
+                                  [FRONTEND_MODULES_BUILD="$FRONTEND_MODULES_BUILD newt"]);;
+      slang)    PKG_CHECK_MODULES([SLANG],[slang],
+                                  [FRONTEND_MODULES_BUILD="$FRONTEND_MODULES_BUILD slang"]);;
+      *) FRONTEND_MODULES_BUILD="$FRONTEND_MODULES_BUILD $frontend";;
     esac
 done
+FRONTEND_MODULES="$FRONTEND_MODULES_BUILD"
 
 AC_SUBST([FRONTEND_MODULES])
 AC_SUBST([DB_MODULES])

@@ -5,6 +5,8 @@
 #define CHAR_GOBACK '<'
 #define CHAR_HELP '?'
 #define CHAR_CLEAR '!'
+#define CHAR_PREV '-'
+#define CHAR_NEXT '+'
 
 int cdebconf_text_get_width(const char *text);
 

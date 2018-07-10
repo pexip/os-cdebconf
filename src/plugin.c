@@ -25,7 +25,7 @@ static char *make_symbol_name(const char *name)
 
 struct plugin *plugin_new(const char *frontend, const char *filename)
 {
-    struct plugin *plugin = NEW(struct plugin);
+    struct plugin *plugin;
     const char *base;
     size_t baselen, symbollen;
     char *typesymbol, *symbol;
@@ -44,6 +44,8 @@ struct plugin *plugin_new(const char *frontend, const char *filename)
         return NULL;
     if (strncmp(base + baselen - 3, ".so", 3) != 0)
         return NULL;
+
+    plugin = NEW(struct plugin);
 
     plugin->name = malloc(baselen - 9);
     strncpy(plugin->name, base + 7, baselen - 10);

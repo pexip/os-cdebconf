@@ -52,3 +52,9 @@ Type: text
 # the screenshot has been saved to. "%s" is a file name here
 # :sl1:
 _Description: Screenshot saved as %s
+
+Template: debconf/show-password
+Type: text
+# Appears as a checkbox in the newt and GTK interfaces.
+# :sl1:
+_Description: Show Password in Clear

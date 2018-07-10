@@ -284,6 +284,11 @@ int strchoicesplitsort(const char *origbuf, const char *transbuf, const char *in
                 /* fall back semi-gracefully to unsorted list */
                 for (j = 0; j < maxnarg; j++)
                     oindex[j] = j;
+                /* Avoid a leak on error */
+                for (j = 0; j < i; j++)
+                    free(sorted_targv[j]);
+                free(sorted_targv);
+                free(cindex);
                 return maxnarg;
             }
             sorted_targv[i] = STRDUP(targv[oindex[i]]);
@@ -727,6 +732,8 @@ int stralign(char **strs, int count)
 
     free(column_widths);
     free(cells_per_line);
+    free(remaining_line_widths);
+    free(remaining_line_sizes);
 
     return 0;
 }

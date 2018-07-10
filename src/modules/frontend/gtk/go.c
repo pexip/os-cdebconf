@@ -453,6 +453,7 @@ static GtkWidget * create_question_box(struct frontend * fe,
     GtkWidget * question_box;
     GtkWidget * question_box_scroll;
     GtkWidget * hpadding_box;
+    GtkAdjustment *adj;
 
     /* check NULL! */
     question_box = gtk_vbox_new(FALSE /* don't make children equal */,
@@ -478,6 +479,8 @@ static GtkWidget * create_question_box(struct frontend * fe,
             GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
         gtk_scrolled_window_set_shadow_type(
             GTK_SCROLLED_WINDOW(question_box_scroll), GTK_SHADOW_NONE);
+        adj = gtk_scrolled_window_get_vadjustment(GTK_SCROLLED_WINDOW(question_box_scroll));
+        gtk_container_set_focus_vadjustment(GTK_CONTAINER(question_box), adj);
         gtk_box_pack_start(GTK_BOX(container), question_box_scroll,
                            TRUE /* expand */, TRUE /* fill */,
                            DEFAULT_PADDING);
@@ -495,11 +498,11 @@ static void wait_answer(struct frontend * fe)
 {
     struct frontend_data * fe_data = fe->data;
 
-    g_mutex_lock(fe_data->answer_mutex);
+    g_mutex_lock(&(fe_data->answer_mutex));
     while (DC_NO_ANSWER == fe_data->answer) {
-        g_cond_wait(fe_data->answer_cond, fe_data->answer_mutex);
+        g_cond_wait(&(fe_data->answer_cond), &(fe_data->answer_mutex));
     }
-    g_mutex_unlock(fe_data->answer_mutex);
+    g_mutex_unlock(&(fe_data->answer_mutex));
 }
 
 /** Implements the "go" method of cdebconf frontends.

@@ -15,18 +15,6 @@
 #include <sys/stat.h>
 #include <errno.h>
 
-static int parse_flags(char *string)
-{
-    int ret = 0;
-    if (string == NULL)
-        return ret;
-    if (strstr(string, "seen") != NULL)
-    {
-        ret |= DC_QFLAG_SEEN;
-    }
-    return ret;
-}
-
 static void parse_variables(struct question *q, char *string)
 {
     char *wc, *owc;
@@ -102,6 +90,37 @@ static void parse_owners(struct question *q, char *string)
             wc++;
         }
         
+    }
+
+    free(owc);
+}
+
+static void parse_flags(struct question *q, char *string)
+{
+    char *wc, *owc;
+
+    if (!string)
+	    return;
+
+    owc = wc = strdup(string);
+
+    while (wc != NULL)
+    {
+        char *delim = wc;
+        int finished = 0;
+        while (*delim != ',' && *delim != '\0')
+            delim++;
+        if (*delim == '\0')
+            finished = 1;
+        *delim = '\0';
+        question_set_flag(q, wc);
+        if (finished != 0)
+            break;
+        wc = delim + 1;
+        while (*wc == ' ' || *wc == '\t')
+        {
+            wc++;
+        }
     }
 
     free(owc);
@@ -335,6 +354,7 @@ static struct question *http_question_get(struct question_db *db,
 		 url, translated_tag);
 	
 	system(buf);
+	free(buf);
 	INFO(INFO_DEBUG, "%s: url = [%s]", __FILE__, url);
 	asprintf(&path, "/tmp/cdebconf_q_%s", translated_tag);
 
@@ -346,6 +366,7 @@ static struct question *http_question_get(struct question_db *db,
 
 			INFO(INFO_ERROR, "Cannot get question %s: %s",
 			     ltag, strerror(errno));
+			free(path);
 			return DC_NOTOK;
 		}
 
@@ -366,7 +387,7 @@ static struct question *http_question_get(struct question_db *db,
         tmp = question_new(name);
 
         question_setvalue(tmp, rfc822_header_lookup(header, "value"));
-        tmp->flags = parse_flags(rfc822_header_lookup(header,"flags"));
+        parse_flags(tmp, rfc822_header_lookup(header,"flags"));
         parse_owners(tmp, rfc822_header_lookup(header, "owners"));
         parse_variables(tmp, rfc822_header_lookup(header, "variables"));
         tmp->template = db->tdb->methods.get(db->tdb, rfc822_header_lookup(header, "template"));
@@ -378,6 +399,7 @@ static struct question *http_question_get(struct question_db *db,
     }
 
     fclose(inf);
+    free(path);
     return q;
 }
 

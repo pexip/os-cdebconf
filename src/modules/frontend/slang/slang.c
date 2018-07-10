@@ -544,7 +544,11 @@ static int slang_getselect(struct frontend *ui, struct question *q, int multi)
 			}
 		}
 	}
-	if (ret != DC_OK) return ret;
+	if (ret != DC_OK)
+	{
+		free(selected);
+		    return ret;
+	}
 
 	for (i = 0; i < count; i++)
 	{

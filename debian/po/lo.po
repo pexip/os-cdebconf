@@ -13,11 +13,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lo\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
-"POT-Creation-Date: 2012-10-18 06:02+0000\n"
+"POT-Creation-Date: 2016-06-05 14:47+0000\n"
 "PO-Revision-Date: 2012-04-25 09:05+0700\n"
 "Last-Translator: Anousak Souphavanh <anousak@gmail.com>\n"
 "Language-Team: Lao <lo@li.org>\n"
-"Language: \n"
+"Language: lo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -130,7 +130,7 @@ msgstr "ກັບຄືນ"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:3001 ../cdebconf-gtk-udeb.templates:3001
-#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:7001
+#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:10001
 msgid "Yes"
 msgstr "ແມ່ນ"
 
@@ -142,7 +142,7 @@ msgstr "ແມ່ນ"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:4001 ../cdebconf-gtk-udeb.templates:4001
-#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:8001
+#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:11001
 msgid "No"
 msgstr "ບໍ່"
 
@@ -171,6 +171,15 @@ msgstr "<Tab> ເລື່ອນ; <Space> ເລືອກ; <Enter> ປຸ່ມ�
 #: ../cdebconf-newt-udeb.templates:7001
 msgid "<F1> for help; <Tab> moves; <Space> selects; <Enter> activates buttons"
 msgstr "<F1> ເບີ່ງວິທີໃຊ້; <Tab> ເລື່ອນ; <Space> ເລືອກ; <Enter> ປຸ່ມປະຕິບັດງານ"
+
+#. Type: text
+#. Description
+#. Appears as a checkbox in the newt and GTK interfaces.
+#. :sl1:
+#: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
+#, fuzzy
+msgid "Show Password in Clear"
+msgstr "ການປ້ອນລະຫັດຜ່ານຜິດພາດ"
 
 #. Type: text
 #. Description
@@ -229,7 +238,7 @@ msgstr "ການກົດແປ້ນພີມ:"
 
 #. Type: text
 #. Description
-#. :sl6:
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:3001
 #, no-c-format
 msgid "'%c'"
@@ -259,7 +268,31 @@ msgstr "ເລືອກລາຍການທີ່ຫວ່າງເປົາ"
 #. Type: text
 #. Description
 #. :sl4:
+#: ../cdebconf-text-udeb.templates:7001
+#, no-c-format
+msgid "Other choices are available with '%c' and '%c'"
+msgstr ""
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:8001
+#, no-c-format
+msgid "Previous choices are available with '%c'"
+msgstr ""
+
+#. Type: text
+#. Description
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:9001
+#, no-c-format
+msgid "Next choices are available with '%c'"
+msgstr ""
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:12001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%d> "
 msgstr "ຄຳສັ່ງ: '%c' ເພື່ອຂໍຄວາມຊ່ວຍເຫຼືອເລີ່ມຕົ້ນ=%d>"
@@ -267,7 +300,7 @@ msgstr "ຄຳສັ່ງ: '%c' ເພື່ອຂໍຄວາມຊ່ວຍ�
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:10001
+#: ../cdebconf-text-udeb.templates:13001
 #, no-c-format
 msgid "Prompt: '%c' for help> "
 msgstr "ຄຳສັ່ງ: '%c' ເບີ່ງວິທີໃຊ້>"
@@ -275,7 +308,7 @@ msgstr "ຄຳສັ່ງ: '%c' ເບີ່ງວິທີໃຊ້>"
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:11001
+#: ../cdebconf-text-udeb.templates:14001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%s> "
 msgstr "ຄຳສັ່ງ: '%c' ເພື່ອຂໍຄວາມຊ່ວຍເຫຼືອເລີ່ມຕົ້ນ=%s>"
@@ -283,7 +316,7 @@ msgstr "ຄຳສັ່ງ: '%c' ເພື່ອຂໍຄວາມຊ່ວຍ�
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:12001
+#: ../cdebconf-text-udeb.templates:15001
 msgid "[Press enter to continue]"
 msgstr "[ກົດ enter ເພື່ອດຳເນີນການຕໍ່]"
 

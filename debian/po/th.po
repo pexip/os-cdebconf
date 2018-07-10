@@ -4,9 +4,9 @@
 # DO NOT MODIFY THIS FILE DIRECTLY: SUCH CHANGES WILL BE LOST
 #
 # Thai translation of debian-installer.
-# Copyright (C) 2006-2012 Software in the Public Interest, Inc.
+# Copyright (C) 2006-2016 Software in the Public Interest, Inc.
 # This file is distributed under the same license as debian-installer.
-# Theppitak Karoonboonyanan <thep@linux.thai.net>, 2006-2011.
+# Theppitak Karoonboonyanan <theppitak@gmail.com>, 2006-2015.
 #
 #
 # Translations from iso-codes:
@@ -14,18 +14,17 @@
 #     Translations taken from ICU SVN on 2007-09-09
 #   Free Software Foundation, Inc., 2002,2003,2004
 #   Alastair McKinstry <mckinstry@computer.org>, 2002, 2004
-#   Translations from KDE:
-#   - Thanomsub Noppaburana <donga@midaassets.com>
-#   Thanomsub Noppaburana <donga@midaassets.com> (Translations from KDE)
-#   Theppitak Karoonboonyanan <thep@linux.thai.net>, 2005-2012
+# Translations from KDE:
+#   Thanomsub Noppaburana <donga@midaassets.com>
+# Theppitak Karoonboonyanan <theppitak@gmail.com>, 2005-2016
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
-"POT-Creation-Date: 2012-10-18 06:02+0000\n"
-"PO-Revision-Date: 2012-02-24 11:17+0700\n"
-"Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
+"POT-Creation-Date: 2016-06-05 14:47+0000\n"
+"PO-Revision-Date: 2016-02-21 11:19+0700\n"
+"Last-Translator: Theppitak Karoonboonyanan <theppitak@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
@@ -140,7 +139,7 @@ msgstr "ย้อนกลับ"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:3001 ../cdebconf-gtk-udeb.templates:3001
-#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:7001
+#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:10001
 msgid "Yes"
 msgstr "ใช่"
 
@@ -152,7 +151,7 @@ msgstr "ใช่"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:4001 ../cdebconf-gtk-udeb.templates:4001
-#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:8001
+#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:11001
 msgid "No"
 msgstr "ไม่"
 
@@ -181,6 +180,14 @@ msgstr "<Tab> เลื่อน; <Space> เลือก; <Enter> กดปุ�
 #: ../cdebconf-newt-udeb.templates:7001
 msgid "<F1> for help; <Tab> moves; <Space> selects; <Enter> activates buttons"
 msgstr "<F1> ดูวิธีใช้; <Tab> เลื่อน; <Space> เลือก; <Enter> กดปุ่ม"
+
+#. Type: text
+#. Description
+#. Appears as a checkbox in the newt and GTK interfaces.
+#. :sl1:
+#: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
+msgid "Show Password in Clear"
+msgstr "แสดงรหัสผ่าน"
 
 #. Type: text
 #. Description
@@ -239,7 +246,7 @@ msgstr "ปุ่มกด:"
 
 #. Type: text
 #. Description
-#. :sl6:
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:3001
 #, no-c-format
 msgid "'%c'"
@@ -269,7 +276,31 @@ msgstr "เลือกรายการว่างเปล่า"
 #. Type: text
 #. Description
 #. :sl4:
+#: ../cdebconf-text-udeb.templates:7001
+#, no-c-format
+msgid "Other choices are available with '%c' and '%c'"
+msgstr "กด '%c' และ '%c' เพื่อดูตัวเลือกอื่นๆ"
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:8001
+#, no-c-format
+msgid "Previous choices are available with '%c'"
+msgstr "กด '%c' เพื่อดูตัวเลือกก่อนๆ"
+
+#. Type: text
+#. Description
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:9001
+#, no-c-format
+msgid "Next choices are available with '%c'"
+msgstr "กด '%c' เพื่อดูตัวเลือกถัดๆ ไป"
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:12001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%d> "
 msgstr "คำสั่ง: '%c' ดูวิธีใช้, ค่าปริยาย=%d>"
@@ -277,7 +308,7 @@ msgstr "คำสั่ง: '%c' ดูวิธีใช้, ค่าปริ
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:10001
+#: ../cdebconf-text-udeb.templates:13001
 #, no-c-format
 msgid "Prompt: '%c' for help> "
 msgstr "คำสั่ง: '%c' ดูวิธีใช้>"
@@ -285,7 +316,7 @@ msgstr "คำสั่ง: '%c' ดูวิธีใช้>"
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:11001
+#: ../cdebconf-text-udeb.templates:14001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%s> "
 msgstr "คำสั่ง: '%c' ดูวิธีใช้, ค่าปริยาย=%s>"
@@ -293,7 +324,7 @@ msgstr "คำสั่ง: '%c' ดูวิธีใช้, ค่าปริ
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:12001
+#: ../cdebconf-text-udeb.templates:15001
 msgid "[Press enter to continue]"
 msgstr "[กด enter เพื่อดำเนินการต่อ]"
 

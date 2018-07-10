@@ -10,7 +10,7 @@ _Description: KEYSTROKES:
 
 Template: debconf/text-help-keystroke
 Type: text
-# :sl6:
+# :sl4:
 _Description: '%c'
 
 Template: debconf/text-help-help
@@ -27,6 +27,21 @@ Template: debconf/text-help-clear
 Type: text
 # :sl4:
 _Description: Select an empty entry
+
+Template: debconf/text-help-otherchoices
+Type: text
+# :sl4:
+_Description: Other choices are available with '%c' and '%c'
+
+Template: debconf/text-help-prevchoices
+Type: text
+# :sl4:
+_Description: Previous choices are available with '%c'
+
+Template: debconf/text-help-nextchoices
+Type: text
+# :sl4:
+_Description: Next choices are available with '%c'
 
 Template: debconf/yes
 Type: text

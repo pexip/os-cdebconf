@@ -34,15 +34,15 @@ bin: $(BIN)
 
 $(BIN): $(LIBNAME) $(addsuffix .o,$(BIN))
 	@echo Compiling tool $@
-	$(CC) $(CFLAGS) -o $@ $@.o @RPATH@ $(LDFLAGS) $(LIBS)
+	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ $@.o @RPATH@ $(LDFLAGS) $(LIBS)
 
 $(LIBNAME): $(LIBOBJS)
 	@echo Creating library $@
-	$(CC) $(CFLAGS) -shared -o $@ $(LDFLAGS) $^ -ldl @DI_LIBS@ @TEXTWRAP_LIBS@
+	$(CC) $(CPPFLAGS) $(CFLAGS) -shared -o $@ $(LDFLAGS) $^ -ldl @DI_LIBS@ @TEXTWRAP_LIBS@ @SELINUX_LIBS@
 
 $(CLILIBNAME): $(CLILIBOBJS)
 	@echo Creating shared library $@
-	$(CC) $(CFLAGS) -shared -Wl,-soname,$(CLISONAME) -o $@ $(LDFLAGS) $^
+	$(CC) $(CPPFLAGS) $(CFLAGS) -shared -Wl,-soname,$(CLISONAME) -o $@ $(LDFLAGS) $^
 
 $(CLILIBNAME_A): $(CLILIBOBJS_A)
 	$(AR) cr $@ $^

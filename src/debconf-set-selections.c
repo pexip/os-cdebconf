@@ -23,14 +23,6 @@ static struct option params[] = {
     { 0, 0, 0, 0 }
 };
 
-static const struct {
-    const char *name;
-    unsigned int value;
-} flags[] = {
-    { "seen", DC_QFLAG_SEEN },
-    { 0, 0 }
-};
-
 static const char * known_types[] = {
     "select",
     "boolean",
@@ -88,14 +80,14 @@ static void load_answer(const char *owner, const char *label, const char * type,
     question_owner_add(q, owner);
     question_setvalue(q, content);
     if (!unseen)
-        q->flags |= DC_QFLAG_SEEN;
+        question_set_flag(q, DC_QFLAG_SEEN);
 
     qdb->methods.set(qdb, q);
 
     question_deref(q);
 }
 
-static void set_flag(const char *label, const char *flag, unsigned int value,
+static void set_flag(const char *label, const char *flag,
     const char *content, struct question_db *qdb)
 {
     if (debug)
@@ -110,29 +102,13 @@ static void set_flag(const char *label, const char *flag, unsigned int value,
     }
 
     if (0 == strcmp(content, "true"))
-        q->flags |= value;
+        question_set_flag(q, flag);
     else if (0 == strcmp(content, "false"))
-        q->flags &= ~value;        
+        question_clear_flag(q, flag);
 
     qdb->methods.set(qdb, q);
 
     question_deref(q);
-}
-
-static int flag_value(const char *type)
-{
-    int i;
-
-    if (!type)
-        return 0;
-
-    for (i = 0; flags[i].name != NULL; i++)
-    {
-        if (0 == strcmp(flags[i].name, type))
-            return flags[i].value;
-    }
-
-    return 0;
 }
 
 static int is_known_type(const char *type)
@@ -274,13 +250,11 @@ int main(int argc, char **argv)
             if (owner && owner[0] && owner[0] != '#' &&
                 label && label[0] && type && type[0] && content)
             {
-                int flagvalue = flag_value(type);
-                
-                if (flagvalue)
+                if (strcmp(type, DC_QFLAG_SEEN) == 0)
                 {
                     if (debug)
                         fprintf(stderr, "info: Trying to set %s flag to %s\n", type, content);
-                    set_flag(label, type, flagvalue, content, qdb);
+                    set_flag(label, type, content, qdb);
                 }
                 else if (is_known_type(type))
                 {

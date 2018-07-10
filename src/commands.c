@@ -368,7 +368,7 @@ command_reset(struct confmodule *mod, char *arg)
     else
     {
         DELETE(q->value);
-        q->flags &= ~DC_QFLAG_SEEN;
+        question_clear_flag(q, DC_QFLAG_SEEN);
 
         if (mod->questions->methods.set(mod->questions, q) != 0)
             asprintf(&out, "%u", CMDSTATUS_SUCCESS);
@@ -536,14 +536,12 @@ command_fget(struct confmodule *mod, char *arg)
 
     field = argv[1];
     /* isdefault is for backward compability only */
-    if (strcmp(field, "seen") == 0)
+    if (strcmp(field, "isdefault") == 0)
         asprintf(&out, "%u %s", CMDSTATUS_SUCCESS,
-                ((q->flags & DC_QFLAG_SEEN) ? "true" : "false"));
-    else if (strcmp(field, "isdefault") == 0)
-        asprintf(&out, "%u %s", CMDSTATUS_SUCCESS,
-                ((q->flags & DC_QFLAG_SEEN) ? "false" : "true"));
+                (question_get_flag(q, DC_QFLAG_SEEN) ? "false" : "true"));
     else
-        asprintf(&out, "%u %s", CMDSTATUS_SUCCESS, "false");
+        asprintf(&out, "%u %s", CMDSTATUS_SUCCESS,
+                (question_get_flag(q, field) ? "true" : "false"));
     question_deref(q);
 
     return out;
@@ -568,17 +566,19 @@ command_fset(struct confmodule *mod, char *arg)
     }
 
     field = argv[1];
-    if (strcmp(field, "seen") == 0)
+    if (strcmp(field, "isdefault") == 0)
     {
-        q->flags &= ~DC_QFLAG_SEEN;
-        if (strcmp(argv[2], "true") == 0)
-            q->flags |= DC_QFLAG_SEEN;
-    }
-    else if (strcmp(field, "isdefault") == 0)
-    {
-        q->flags &= ~DC_QFLAG_SEEN;
         if (strcmp(argv[2], "false") == 0)
-            q->flags |= DC_QFLAG_SEEN;
+            question_set_flag(q, DC_QFLAG_SEEN);
+        else
+            question_clear_flag(q, DC_QFLAG_SEEN);
+    }
+    else
+    {
+        if (strcmp(argv[2], "true") == 0)
+            question_set_flag(q, field);
+        else
+            question_clear_flag(q, field);
     }
     asprintf(&out, "%u %s", CMDSTATUS_SUCCESS, argv[2]);
 

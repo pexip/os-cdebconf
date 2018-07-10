@@ -8,7 +8,7 @@ all: $(SOBJ)
 
 $(SOBJ): $(OBJS)
 	@echo Creating DSO $@ from $^
-	@$(CC) $(CFLAGS) -shared -o $@ $^ $(LDFLAGS) $(LIBS)
+	@$(CC) $(CPPFLAGS) $(CFLAGS) -shared -o $@ $^ $(LDFLAGS) $(LIBS)
 
 install:
 	install -d -m 755 $(DESTDIR)${moddir}/db

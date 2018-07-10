@@ -64,7 +64,7 @@ struct frontend_data {
 	char *previous_title;
 };
 
-typedef int (text_handler)(struct frontend *obj, struct question *q);
+typedef int (text_handler)(struct frontend *obj, unsigned printed, struct question *q);
 
 #define MAKE_UPPER(C) do { if (islower((int) C)) { C = (char) toupper((int) C); } } while(0)
 
@@ -102,13 +102,40 @@ static int getwidth(void)
 }
 
 /*
+ * Function: getheight
+ * Input: none
+ * Output: int - height of screen
+ * Description: get the height of the current terminal
+ * Assumptions: doesn't handle resizing; caches value on first call
+ */
+static int getheight(void)
+{
+	static int res = 25;
+	static int inited = 0;
+	int fd;
+	struct winsize ws;
+
+	if (inited == 0)
+	{
+		inited = 1;
+		if ((fd = open("/dev/tty", O_RDONLY)) > 0)
+		{
+			if (ioctl(fd, TIOCGWINSZ, &ws) == 0 && ws.ws_row > 0)
+				res = ws.ws_row;
+			close(fd);
+		}
+	}
+	return res;
+}
+
+/*
  * Function: wrap_print
  * Input: const char *str - string to display
- * Output: none
+ * Output: unsigned printed - number of printed lines
  * Description: prints a string to the screen with word wrapping 
  * Assumptions: string fits in <500 lines
  */
-static void wrap_print(const char *str)
+static unsigned wrap_print(const char *str)
 {
 	/* Simple greedy line-wrapper */
 	int i, lc;
@@ -121,20 +148,23 @@ static void wrap_print(const char *str)
 		printf("%s\n", lines[i]);
 		DELETE(lines[i]);
 	}
+	return lc;
 }
 
 /*
  * Function: text_handler_displaydesc
  * Input: struct frontend *obj - UI object
+ *        unsigned printed - number of already printed lines
  *        struct question *q - question for which to display the description
- * Output: none
+ * Output: unsigned - number of printed lines
  * Description: displays the description for a given question 
  * Assumptions: none
  */
-static void text_handler_displaydesc(struct frontend *obj, struct question *q) 
+static unsigned text_handler_displaydesc(struct frontend *obj, unsigned printed, struct question *q) 
 {
 	char *descr = q_get_description(obj, q);
 	char *ext_descr = q_get_extended_description(obj, q);
+	printed = 0;
 	if (strcmp(q->template->type, "note") == 0 ||
 	    strcmp(q->template->type, "error") == 0)
 	{
@@ -143,17 +173,19 @@ static void text_handler_displaydesc(struct frontend *obj, struct question *q)
 		else
 			printf("%s", descr);
 		printf("\n\n");
+		printed += 2;
 		if (*ext_descr)
-			wrap_print(ext_descr);
+			printed += wrap_print(ext_descr);
 	}
 	else
 	{
 		if (*ext_descr)
-			wrap_print(ext_descr);
-		wrap_print(descr);
+			printed += wrap_print(ext_descr);
+		printed += wrap_print(descr);
 	}
 	free(descr);
 	free(ext_descr);
+	return printed;
 }
 
 static void
@@ -163,21 +195,24 @@ get_answer(char *answer, int size)
 	CHOMP(answer);
 }
 
-static void
+static unsigned
 show_help (struct frontend *obj, struct question *q)
 {
 	char *descr = q_get_description(obj, q);
 	char *help = q_get_help(obj, q);
+	unsigned printed = 0;
 	if (*help) {
 		struct question *help_q = obj->qdb->methods.get(obj->qdb, help);
 		if (help_q) {
 			char *help_descr = q_get_description(obj, help_q);
 			char *help_ext_descr = q_get_extended_description(obj, help_q);
-			wrap_print(help_descr);
+			printed += wrap_print(help_descr);
 			printf("\n");
+			printed++;
 			if (*help_ext_descr) {
-				wrap_print(help_ext_descr);
+				printed += wrap_print(help_ext_descr);
 				printf("\n");
+				printed++;
 			}
 			free(help_ext_descr);
 			free(help_descr);
@@ -186,13 +221,16 @@ show_help (struct frontend *obj, struct question *q)
 		free(help);
 	}
 	printf("%s\n", question_get_text(obj, "debconf/text-help-keystrokes", "KEYSTROKES:"));
+	printed++;
 	printf(" ");
 	printf(question_get_text(obj, "debconf/text-help-keystroke", "'%c'"), CHAR_HELP);
 	printf(" %s\n", question_get_text(obj, "debconf/text-help-help", "Display this help message"));
+	printed++;
 	if (obj->methods.can_go_back (obj, q)) {
 		printf(" ");
 		printf(question_get_text(obj, "debconf/text-help-keystroke", "'%c'"), CHAR_GOBACK);
 		printf(" %s\n", question_get_text(obj, "debconf/text-help-goback", "Go back to previous question"));
+		printed++;
 	}
 	if (strcmp(q->template->type, "string") == 0 ||
 	    strcmp(q->template->type, "password") == 0 ||
@@ -200,9 +238,11 @@ show_help (struct frontend *obj, struct question *q)
 		printf(" ");
 		printf(question_get_text(obj, "debconf/text-help-keystroke", "'%c'"), CHAR_CLEAR);
 		printf(" %s\n", question_get_text(obj, "debconf/text-help-clear", "Select an empty entry"));
+		printed++;
 	}
-	wrap_print(descr);
+	printed += wrap_print(descr);
 	free(descr);
+	return printed;
 }
 
 struct choices {
@@ -213,8 +253,21 @@ struct choices {
 	int *tindex;
 };
 
-static void
-printlist (struct frontend *obj, struct question *q, const struct choices *choices)
+/*
+ * Function: printlist
+ * Input: struct frontend *obj - UI object
+ *        unsigned max_lines - maximum number of lines to print
+ *        unsigned start - which line of choices should be printed first.
+ *        struct question *q - question for which to display the description
+ * Output: bool - whether we managed to print all choices from 'start' to last or not
+ * Description: displays the description for a given question
+ * Assumptions: none
+ *
+ * If it didn't fit, it will have printed a one-line comment about it, thus one
+ * line of choices less.
+ */
+static unsigned
+printlist (struct frontend *obj, unsigned max_lines, unsigned start, struct question *q, const struct choices *choices)
 {
 	int choice_min = -1;
 	int num_cols, num_lines;
@@ -229,6 +282,7 @@ printlist (struct frontend *obj, struct question *q, const struct choices *choic
 	int width = getwidth();
 	char **fchoices = malloc(sizeof(char *) * choices->count);
 	int horiz = 0;
+	bool all = false;
 
 	if (getenv("DEBCONF_TEXT_HORIZ"))
 		horiz = 1;
@@ -304,6 +358,7 @@ printlist (struct frontend *obj, struct question *q, const struct choices *choic
 		num_lines = choices->count;
 		num_cols = 1;
 	}
+
 	output = malloc(sizeof(char *) * num_lines);
 	for (i = 0; i < num_lines; i++)
 	{
@@ -337,27 +392,57 @@ printlist (struct frontend *obj, struct question *q, const struct choices *choic
 			max_len = 0;
 		}
 	}
-	for (l = 0; l < num_lines; l++)
+
+	if (max_lines >= num_lines - start)
+	{
+		/* More than enough room */
+		max_lines = num_lines - start;
+		all = true;
+	}
+	else
+		/* Keep one line for the "more choices" prompt */
+		max_lines--;
+	/* Don't display the beginning */
+	for (l = 0; l < start; l++)
+		free(output[l]);
+	/* Display only what fits in the screen */
+	for ( ; l < start + max_lines; l++)
 	{
 		printf("%s\n", output[l]);
 		free(output[l]);
 	}
+	/* Don't display the end */
+	for ( ; l < num_lines; l++)
+		free(output[l]);
+
 	free(output);
 	free(col_width);
 	for (i = 0; i < choices->count; i++)
 		free(fchoices[i]);
 	free(fchoices);
+
+	if (start > 0 && !all)
+		printf(question_get_text(obj, "debconf/text-help-otherchoices", "Other choices are available with '%c' and '%c'"), CHAR_PREV, CHAR_NEXT);
+	if (start > 0 && all)
+		printf(question_get_text(obj, "debconf/text-help-prevchoices", "Previous choices are available with '%c'"), CHAR_PREV);
+	if (start == 0 && !all)
+		printf(question_get_text(obj, "debconf/text-help-nextchoices", "Next choices are available with '%c'"), CHAR_NEXT);
+	if (start > 0 || !all)
+		printf("\n");
+
+	return all;
 }
 
 /*
  * Function: text_handler_boolean
  * Input: struct frontend *obj - frontend object
+ *        unsigned printed - number of already printed lines
  *        struct question *q - question to ask
  * Output: int - DC_OK, DC_NOTOK, DC_GOBACK
  * Description: handler for the boolean question type
  * Assumptions: none
  */
-static int text_handler_boolean(struct frontend *obj, struct question *q)
+static int text_handler_boolean(struct frontend *obj, unsigned printed, struct question *q)
 {
 	char buf[30];
 	int ans = 0;
@@ -385,7 +470,7 @@ static int text_handler_boolean(struct frontend *obj, struct question *q)
 					"Prompt: '%c' for help> "), CHAR_HELP);
 		get_answer(buf, sizeof(buf));
 		if (buf[0] == CHAR_HELP && buf[1] == 0)
-			show_help(obj, q);
+			printed += show_help(obj, q);
 		else if (obj->methods.can_go_back (obj, q) &&
 		         buf[0] == CHAR_GOBACK && buf[1] == 0)
 			return DC_GOBACK;
@@ -433,6 +518,7 @@ static void choices_delete(struct choices *c)
 /*
  * Function: choices_get
  * Input: struct frontend *obj - frontend object
+ *        unsigned printed - number of already printed lines
  *        struct question *q - question to ask
  * Output: struct choices * - choices values, translations, indices, and select
  * Description: retrieve question choices, translations, indices
@@ -480,12 +566,13 @@ static struct choices *choices_get(struct frontend *obj, struct question *q)
 /*
  * Function: text_handler_multiselect
  * Input: struct frontend *obj - frontend object
+ *        unsigned printed - number of already printed lines
  *        struct question *q - question to ask
  * Output: int - DC_OK, DC_NOTOK
  * Description: handler for the multiselect question type
  * Assumptions: none
  */
-static int text_handler_multiselect(struct frontend *obj, struct question *q)
+static int text_handler_multiselect(struct frontend *obj, unsigned printed, struct question *q)
 {
 	struct choices *choices = NULL;
 	char **defaults;
@@ -493,6 +580,8 @@ static int text_handler_multiselect(struct frontend *obj, struct question *q)
 	char answer[4096] = {0};
 	int i, j, dcount, choice;
 	int ret = DC_OK;
+	unsigned start = 0;
+	bool all;
 
 	choices = choices_get(obj, q);
 	if (choices == NULL)
@@ -525,13 +614,14 @@ static int text_handler_multiselect(struct frontend *obj, struct question *q)
 		}
 
   DISPLAY:
-	printlist (obj, q, choices);
+	all = printlist (obj, getheight() - printed - 1, start, q, choices);
 	printf(question_get_text(obj, "debconf/text-prompt-default-string", 
 		"Prompt: '%c' for help, default=%s> "), CHAR_HELP, defval);
 	get_answer(answer, sizeof(answer));
 	if (answer[0] == CHAR_HELP && answer[1] == 0)
 	{
-		show_help(obj, q);
+		printed = 0;
+		printed += show_help(obj, q);
 		goto DISPLAY;
 	}
 	else if (answer[0] == CHAR_CLEAR && answer[1] == 0)
@@ -544,6 +634,27 @@ static int text_handler_multiselect(struct frontend *obj, struct question *q)
 	{
 		ret = DC_GOBACK;
 		goto CleanUp_DEFVAL;
+	}
+	else if (answer[0] == CHAR_NEXT && answer[1] == 0)
+	{
+		if (!all)
+			start += getheight() - printed - 2;
+		printed = 0;
+		goto DISPLAY;
+	}
+	else if (answer[0] == CHAR_PREV && answer[1] == 0)
+	{
+		/* Note: 'printed' may not always contain the same value, when
+		 * the title banner is not printed again notably.  This however
+		 * only happens once, the second time the question in answered,
+		 * and start will have then been 0 already so this does not
+		 * pose problem.  */
+		if (start <= getheight() - printed - 2)
+			start = 0;
+		else
+			start -= getheight() - printed - 2;
+		printed = 0;
+		goto DISPLAY;
 	}
 
 	if (!(ISEMPTY(answer)))
@@ -580,6 +691,7 @@ static int text_handler_multiselect(struct frontend *obj, struct question *q)
 /*
  * Function: text_handler_select
  * Input: struct frontend *obj - frontend object
+ *        unsigned printed - number of already printed lines
  *        struct question *q - question to ask
  * Output: int - DC_OK, DC_NOTOK
  * Description: handler for the select question type
@@ -587,13 +699,15 @@ static int text_handler_multiselect(struct frontend *obj, struct question *q)
  *
  * TODO: factor common code with multiselect
  */
-static int text_handler_select(struct frontend *obj, struct question *q)
+static int text_handler_select(struct frontend *obj, unsigned printed, struct question *q)
 {
 	struct choices *choices = NULL;
-	char answer[10];
+	char answer[128];
 	int i, choice, def = -1;
 	const char *defval;
 	int ret = DC_OK;
+	unsigned start = 0;
+	bool all;
 
 	choices = choices_get(obj, q);
 	if (choices == NULL)
@@ -617,7 +731,7 @@ static int text_handler_select(struct frontend *obj, struct question *q)
 	i = 0;
 	choice = -1;
 	do {
-		printlist (obj, q, choices);
+		all = printlist (obj, getheight() - printed - 1, start, q, choices);
 		if (def >= 0 && choices->choices_translated[def]) {
 			printf(question_get_text(obj, "debconf/text-prompt-default", 
 				"Prompt: '%c' for help, default=%d> "),
@@ -629,7 +743,7 @@ static int text_handler_select(struct frontend *obj, struct question *q)
 		get_answer(answer, sizeof(answer));
 		if (answer[0] == CHAR_HELP)
 		{
-			show_help(obj, q);
+			printed += show_help(obj, q);
 			continue;
 		}
 		if (obj->methods.can_go_back (obj, q) &&
@@ -638,10 +752,43 @@ static int text_handler_select(struct frontend *obj, struct question *q)
 			ret = DC_GOBACK;
 			goto CleanUp_SELECTED;
 		}
+		else if (answer[0] == CHAR_NEXT && answer[1] == 0)
+		{
+			if (!all)
+				start += getheight() - printed - 2;
+			printed = 0;
+			continue;
+		}
+		else if (answer[0] == CHAR_PREV && answer[1] == 0)
+		{
+			/* Note: 'printed' may not always contain the same value, when
+			 * the title banner is not printed again notably.  This however
+			 * only happens once, the second time the question in answered,
+			 * and start will have then been 0 already so this does not
+			 * pose problem.  */
+			if (start < getheight() - printed - 2)
+				start = 0;
+			else
+				start -= getheight() - printed - 2;
+			printed = 0;
+			continue;
+		}
 		if (ISEMPTY(answer))
 			choice = def;
-		else
+		else {
 			choice = atoi(answer) - 1;
+			if (choice == -1) {
+				/* Not a number, perhaps the value */
+				for (i = 0; i < choices->count; i++) {
+					if (strcasecmp(choices->choices[choices->tindex[i]], answer) == 0) {
+						/* Yes */
+						choice = i;
+						break;
+					}
+				}
+			}
+		}
+		printed = 0;
 	} while (choice < 0 || choice >= choices->count);
 	question_setvalue(q, choices->choices[choices->tindex[choice]]);
 
@@ -654,12 +801,13 @@ static int text_handler_select(struct frontend *obj, struct question *q)
 /*
  * Function: text_handler_note
  * Input: struct frontend *obj - frontend object
+ *        unsigned printed - number of already printed lines
  *        struct question *q - question to ask
  * Output: int - DC_OK, DC_NOTOK, DC_GOBACK
  * Description: handler for the note question type
  * Assumptions: none
  */
-static int text_handler_note(struct frontend *obj, struct question *q)
+static int text_handler_note(struct frontend *obj, unsigned printed, struct question *q)
 {
 	char buf[100] = {0};
 	printf("%s ", question_get_text(obj, "debconf/cont-prompt",
@@ -669,7 +817,7 @@ static int text_handler_note(struct frontend *obj, struct question *q)
 	{
 		get_answer(buf, sizeof(buf));
 		if (buf[0] == CHAR_HELP && buf[1] == 0)
-			show_help(obj, q);
+			printed += show_help(obj, q);
 		else if (obj->methods.can_go_back (obj, q) &&
 		         buf[0] == CHAR_GOBACK && buf[1] == 0)
 			return DC_GOBACK;
@@ -682,6 +830,7 @@ static int text_handler_note(struct frontend *obj, struct question *q)
 /*
  * Function: text_handler_password
  * Input: struct frontend *obj - frontend object
+ *        unsigned printed - number of already printed lines
  *        struct question *q - question to ask
  * Output: int - DC_OK, DC_NOTOK
  * Description: handler for the password question type
@@ -689,7 +838,7 @@ static int text_handler_note(struct frontend *obj, struct question *q)
  *
  * TODO: this can be *MUCH* improved. no editing is possible right now
  */
-static int text_handler_password(struct frontend *obj, struct question *q)
+static int text_handler_password(struct frontend *obj, unsigned printed, struct question *q)
 {
 	struct termios oldt, newt;
 	char passwd[256] = {0};
@@ -718,7 +867,7 @@ static int text_handler_password(struct frontend *obj, struct question *q)
 		passwd[i] = 0;
 		tcsetattr(0, TCSANOW, &oldt);
 		if (passwd[0] == CHAR_HELP && passwd[1] == 0)
-			show_help(obj, q);
+			printed += show_help(obj, q);
 		else
 			break;
 	}
@@ -735,12 +884,13 @@ static int text_handler_password(struct frontend *obj, struct question *q)
 /*
  * Function: text_handler_string
  * Input: struct frontend *obj - frontend object
+ *        unsigned printed - number of already printed lines
  *        struct question *q - question to ask
  * Output: int - DC_OK, DC_NOTOK
  * Description: handler for the string question type
  * Assumptions: none
  */
-static int text_handler_string(struct frontend *obj, struct question *q)
+static int text_handler_string(struct frontend *obj, unsigned printed, struct question *q)
 {
 	char buf[1024] = {0};
 	const char *defval = question_getvalue(q, "");
@@ -752,7 +902,7 @@ static int text_handler_string(struct frontend *obj, struct question *q)
 		fflush(stdout);
 		get_answer(buf, sizeof(buf));
 		if (buf[0] == CHAR_HELP && buf[1] == 0)
-			show_help(obj, q);
+			printed += show_help(obj, q);
 		else
 			break;
 	}
@@ -773,27 +923,29 @@ static int text_handler_string(struct frontend *obj, struct question *q)
 /*
  * Function: text_handler_text
  * Input: struct frontend *obj - frontend object
+ *        unsigned printed - number of already printed lines
  *        struct question *q - question to ask
  * Output: int - DC_OK, DC_NOTOK, DC_GOBACK
  * Description: handler for the text question type
  * Assumptions: none
  */
-static int text_handler_text(struct frontend *obj, struct question *q)
+static int text_handler_text(struct frontend *obj, unsigned printed, struct question *q)
 {
-	return text_handler_note(obj, q);
+	return text_handler_note(obj, printed, q);
 }
 
 /*
  * Function: text_handler_error
  * Input: struct frontend *obj - frontend object
+ *        unsigned printed - number of already printed lines
  *        struct question *q - question to ask
  * Output: int - DC_OK, DC_NOTOK, DC_GOBACK
  * Description: handler for the error question type. Currently equal to _note
  * Assumptions: none
  */
-static int text_handler_error(struct frontend *obj, struct question *q)
+static int text_handler_error(struct frontend *obj, unsigned printed, struct question *q)
 {
-	return text_handler_note(obj, q);
+	return text_handler_note(obj, printed, q);
 }
 
 /* ----------------------------------------------------------------------- */
@@ -856,6 +1008,7 @@ static int text_shutdown(struct frontend *obj)
 /*
  * Function: text_can_go_back
  * Input: struct frontend *obj - frontend object
+ *        unsigned printed - number of already printed lines
  *        struct question *q - question object
  * Output: int - DC_OK, DC_NOTOK
  * Description: tells whether confmodule supports backing up
@@ -870,6 +1023,7 @@ text_can_go_back(struct frontend *obj, struct question *q)
 /*
  * Function: text_can_align
  * Input: struct frontend *obj - frontend object
+ *        unsigned printed - number of already printed lines
  *        struct question *q - question object
  * Output: int - DC_OK, DC_NOTOK
  * Description: tells whether confmodule supports aligning columns
@@ -918,12 +1072,14 @@ static int text_go(struct frontend *obj)
 	struct question *q = obj->questions;
 	int i;
 	int ret = DC_OK;
+	unsigned printed;
 
 	while (q != NULL) {
 		for (i = 0; i < DIM(question_handlers); i++) {
 			text_handler *handler;
 			struct plugin *plugin = NULL;
 
+			printed = 0;
 			if (*question_handlers[i].type)
 				handler = question_handlers[i].handler;
 			else {
@@ -957,12 +1113,13 @@ static int text_go(struct frontend *obj)
 					memset(underline, '-', underline_len);
 					underline[underline_len] = '\0';
 					printf("%s\n%s\n\n", obj->title, underline);
+					printed += 3;
 					free(underline);
 					free(data->previous_title);
 					data->previous_title = strdup(obj->title);
 				}
-				text_handler_displaydesc(obj, q);
-				ret = handler(obj, q);
+				printed += text_handler_displaydesc(obj, printed, q);
+				ret = handler(obj, printed, q);
 				putchar('\n');
 				if (ret == DC_OK)
 					frontend_qdb_set(obj->qdb, q, 0);

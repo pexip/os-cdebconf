@@ -166,6 +166,45 @@ void question_owner_delete(struct question *q, const char *owner)
 	}
 }
 
+static const struct {
+    const char *name;
+    unsigned int value;
+} flags[] = {
+    { DC_QFLAG_SEEN, (1 << 0) },
+    { 0, 0 }
+};
+
+static int flag_value(const char *type)
+{
+    int i;
+
+    if (!type)
+        return 0;
+
+    for (i = 0; flags[i].name != NULL; i++)
+    {
+        if (0 == strcmp(flags[i].name, type))
+            return flags[i].value;
+    }
+
+    return 0;
+}
+
+void question_set_flag(struct question *q, const char *flag)
+{
+    q->flags |= flag_value(flag);
+}
+
+void question_clear_flag(struct question *q, const char *flag)
+{
+    q->flags &= ~flag_value(flag);
+}
+
+int question_get_flag(const struct question *q, const char *flag)
+{
+    return q->flags & flag_value(flag);
+}
+
 /* used by question_expand_vars */
 static const char * lookup_vars(const char * name,
                                 struct questionvariable * variables)
@@ -248,6 +287,16 @@ char * question_get_field(struct frontend * fe, const struct question * q,
     ret = strexpand(raw, LOOKUP_FUNCTION(lookup_directive), fe);
     free(raw);
     return ret;
+}
+
+const char *question_get_priority(const struct question *q)
+{
+    return q->priority;
+}
+
+const char *question_get_tag(const struct question *q)
+{
+    return q->tag;
 }
 
 /*

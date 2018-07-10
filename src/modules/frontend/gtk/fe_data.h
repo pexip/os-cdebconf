@@ -109,13 +109,13 @@ struct frontend_data
      * @see frontend_data#answer
      * @see wait_answer()
      */
-    GCond * answer_cond;
+    GCond answer_cond;
 
     /** Lock around the frontend answer.
      *
      * @see frontend_data#answer
      */
-    GMutex * answer_mutex;
+    GMutex answer_mutex;
 
     /** Associates question type and plugins.
      *

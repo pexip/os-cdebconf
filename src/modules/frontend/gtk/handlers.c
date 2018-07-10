@@ -201,6 +201,11 @@ static GtkWidget * create_entry_alignment(GtkWidget * entry)
     return alignment;
 }
 
+static void checkbox_toggled(GtkToggleButton *togglebutton, gpointer user_data)
+{
+    gtk_entry_set_visibility(GTK_ENTRY(user_data), gtk_toggle_button_get_active(togglebutton));
+}
+
 /** Handler for question of password type.
  *
  * @param fe cdebconf frontend
@@ -212,7 +217,7 @@ int cdebconf_gtk_handle_password(struct frontend * fe,
                                  struct question * question,
                                  GtkWidget * question_box)
 {
-    GtkWidget * entry;
+    GtkWidget * entry, * vbox, *checkbox;
 
     /* INFO(INFO_DEBUG, "GTK_DI - gtkhandler_password() called"); */
 
@@ -220,9 +225,16 @@ int cdebconf_gtk_handle_password(struct frontend * fe,
     gtk_entry_set_visibility(GTK_ENTRY(entry), FALSE /* password style */);
     gtk_entry_set_activates_default(GTK_ENTRY(entry),
                                     TRUE /* activate on Enter */);
+                                    
+    
+    vbox = gtk_vbox_new(TRUE, 1);
+    checkbox = gtk_check_button_new_with_label(cdebconf_gtk_get_text(fe, "debconf/show-password", "Show Password in Clear"));
+    g_signal_connect (checkbox, "toggled", G_CALLBACK (checkbox_toggled), entry);
+    gtk_box_pack_start(GTK_BOX(vbox), entry, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(vbox), checkbox, FALSE, FALSE, 0);
 
     cdebconf_gtk_add_common_layout(fe, question, question_box,
-                                   create_entry_alignment(entry));
+                                   create_entry_alignment(vbox));
 
     if (cdebconf_gtk_is_first_question(question)) {
         gtk_widget_grab_focus(entry);

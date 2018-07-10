@@ -20,13 +20,13 @@
 # Amanpreet Singh Brar <aalam@users.sf.net>, 2008.
 # Amanpreet Singh Alam <aalam@users.sf.net>, 2008, 2009.
 # Amanpreet Singh Alam[ਆਲਮ] <amanpreetalam@yahoo.com>, 2005.
-# A S Alam <aalam@users.sf.net>, 2009, 2012.
+# A S Alam <aalam@users.sf.net>, 2009, 2012, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: pa\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
-"POT-Creation-Date: 2012-10-18 06:02+0000\n"
-"PO-Revision-Date: 2012-10-13 21:39+0530\n"
+"POT-Creation-Date: 2016-06-05 14:47+0000\n"
+"PO-Revision-Date: 2014-08-21 21:30-0500\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
 "Language: pa\n"
@@ -145,7 +145,7 @@ msgstr "ਪਿੱਛੇ ਜਾਓ"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:3001 ../cdebconf-gtk-udeb.templates:3001
-#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:7001
+#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:10001
 msgid "Yes"
 msgstr "ਹਾਂ"
 
@@ -157,7 +157,7 @@ msgstr "ਹਾਂ"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:4001 ../cdebconf-gtk-udeb.templates:4001
-#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:8001
+#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:11001
 msgid "No"
 msgstr "ਨਹੀਂ"
 
@@ -186,6 +186,15 @@ msgstr "<Tab> ਹਿਲਾਉ; <Space> ਚੁਣੋ; <Enter> ਬਟਨ ਐਕਟ
 #: ../cdebconf-newt-udeb.templates:7001
 msgid "<F1> for help; <Tab> moves; <Space> selects; <Enter> activates buttons"
 msgstr "<F1> ਮੱਦਦ ਲਈ; <Tab> ਹਿਲਾਉ; <Space> ਚੁਣੋ; <Enter> ਬਟਨ ਐਕਟੀਵੇਟ"
+
+#. Type: text
+#. Description
+#. Appears as a checkbox in the newt and GTK interfaces.
+#. :sl1:
+#: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
+#, fuzzy
+msgid "Show Password in Clear"
+msgstr "ਪਾਸਵਰਡ ਇੰਪੁੱਟ ਗਲਤੀ ਹੈ"
 
 #. Type: text
 #. Description
@@ -244,7 +253,7 @@ msgstr "ਸਵਿੱਚ ਸਟੋਕਰ:"
 
 #. Type: text
 #. Description
-#. :sl6:
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:3001
 #, no-c-format
 msgid "'%c'"
@@ -274,7 +283,31 @@ msgstr "ਖਾਲੀ ਐਂਟਰੀ ਚੁਣੋ"
 #. Type: text
 #. Description
 #. :sl4:
+#: ../cdebconf-text-udeb.templates:7001
+#, no-c-format
+msgid "Other choices are available with '%c' and '%c'"
+msgstr ""
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:8001
+#, no-c-format
+msgid "Previous choices are available with '%c'"
+msgstr ""
+
+#. Type: text
+#. Description
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:9001
+#, no-c-format
+msgid "Next choices are available with '%c'"
+msgstr ""
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:12001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%d> "
 msgstr "ਪਰਾਉਟ: '%c' ਮੱਦਦ ਲਈ, ਡਿਫਾਲਟ=%d>"
@@ -282,7 +315,7 @@ msgstr "ਪਰਾਉਟ: '%c' ਮੱਦਦ ਲਈ, ਡਿਫਾਲਟ=%d>"
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:10001
+#: ../cdebconf-text-udeb.templates:13001
 #, no-c-format
 msgid "Prompt: '%c' for help> "
 msgstr "ਪਰਾਉਟ: ਮੱਦਦ ਲਈ '%c'>"
@@ -290,7 +323,7 @@ msgstr "ਪਰਾਉਟ: ਮੱਦਦ ਲਈ '%c'>"
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:11001
+#: ../cdebconf-text-udeb.templates:14001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%s> "
 msgstr "ਪਰਾਉਟ: '%c' ਮੱਦਦ ਲਈ, default=%s>"
@@ -298,7 +331,7 @@ msgstr "ਪਰਾਉਟ: '%c' ਮੱਦਦ ਲਈ, default=%s>"
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:12001
+#: ../cdebconf-text-udeb.templates:15001
 msgid "[Press enter to continue]"
 msgstr "[ਜਾਰੀ ਰੱਖਣ ਲਈ enter ਦਬਾਓ]"
 

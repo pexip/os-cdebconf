@@ -20,25 +20,17 @@
 #include <string.h>
 #include <search.h>
 
-FILE *outf = NULL;
-
-static const struct {
-    const char *name;
-    unsigned int value;
-} debconf_qflags[] = {
-    { "seen", DC_QFLAG_SEEN },
-    { 0, 0 }
-};
+static FILE *outf = NULL;
 
 static struct template *rfc822db_template_get(struct template_db *db,
     const char *ltag);
 
-int nodetemplatecomp(const void *pa, const void *pb) {
+static int nodetemplatecomp(const void *pa, const void *pb) {
   return strcmp(((struct template *)pa)->tag, 
                 ((struct template *)pb)->tag);
 }
 
-int nodequestioncomp(const void *pa, const void *pb) {
+static int nodequestioncomp(const void *pa, const void *pb) {
   return strcmp(((struct question *)pa)->tag, 
                 ((struct question *)pb)->tag);
 }
@@ -95,7 +87,7 @@ static void parse_variables(struct question *q, char *string)
 static void parse_owners(struct question *q, char *string)
 {
     char *wc, *owc;
-   
+
     if (!string)
 	    return;
 
@@ -124,43 +116,35 @@ static void parse_owners(struct question *q, char *string)
     free(owc);
 }
 
-static unsigned int parse_flags(char *string)
+static void parse_flags(struct question *q, char *string)
 {
-    unsigned int ret = 0;
     char *wc, *owc;
-   
+
     if (!string)
-	    return 0;
+	    return;
 
     owc = wc = strdup(string);
 
     while (wc != NULL)
     {
         char *delim = wc;
-        int i, finished = 0;
-        while (*delim != ' ' && *delim != '\t' && *delim != '\0')
+        int finished = 0;
+        while (*delim != ',' && *delim != '\0')
             delim++;
         if (*delim == '\0')
             finished = 1;
         *delim = '\0';
-        for (i = 0; debconf_qflags[i].name; i++)
-        {
-            if (0 == strcmp(wc, debconf_qflags[i].name))
-            {
-                ret |= debconf_qflags[i].value;
-            }
-        }
+        question_set_flag(q, wc);
         if (finished != 0)
             break;
         wc = delim + 1;
         while (*wc == ' ' || *wc == '\t')
         {
             wc++;
-        }        
+        }
     }
 
     free(owc);
-    return ret;
 }
 
 static FILE *rfc822db_file_open(struct configuration *config, const char *configpath, int *retval)
@@ -208,7 +192,7 @@ static FILE *rfc822db_file_open(struct configuration *config, const char *config
     return inf;
 }
 
-void rfc822db_template_destroyitem(void *data)
+static void rfc822db_template_destroyitem(void *data)
 {
     template_deref((struct template *) data);
 }
@@ -364,7 +348,7 @@ static int rfc822db_template_reload(struct template_db *db)
     return DC_OK;
 }
 
-void rfc822db_template_dump(const void *node, const VISIT which, const int depth)
+static void rfc822db_template_dump(const void *node, const VISIT which, const int depth)
 {
     const char *p, *lang;
     const char **field;
@@ -541,8 +525,8 @@ static int rfc822db_template_remove(struct template_db *db, const char *tag)
  * immediately. If we ever need iterate() to be thread-safe, this *needs* to
  * go away.
  */
-di_slist *template_iterator;
-void rfc822db_template_makeiterator(const void *nodep, const VISIT which,
+static di_slist *template_iterator;
+static void rfc822db_template_makeiterator(const void *nodep, const VISIT which,
     const int depth)
 {
     if (which == postorder || which == leaf)
@@ -582,7 +566,7 @@ static struct template *rfc822db_template_iterate(struct template_db *db,
     return t;
 }
 
-void rfc822db_question_destroyitem(void *data)
+static void rfc822db_question_destroyitem(void *data)
 {
     question_deref((struct question *) data);
 }
@@ -657,7 +641,7 @@ static int rfc822db_question_load(struct question_db *db)
         tmp = question_new(name);
 
         question_setvalue(tmp, rfc822_header_lookup(header, "value"));
-        tmp->flags = parse_flags(rfc822_header_lookup(header,"flags"));
+        parse_flags(tmp, rfc822_header_lookup(header,"flags"));
         parse_owners(tmp, rfc822_header_lookup(header, "owners"));
         parse_variables(tmp, rfc822_header_lookup(header, "variables"));
         tmp->template = db->tdb->methods.get(db->tdb, rfc822_header_lookup(header, "template"));
@@ -674,7 +658,7 @@ static int rfc822db_question_load(struct question_db *db)
     return DC_OK;
 }
 
-void rfc822db_question_dump(const void *node, const VISIT which, const int depth)
+static void rfc822db_question_dump(const void *node, const VISIT which, const int depth)
 {
   struct questionowner *owner;
   struct questionvariable *var;
@@ -706,20 +690,9 @@ void rfc822db_question_dump(const void *node, const VISIT which, const int depth
             fprintf(outf, "\n");
         }
 
-        if ((q)->flags)
+        if (question_get_flag(q, DC_QFLAG_SEEN))
         {
-            int i;
-            fprintf(outf, "Flags:");
-
-            for (i = 0; debconf_qflags[i].name; i++)
-            {
-                if ((q)->flags & debconf_qflags[i].value)
-                {
-                    fprintf(outf, " %s", debconf_qflags[i].name);
-                }
-            }
-
-            fprintf(outf, "\n");
+            fprintf(outf, "Flags: seen\n");
         }
         
         if ((var = (q)->variables))
@@ -852,8 +825,8 @@ static int rfc822db_question_disown(struct question_db *db, const char *tag,
  * immediately. If we ever need iterate() to be thread-safe, this *needs* to
  * go away.
  */
-di_slist *question_iterator;
-void rfc822db_question_makeiterator(const void *nodep, const VISIT which,
+static di_slist *question_iterator;
+static void rfc822db_question_makeiterator(const void *nodep, const VISIT which,
     const int depth)
 {
     if (which == postorder || which == leaf)
@@ -917,7 +890,7 @@ struct question_db_module debconf_question_db_module = {
     .iterate = rfc822db_question_iterate,
 };
 
-void dump_question(struct question *q) {
+static void dump_question(struct question *q) {
     fprintf(stderr,"\nDUMPING QUESTION\n");
     fprintf(stderr,"Question: %s\n", q->tag);
     fprintf(stderr,"Value: %s\n", q->value);

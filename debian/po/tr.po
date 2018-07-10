@@ -6,41 +6,37 @@
 # Turkish messages for debian-installer.
 # Copyright (C) 2003, 2004 Software in the Public Interest, Inc.
 # This file is distributed under the same license as debian-installer.
-#
 # Recai Oktaş <roktas@omu.edu.tr>, 2004, 2005, 2008.
 # Osman Yüksel <yuxel@sonsuzdongu.com>, 2004.
 # Özgür Murat Homurlu <ozgurmurat@gmx.net>, 2004.
 # Halil Demirezen <halild@bilmuh.ege.edu.tr>, 2004.
 # Murat Demirten <murat@debian.org>, 2004.
-#
-# Mert Dirik <mertdirik@gmail.com>, 2008-2012.
-#
+# Mert Dirik <mertdirik@gmail.com>, 2008-2012, 2014.
 # Translations from iso-codes:
-#   Alastair McKinstry <mckinstry@computer.org>, 2001.
-#   (translations from drakfw)
-#   Fatih Demir <kabalak@gmx.net>, 2000.
-#   Free Software Foundation, Inc., 2000,2004
-#   Kemal Yilmaz <kyilmaz@uekae.tubitak.gov.tr>, 2001.
-#   Mert Dirik <mertdirik@gmail.com>, 2008.
-#   Nilgün Belma Bugüner <nilgun@fide.org>, 2001.
-#   Recai Oktaş <roktas@omu.edu.tr>, 2004.
-#   Tobias Quathamer <toddy@debian.org>, 2007.
-#     Translations taken from ICU SVN on 2007-09-09
-#   Ömer Fadıl USTA <omer_fad@hotmail.com>, 1999.
-#
+# Alastair McKinstry <mckinstry@computer.org>, 2001.
+# (translations from drakfw)
+# Fatih Demir <kabalak@gmx.net>, 2000.
+# Free Software Foundation, Inc., 2000,2004
+# Kemal Yilmaz <kyilmaz@uekae.tubitak.gov.tr>, 2001.
+# Mert Dirik <mertdirik@gmail.com>, 2008, 2014.
+# Nilgün Belma Bugüner <nilgun@fide.org>, 2001.
+# Recai Oktaş <roktas@omu.edu.tr>, 2004.
+# Tobias Quathamer <toddy@debian.org>, 2007.
+# Translations taken from ICU SVN on 2007-09-09
+# Ömer Fadıl USTA <omer_fad@hotmail.com>, 1999.
 msgid ""
 msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
-"POT-Creation-Date: 2012-10-18 06:02+0000\n"
-"PO-Revision-Date: 2012-10-18 22:56-0000\n"
+"POT-Creation-Date: 2016-06-05 14:47+0000\n"
+"PO-Revision-Date: 2016-02-12 14:46+0200\n"
 "Last-Translator: Mert Dirik <mertdirik@gmail.com>\n"
-"Language-Team: Debian L10n Turkish <debian-l10n-turkish@lists.debian.org>\n"
-"Language: \n"
+"Language-Team: Debian L10N Turkish\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. Type: select
 #. Choices
@@ -153,7 +149,7 @@ msgstr "Geri dön"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:3001 ../cdebconf-gtk-udeb.templates:3001
-#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:7001
+#: ../cdebconf-slang-udeb.templates:1001 ../cdebconf-text-udeb.templates:10001
 msgid "Yes"
 msgstr "Evet"
 
@@ -165,7 +161,7 @@ msgstr "Evet"
 #. Description
 #. :sl4:
 #: ../cdebconf-newt-udeb.templates:4001 ../cdebconf-gtk-udeb.templates:4001
-#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:8001
+#: ../cdebconf-slang-udeb.templates:2001 ../cdebconf-text-udeb.templates:11001
 msgid "No"
 msgstr "Hayır"
 
@@ -195,6 +191,14 @@ msgstr ""
 #: ../cdebconf-newt-udeb.templates:7001
 msgid "<F1> for help; <Tab> moves; <Space> selects; <Enter> activates buttons"
 msgstr "<F1> yardım; <Tab> geçiş; <Space> seç; <Enter> düğmeleri etkinleştir"
+
+#. Type: text
+#. Description
+#. Appears as a checkbox in the newt and GTK interfaces.
+#. :sl1:
+#: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
+msgid "Show Password in Clear"
+msgstr "Parolayı Göster"
 
 #. Type: text
 #. Description
@@ -253,7 +257,7 @@ msgstr "TUŞLAR:"
 
 #. Type: text
 #. Description
-#. :sl6:
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:3001
 #, no-c-format
 msgid "'%c'"
@@ -283,7 +287,31 @@ msgstr "Boş bir giriş değeri seç"
 #. Type: text
 #. Description
 #. :sl4:
+#: ../cdebconf-text-udeb.templates:7001
+#, no-c-format
+msgid "Other choices are available with '%c' and '%c'"
+msgstr "'%c' ve '%c' ile diğer seçenekleri görebilirsiniz"
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:8001
+#, no-c-format
+msgid "Previous choices are available with '%c'"
+msgstr "Önceki seçenekler '%c' ile görülebilir"
+
+#. Type: text
+#. Description
+#. :sl4:
 #: ../cdebconf-text-udeb.templates:9001
+#, no-c-format
+msgid "Next choices are available with '%c'"
+msgstr "Sonraki seçenekler '%c' ile görülebilir"
+
+#. Type: text
+#. Description
+#. :sl4:
+#: ../cdebconf-text-udeb.templates:12001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%d> "
 msgstr "İstem: yardım için '%c', varsayılan=%d> "
@@ -291,7 +319,7 @@ msgstr "İstem: yardım için '%c', varsayılan=%d> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:10001
+#: ../cdebconf-text-udeb.templates:13001
 #, no-c-format
 msgid "Prompt: '%c' for help> "
 msgstr "İstem: yardım için '%c'> "
@@ -299,7 +327,7 @@ msgstr "İstem: yardım için '%c'> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:11001
+#: ../cdebconf-text-udeb.templates:14001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%s> "
 msgstr "İstem: yardım için '%c', varsayılan=%s> "
@@ -307,7 +335,7 @@ msgstr "İstem: yardım için '%c', varsayılan=%s> "
 #. Type: text
 #. Description
 #. :sl4:
-#: ../cdebconf-text-udeb.templates:12001
+#: ../cdebconf-text-udeb.templates:15001
 msgid "[Press enter to continue]"
 msgstr "[Devam etmek için enter'a basın]"
 
