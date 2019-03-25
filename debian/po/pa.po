@@ -20,15 +20,15 @@
 # Amanpreet Singh Brar <aalam@users.sf.net>, 2008.
 # Amanpreet Singh Alam <aalam@users.sf.net>, 2008, 2009.
 # Amanpreet Singh Alam[ਆਲਮ] <amanpreetalam@yahoo.com>, 2005.
-# A S Alam <aalam@users.sf.net>, 2009, 2012, 2014.
+# A S Alam <aalam@users.sf.net>, 2009, 2012, 2014, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: pa\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
 "POT-Creation-Date: 2016-06-05 14:47+0000\n"
-"PO-Revision-Date: 2014-08-21 21:30-0500\n"
-"Last-Translator: A S Alam <aalam@users.sf.net>\n"
-"Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
+"PO-Revision-Date: 2018-01-04 06:20+0000\n"
+"Last-Translator: Aman ALam <alam.yellow@gmail.com>\n"
+"Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
 "Language: pa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -192,9 +192,8 @@ msgstr "<F1> ਮੱਦਦ ਲਈ; <Tab> ਹਿਲਾਉ; <Space> ਚੁਣੋ; <
 #. Appears as a checkbox in the newt and GTK interfaces.
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
-#, fuzzy
 msgid "Show Password in Clear"
-msgstr "ਪਾਸਵਰਡ ਇੰਪੁੱਟ ਗਲਤੀ ਹੈ"
+msgstr "ਪਾਸਵਰਡ ਸਪਰਸ਼ਟ ਦਿਖਾਓ"
 
 #. Type: text
 #. Description
@@ -286,7 +285,7 @@ msgstr "ਖਾਲੀ ਐਂਟਰੀ ਚੁਣੋ"
 #: ../cdebconf-text-udeb.templates:7001
 #, no-c-format
 msgid "Other choices are available with '%c' and '%c'"
-msgstr ""
+msgstr "ਹੋਰ ਚੋਣਾਂ '%c' ਅਤੇ '%c' ਮੌਜੂਦ ਹਨ"
 
 #. Type: text
 #. Description
@@ -294,7 +293,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:8001
 #, no-c-format
 msgid "Previous choices are available with '%c'"
-msgstr ""
+msgstr "ਪਿਛਲੀਆਂ ਚੋਣਾਂ '%c' ਨਾਲ ਮੌਜੂਦ ਹਨ"
 
 #. Type: text
 #. Description
@@ -302,7 +301,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:9001
 #, no-c-format
 msgid "Next choices are available with '%c'"
-msgstr ""
+msgstr "ਅਗਲੀਆਂ ਚੋਣਾਂ '%c' ਨਾਲ ਮੌਜੂਦ ਹਨ"
 
 #. Type: text
 #. Description
@@ -310,7 +309,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:12001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%d> "
-msgstr "ਪਰਾਉਟ: '%c' ਮੱਦਦ ਲਈ, ਡਿਫਾਲਟ=%d>"
+msgstr "ਪਰਾਉਟ: ਮਦਦ ਲਈ '%c', ਡਿਫਾਲਟ=%d> "
 
 #. Type: text
 #. Description
@@ -318,7 +317,7 @@ msgstr "ਪਰਾਉਟ: '%c' ਮੱਦਦ ਲਈ, ਡਿਫਾਲਟ=%d>"
 #: ../cdebconf-text-udeb.templates:13001
 #, no-c-format
 msgid "Prompt: '%c' for help> "
-msgstr "ਪਰਾਉਟ: ਮੱਦਦ ਲਈ '%c'>"
+msgstr "ਪਰਾਉਟ: ਮਦਦ ਲਈ '%c'> "
 
 #. Type: text
 #. Description
@@ -326,7 +325,7 @@ msgstr "ਪਰਾਉਟ: ਮੱਦਦ ਲਈ '%c'>"
 #: ../cdebconf-text-udeb.templates:14001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%s> "
-msgstr "ਪਰਾਉਟ: '%c' ਮੱਦਦ ਲਈ, default=%s>"
+msgstr "ਪਰਾਉਟ: ਮਦਦ ਲਈ '%c', default=%s> "
 
 #. Type: text
 #. Description

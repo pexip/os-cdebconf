@@ -10,8 +10,8 @@ export DEB_LDFLAGS_MAINT_APPEND=-lpthread -Wl,--as-needed
 debbuild=debian/build-deb
 udebbuild=debian/build-udeb
 
-DEB_HOST_ARCH=$(shell dpkg-architecture -qDEB_HOST_ARCH)
-DEB_HOST_ARCH_OS=$(shell dpkg-architecture -qDEB_HOST_ARCH_OS)
+include /usr/share/dpkg/architecture.mk
+
 CONFFILE=/etc/cdebconf.conf
 
 #package names
@@ -20,6 +20,11 @@ LIBDEBCONF=libdebconfclient0
 
 DEB_FRONTENDS=passthrough text newt gtk
 UDEB_FRONTENDS=passthrough text newt gtk
+
+ifneq ($(filter pkg.cdebconf.nogtk,$(DEB_BUILD_PROFILES)),)
+    DEB_FRONTENDS:=$(filter-out gtk,$(DEB_FRONTENDS))
+    UDEB_FRONTENDS:=$(filter-out gtk,$(UDEB_FRONTENDS))
+endif
 
 ifeq ($(DEB_HOST_ARCH_OS),linux)
     SELINUXFLAG=--enable-selinux
@@ -85,7 +90,6 @@ build-udeb-stamp: $(udebbuild)/config.status
 
 clean:
 	dh_testdir
-	dh_testroot
 	dh_auto_clean -B$(debbuild)
 	dh_auto_clean -B$(udebbuild)
 	[ ! -f globalmakeflags ] || $(MAKE) -C src/test clean
@@ -128,6 +132,16 @@ binary-arch: install-arch
 	dh_installdocs -s
 	dh_installdebconf -s
 	dh_installdirs -s
+ifneq ($(filter pkg.cdebconf.nogtk,$(DEB_BUILD_PROFILES)),)
+	# If the pkg.cdebconf.nogtk build profile is enabled and therefore
+	# DEB_FRONTENDS doesn't include gtk, the main build system doesn't
+	# automatically include cdebconf_gtk.h in the libdebconfclient0-dev
+	# package.  As we want libdebconfclient0-dev to have identical
+	# contents whether the pkg.cdebconf.nogtk profile is used or not, we
+	# need to explicitly install cdebconf_gtk.h if the pkg.cdebconf.nogtk
+	# profile is enabled.
+	dh_install -plibdebconfclient0-dev src/modules/frontend/gtk/cdebconf_gtk.h usr/include/cdebconf/
+endif
 	dh_lintian -s
 	dh_strip -s
 	dh_compress -s

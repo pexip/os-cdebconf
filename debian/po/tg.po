@@ -9,17 +9,17 @@
 #
 # Debian Installer translators, please read the D-I i18n documentation
 # in doc/i18n/i18n.txt
-# Victor Ibragimov <victor.ibragimov@gmail.com>, 2013
+# Victor Ibragimov <victor.ibragimov@gmail.com>, 2013, 2014, 2015, 2016, 2017, 2018
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
 "POT-Creation-Date: 2016-06-05 14:47+0000\n"
-"PO-Revision-Date: 2014-01-05 13:26+0500\n"
+"PO-Revision-Date: 2018-02-08 14:24+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: Tajik <victor.ibragimov@gmail.com>\n"
-"Language: Tajik\n"
+"Language: tg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -69,10 +69,10 @@ msgid ""
 "might ask you. Only questions with a certain priority or higher are actually "
 "shown to you; all less important questions are skipped."
 msgstr ""
-"Бастаҳое, ки барои конфигуратсия кардан debconf-ро истифода мебаранд, "
-"саволҳоеро, ки метавонанд ба шумо диҳанд, аз рӯи аввалият тақсим мекунанд. "
-"Танҳо саволҳои дорои аввалияти махсус ё зиёдтар аз он ба шумо воқеан намоиш "
-"дода мешаванд; ҳамаи саволҳое, ки он қадар муҳим нестанд, нодида гузаронида "
+"Бастаҳое, ки барои танзим кардан debconf-ро истифода мебаранд, саволҳоеро, "
+"ки метавонанд ба шумо диҳанд, аз рӯи аввалият тақсим мекунанд. Танҳо "
+"саволҳои дорои аввалияти махсус ё зиёдтар аз он ба шумо воқеан намоиш дода "
+"мешаванд; ҳамаи саволҳое, ки он қадар муҳим нестанд, нодида гузаронида "
 "мешаванд."
 
 #. Type: select
@@ -89,9 +89,9 @@ msgid ""
 "   the vast majority of cases."
 msgstr ""
 "Шумо метавонед барои саволе, ки мехоҳед бинед, аввалияти пасттаринро интихоб "
-"кунед:\n"
+"намоед:\n"
 " - \"танқидӣ\" барои объектҳое мебошад, ки эҳтимолан бе дахолати корбар\n"
-"    системаро вайрон мекунанд.\n"
+"    низомро вайрон мекунанд.\n"
 " - \"баланд\" барои объектҳое мебошад, ки пешфарзҳои сабабнокро надоранд.\n"
 " - \"миёна\" барои объектҳои муқаррарие мебошад, ки дорои пешфарзҳои "
 "сабабнок мебошанд.\n"
@@ -106,7 +106,7 @@ msgid ""
 "For example, this question is of medium priority, and if your priority were "
 "already 'high' or 'critical', you wouldn't see this question."
 msgstr ""
-"Масалан, ин савол дорои аввалияти миёна мебошад, ва агар аввалияти шумо "
+"Масалан, ин савол дорои аввалияти миёна мебошад ва агар аввалияти шумо "
 "аллакай ба \"баланд\" ё \"танқидӣ\" таъин карда шуда мебуд, шумо ин саволро "
 "намедидед."
 
@@ -184,7 +184,7 @@ msgstr ""
 #: ../cdebconf-newt-udeb.templates:7001
 msgid "<F1> for help; <Tab> moves; <Space> selects; <Enter> activates buttons"
 msgstr ""
-"Тугмаи <F1> барои кӯмак; <Tab> интиқол медиҳад; <Space> интихоб мекунад; "
+"Тугмаи <F1> барои кумак; <Tab> интиқол медиҳад; <Space> интихоб мекунад; "
 "<Enter> тугмаҳоро фаъол мекунад"
 
 #. Type: text
@@ -192,9 +192,8 @@ msgstr ""
 #. Appears as a checkbox in the newt and GTK interfaces.
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
-#, fuzzy
 msgid "Show Password in Clear"
-msgstr "Паролро нодуруст ворид кардед"
+msgstr "Намоиш додани ниҳонвожаи пок"
 
 #. Type: text
 #. Description
@@ -202,7 +201,7 @@ msgstr "Паролро нодуруст ворид кардед"
 #. :sl1:
 #: ../cdebconf-gtk-udeb.templates:5001
 msgid "Help"
-msgstr "Кӯмак"
+msgstr "Кумак"
 
 #. Type: text
 #. Description
@@ -224,7 +223,7 @@ msgstr "ЧБР"
 #. :sl1:
 #: ../cdebconf-gtk-udeb.templates:7001
 msgid "Screenshot"
-msgstr "Скриншот"
+msgstr "Акси экран"
 
 #. Type: text
 #. Description
@@ -234,7 +233,7 @@ msgstr "Скриншот"
 #: ../cdebconf-gtk-udeb.templates:8001
 #, no-c-format
 msgid "Screenshot saved as %s"
-msgstr "Скриншот ҳамчун %s захира шудааст"
+msgstr "Акси экран дар макони зерин бо номи %s захира шудааст"
 
 #. Type: text
 #. Description
@@ -264,7 +263,7 @@ msgstr "'%c'"
 #. :sl4:
 #: ../cdebconf-text-udeb.templates:4001
 msgid "Display this help message"
-msgstr "Намоиш додани ин паёми кӯмак"
+msgstr "Намоиш додани ин паёми кумак"
 
 #. Type: text
 #. Description
@@ -278,7 +277,7 @@ msgstr "Бозгашт ба саволи қаблӣ"
 #. :sl4:
 #: ../cdebconf-text-udeb.templates:6001
 msgid "Select an empty entry"
-msgstr "Воридаи холиро интихоб кунед"
+msgstr "Воридаи холиро интихоб намоед"
 
 #. Type: text
 #. Description
@@ -286,7 +285,7 @@ msgstr "Воридаи холиро интихоб кунед"
 #: ../cdebconf-text-udeb.templates:7001
 #, no-c-format
 msgid "Other choices are available with '%c' and '%c'"
-msgstr ""
+msgstr "Интихоби дигар бо иловаи '%c' ва '%c’ дастрас аст"
 
 #. Type: text
 #. Description
@@ -294,7 +293,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:8001
 #, no-c-format
 msgid "Previous choices are available with '%c'"
-msgstr ""
+msgstr "Интихоби қаблӣ бо иловаи '%c’ дастрас аст"
 
 #. Type: text
 #. Description
@@ -302,7 +301,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:9001
 #, no-c-format
 msgid "Next choices are available with '%c'"
-msgstr ""
+msgstr "Интихоби навбатӣ бо иловаи '%c’ дастрас аст"
 
 #. Type: text
 #. Description
@@ -310,7 +309,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:12001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%d> "
-msgstr "Луқма: \"%c\" барои кӯмак, пешфарз=%d> "
+msgstr "Пешниҳод: \"%c\" барои кумак, пешфарз=%d> "
 
 #. Type: text
 #. Description
@@ -318,7 +317,7 @@ msgstr "Луқма: \"%c\" барои кӯмак, пешфарз=%d> "
 #: ../cdebconf-text-udeb.templates:13001
 #, no-c-format
 msgid "Prompt: '%c' for help> "
-msgstr "Луқма: \"%c\" барои кӯмак> "
+msgstr "Пешниҳод: \"%c\" барои кумак> "
 
 #. Type: text
 #. Description
@@ -326,14 +325,14 @@ msgstr "Луқма: \"%c\" барои кӯмак> "
 #: ../cdebconf-text-udeb.templates:14001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%s> "
-msgstr "Луқма: \"%c\" барои кӯмак, пешфарз=%s> "
+msgstr "Пешниҳод: \"%c\" барои кумак, пешфарз=%s> "
 
 #. Type: text
 #. Description
 #. :sl4:
 #: ../cdebconf-text-udeb.templates:15001
 msgid "[Press enter to continue]"
-msgstr "[Барои идома додан тугмаи enter-ро зер кунед]"
+msgstr "[Барои идома додан тугмаи enter-ро зер намоед]"
 
 #. Type: select
 #. Description

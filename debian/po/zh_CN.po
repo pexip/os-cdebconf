@@ -27,15 +27,16 @@
 #
 #   Mai Hao Hui <mhh@126.com>, 2001 (translations from galeon)
 # YunQiang Su <wzssyqa@gmail.com>, 2010, 2011, 2012, 2013.
+# Yangfl <mmyangfl@gmail.com>, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
 "POT-Creation-Date: 2016-06-05 14:47+0000\n"
-"PO-Revision-Date: 2014-12-01 17:17+0800\n"
-"Last-Translator: YunQiang Su <wzssyqa@gmail.com>\n"
-"Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
+"PO-Revision-Date: 2017-06-11 18:20+0800\n"
+"Last-Translator: Yangfl <mmyangfl@gmail.com>\n"
+"Language-Team:  <debian-l10n-chinese@lists.debian.org>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -181,7 +182,7 @@ msgstr "取消"
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:6001
 msgid "<Tab> moves; <Space> selects; <Enter> activates buttons"
-msgstr "<Tab> 移动; <Space> 选择; <Enter> 激活按钮"
+msgstr "<Tab> 移动; <Space> 选择; <Enter> 按下按钮"
 
 #. Type: text
 #. Description
@@ -190,16 +191,15 @@ msgstr "<Tab> 移动; <Space> 选择; <Enter> 激活按钮"
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:7001
 msgid "<F1> for help; <Tab> moves; <Space> selects; <Enter> activates buttons"
-msgstr "<F1> 寻求帮助; <Tab> 移动; <Space> 选择; <Enter> 激活按钮"
+msgstr "<F1> 寻求帮助; <Tab> 移动; <Space> 选择; <Enter> 按下按钮"
 
 #. Type: text
 #. Description
 #. Appears as a checkbox in the newt and GTK interfaces.
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
-#, fuzzy
 msgid "Show Password in Clear"
-msgstr "密码输入错误"
+msgstr "显示明文密码"
 
 #. Type: text
 #. Description
@@ -247,14 +247,14 @@ msgstr "屏幕截图已经保存为 %s"
 #: ../cdebconf-text-udeb.templates:1001
 #, no-c-format
 msgid "!! ERROR: %s"
-msgstr "!! 错误：%s"
+msgstr "[!! 错误]：%s"
 
 #. Type: text
 #. Description
 #. :sl4:
 #: ../cdebconf-text-udeb.templates:2001
 msgid "KEYSTROKES:"
-msgstr "按键："
+msgstr "[按键]："
 
 #. Type: text
 #. Description
@@ -291,7 +291,7 @@ msgstr "选择一个空条目"
 #: ../cdebconf-text-udeb.templates:7001
 #, no-c-format
 msgid "Other choices are available with '%c' and '%c'"
-msgstr ""
+msgstr "'%c' 与 '%c' 可选择其他选项"
 
 #. Type: text
 #. Description
@@ -299,7 +299,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:8001
 #, no-c-format
 msgid "Previous choices are available with '%c'"
-msgstr ""
+msgstr "'%c' 可选择上一个选项"
 
 #. Type: text
 #. Description
@@ -307,7 +307,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:9001
 #, no-c-format
 msgid "Next choices are available with '%c'"
-msgstr ""
+msgstr "'%c' 可选择下一个选项"
 
 #. Type: text
 #. Description

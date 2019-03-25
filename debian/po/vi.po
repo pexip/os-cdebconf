@@ -9,21 +9,18 @@
 # Jean Christophe André <progfou@gmail.com>
 # Vũ Quang Trung <vu.quang.trung@auf.org>
 # Trịnh Minh Thành <tmthanh@yahoo.com>
+# Nguyễn Hùng Vũ <vuhung16@bigfoot.com>, 2001.
 # Clytie Siddall <clytie@riverland.net.au>, 2005-2010
 # Hai-Nam Nguyen <hainam@jcisio.com>, 2012
-#
-# Translations from iso-codes:
-# Clytie Siddall <clytie@riverland.net.au>, 2005-2009.
-# Copyright © 2009 Free Software Foundation, Inc.
-# Nguyễn Hùng Vũ <vuhung16@bigfoot.com>, 2001.
+# Trần Ngọc Quân <vnwildman@gmail.com>, 2018, 2019.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: debian-installer Level 1\n"
+"Project-Id-Version: debian-installer sublevel1\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
 "POT-Creation-Date: 2016-06-05 14:47+0000\n"
-"PO-Revision-Date: 2015-03-05 11:15+0100\n"
-"Last-Translator: Hai-Nam Nguyen <hainam@jcisio.com>\n"
+"PO-Revision-Date: 2019-02-27 14:34+0700\n"
+"Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <debian-l10n-vietnamese@lists.debian.org>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
@@ -93,11 +90,11 @@ msgid ""
 "   the vast majority of cases."
 msgstr ""
 "Bạn có thể chọn ưu tiên thấp nhất cho câu hỏi bạn muốn xem :\n"
-" • tới hạn\t\tmục rất có thể ngắt hệ thống nếu người sử dụng\n"
-"\t\t\t\tkhông sửa.\n"
-" • cao\t\tmục không có giá trị mặc định hợp lý.\n"
-" • vừa\t\tmục chuẩn có giá trị mặc định hợp lý.\n"
-" • thấp\t\tmục không đáng kể có giá trị mặc định hoạt động\n"
+" * tới hạn\tmục rất có thể ngắt hệ thống nếu người sử dụng\n"
+"\t\t\tkhông sửa.\n"
+" * cao\t\tmục không có giá trị mặc định hợp lý.\n"
+" * vừa\t\tmục chuẩn có giá trị mặc định hợp lý.\n"
+" * thấp\t\tmục không đáng kể có giá trị mặc định hoạt động\n"
 "\t\t\t\tđược trong hầu hết trường hợp."
 
 #. Type: select
@@ -108,8 +105,8 @@ msgid ""
 "For example, this question is of medium priority, and if your priority were "
 "already 'high' or 'critical', you wouldn't see this question."
 msgstr ""
-"Chẳng hạn, câu hỏi này có ưu tiên vừa, vì thế nếu ưu tiên của bạn đã « cao » "
-"hoặc « tới hạn », bạn sẽ không xem câu hỏi này."
+"Chẳng hạn, câu hỏi này có ưu tiên vừa, vì thế nếu ưu tiên của bạn đã “cao” "
+"hoặc “tới hạn”, bạn sẽ không thấy câu hỏi này."
 
 #. Type: text
 #. Description
@@ -173,9 +170,7 @@ msgstr "Thôi"
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:6001
 msgid "<Tab> moves; <Space> selects; <Enter> activates buttons"
-msgstr ""
-"Phím <Tab> chuyển đổi giữa các mục; phím dài <Space> chọn mục; phím <Enter> "
-"kích hoạt cái nút"
+msgstr "<Tab> để di chuyển; <Space> chọn mục; <Enter> bấm nút"
 
 #. Type: text
 #. Description
@@ -184,18 +179,15 @@ msgstr ""
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:7001
 msgid "<F1> for help; <Tab> moves; <Space> selects; <Enter> activates buttons"
-msgstr ""
-"Phím chức năng <F1> hiển thị trợ giúp; phím <Tab> chuyển đổi giữa các mục; "
-"phím dài <Space> chọn mục; phím <Enter> kích hoạt cái nút"
+msgstr "<F1> trợ giúp; <Tab> để di chuyển; <Space> chọn mục; <Enter> bấm nút"
 
 #. Type: text
 #. Description
 #. Appears as a checkbox in the newt and GTK interfaces.
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
-#, fuzzy
 msgid "Show Password in Clear"
-msgstr "Lỗi nhập mật khẩu"
+msgstr "Hiển thị mật khẩu đọc được"
 
 #. Type: text
 #. Description
@@ -235,7 +227,7 @@ msgstr "Chụp ảnh"
 #: ../cdebconf-gtk-udeb.templates:8001
 #, no-c-format
 msgid "Screenshot saved as %s"
-msgstr "Ảnh chụp được lưu dạng %s"
+msgstr "Ảnh chụp được lưu thành %s"
 
 #. Type: text
 #. Description
@@ -243,14 +235,14 @@ msgstr "Ảnh chụp được lưu dạng %s"
 #: ../cdebconf-text-udeb.templates:1001
 #, no-c-format
 msgid "!! ERROR: %s"
-msgstr "!! LỖI : %s"
+msgstr "!! LỖI: %s"
 
 #. Type: text
 #. Description
 #. :sl4:
 #: ../cdebconf-text-udeb.templates:2001
 msgid "KEYSTROKES:"
-msgstr "NHẤN PHÍM :"
+msgstr "NHẤN PHÍM:"
 
 #. Type: text
 #. Description
@@ -258,7 +250,7 @@ msgstr "NHẤN PHÍM :"
 #: ../cdebconf-text-udeb.templates:3001
 #, no-c-format
 msgid "'%c'"
-msgstr "'%c'"
+msgstr "“%c”"
 
 #. Type: text
 #. Description
@@ -279,7 +271,7 @@ msgstr "Trở về câu hỏi trước"
 #. :sl4:
 #: ../cdebconf-text-udeb.templates:6001
 msgid "Select an empty entry"
-msgstr "Chọn mục nhập rỗng"
+msgstr "Chọn mục tin rỗng"
 
 #. Type: text
 #. Description
@@ -287,7 +279,7 @@ msgstr "Chọn mục nhập rỗng"
 #: ../cdebconf-text-udeb.templates:7001
 #, no-c-format
 msgid "Other choices are available with '%c' and '%c'"
-msgstr ""
+msgstr "Các lựa chọn khác sẵn có với “%c” và “%c”"
 
 #. Type: text
 #. Description
@@ -295,7 +287,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:8001
 #, no-c-format
 msgid "Previous choices are available with '%c'"
-msgstr ""
+msgstr "Các lựa chọn kế trước sẵn có với “%c”"
 
 #. Type: text
 #. Description
@@ -303,7 +295,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:9001
 #, no-c-format
 msgid "Next choices are available with '%c'"
-msgstr ""
+msgstr "Các lựa chọn kế tiếp sẵn có với “%c”"
 
 #. Type: text
 #. Description
@@ -311,7 +303,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:12001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%d> "
-msgstr "Dấu nhắc : « %c » cho trợ giúp, mặc định=%d> "
+msgstr "Dấu nhắc: “%c” cho trợ giúp, mặc định=%d> "
 
 #. Type: text
 #. Description
@@ -319,7 +311,7 @@ msgstr "Dấu nhắc : « %c » cho trợ giúp, mặc định=%d> "
 #: ../cdebconf-text-udeb.templates:13001
 #, no-c-format
 msgid "Prompt: '%c' for help> "
-msgstr "Dấu nhắc : « %c » cho trợ giúp> "
+msgstr "Dấu nhắc: “%c” cho trợ giúp> "
 
 #. Type: text
 #. Description
@@ -327,7 +319,7 @@ msgstr "Dấu nhắc : « %c » cho trợ giúp> "
 #: ../cdebconf-text-udeb.templates:14001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%s> "
-msgstr "Dấu nhắc : « %c » cho trợ giúp, mặc định=%s> "
+msgstr "Dấu nhắc: “%c” cho trợ giúp, mặc định=%s> "
 
 #. Type: text
 #. Description
@@ -366,7 +358,7 @@ msgstr "Không"
 #. :sl4:
 #: ../cdebconf.templates:2001
 msgid "'None' will never ask you any question."
-msgstr "Sẽ không hỏi lại nếu chọn 'Không'"
+msgstr "Sẽ không hỏi lại nếu chọn “Không”"
 
 #. Type: string
 #. Description
@@ -380,7 +372,7 @@ msgstr "Văn bản"
 #. :sl4:
 #: ../cdebconf.templates:3001
 msgid "'Text' is a traditional plain text interface."
-msgstr "'Văn bản' là giao diện văn bản thô truyền thống."
+msgstr "“Văn bản” là giao diện văn bản thô truyền thống."
 
 #. Type: string
 #. Description
@@ -394,7 +386,7 @@ msgstr "Newt"
 #. :sl4:
 #: ../cdebconf.templates:4001
 msgid "'Newt' is a full-screen, character based interface."
-msgstr "'Newt' là giao diện toàn màn hình chỉ dùng kí tự."
+msgstr "“Newt” là giao diện toàn màn hình chỉ dùng kí tự."
 
 #. Type: string
 #. Description

@@ -15,13 +15,14 @@
 # Y Giridhar Appaji Nag <appaji@debian.org>, 2008, 2009.
 # Krishna Babu K <kkrothap@redhat.com>, 2009.
 # Arjuna Rao Chavala <arjunaraoc@googlemail.com>, 2011, 2012.
+# Praveen Illa <mail2ipn@gmail.com>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: te\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
 "POT-Creation-Date: 2016-06-05 14:47+0000\n"
-"PO-Revision-Date: 2012-03-08 22:29+0530\n"
-"Last-Translator: Arjuna Rao Chavala <arjunaraoc@googlemail.com>\n"
+"PO-Revision-Date: 2018-07-23 06:44+0000\n"
+"Last-Translator: Praveen Illa <mail2ipn@gmail.com>\n"
 "Language-Team: d-i <kde-i18n-doc@kde.org>\n"
 "Language: te\n"
 "MIME-Version: 1.0\n"
@@ -184,9 +185,8 @@ msgstr "<F1> సహాయం కొరకు; <Tab>కదుపు; <Space> ఎ�
 #. Appears as a checkbox in the newt and GTK interfaces.
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
-#, fuzzy
 msgid "Show Password in Clear"
-msgstr "సంకేత పదం ప్రవేశపెట్టటంలో తప్పు"
+msgstr "సంకేతపదాన్ని స్పష్టంగా చూపించు"
 
 #. Type: text
 #. Description
@@ -216,7 +216,7 @@ msgstr "LTR"
 #. :sl1:
 #: ../cdebconf-gtk-udeb.templates:7001
 msgid "Screenshot"
-msgstr "ఛాయా చిత్రము"
+msgstr "తెరపట్టు"
 
 #. Type: text
 #. Description

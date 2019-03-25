@@ -7,36 +7,30 @@
 # Hebrew messages for debian-installer.
 # Copyright (C) 2003 Software in the Public Interest, Inc.
 # This file is distributed under the same license as debian-installer.
-#
-#
-#
-#
 # Translations from iso-codes:
-#     Translations taken from ICU SVN on 2007-09-09
-#   Translations from KDE:
-#
-#   Translations taken from KDE:
-#
-#
+# Translations taken from ICU SVN on 2007-09-09
+# Translations taken from KDE:
 # Amit Dovev <debian.translator@gmail.com>, 2007.
 # Meital Bourvine <meitalbourvine@gmail.com>, 2007.
 # Omer Zak <w1@zak.co.il>, 2008, 2010, 2012, 2013.
-# Lior Kaplan <kaplan@debian.org>, 2004-2007, 2008, 2010, 2011, 2015.
-#   Tobias Quathamer <toddy@debian.org>, 2007.
-#   Free Software Foundation, Inc., 2002,2004.
-#   Alastair McKinstry <mckinstry@computer.org>, 2002.
-#   Meni Livne <livne@kde.org>, 2000.
-#   Free Software Foundation, Inc., 2002,2003.
-#   - Meni Livne <livne@kde.org>, 2000.
-#   Meital Bourvine <meitalbourvine@gmail.com>, 2007.
+# Tobias Quathamer <toddy@debian.org>, 2007.
+# Free Software Foundation, Inc., 2002,2004.
+# Alastair McKinstry <mckinstry@computer.org>, 2002.
+# Meni Livne <livne@kde.org>, 2000.
+# Free Software Foundation, Inc., 2002,2003.
+# Meni Livne <livne@kde.org>, 2000.
+# Meital Bourvine <meitalbourvine@gmail.com>, 2007.
+# Lior Kaplan <kaplan@debian.org>, 2004-2007, 2008, 2010, 2011, 2015, 2017.
+# Yaron Shahrabani <sh.yaron@gmail.com>, 2018.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: debian-installer_packages_po_sublevel1_he\n"
+"Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
 "POT-Creation-Date: 2016-06-05 14:47+0000\n"
-"PO-Revision-Date: 2015-08-19 22:08+0200\n"
-"Last-Translator: Lior Kaplan <kaplan@debian.org>\n"
-"Language-Team: Hebrew <debian-hebrew-common@lists.alioth.debian.org>\n"
+"PO-Revision-Date: 2018-06-14 08:38+0000\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"Language-Team: Hebrew (https://www.transifex.com/yaron/teams/79473/he/)\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -133,7 +127,7 @@ msgstr "שינוי העדיפות של Debconf"
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:1001 ../cdebconf-gtk-udeb.templates:1001
 msgid "Continue"
-msgstr "המשך"
+msgstr "להמשיך"
 
 #. Type: text
 #. Description
@@ -141,7 +135,7 @@ msgstr "המשך"
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:2001 ../cdebconf-gtk-udeb.templates:2001
 msgid "Go Back"
-msgstr "חזרה אחורה"
+msgstr "לחזור אחורה"
 
 #. Type: text
 #. Description
@@ -173,7 +167,7 @@ msgstr "לא"
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:5001
 msgid "Cancel"
-msgstr "בטל"
+msgstr "ביטול"
 
 #. Type: text
 #. Description
@@ -182,7 +176,7 @@ msgstr "בטל"
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:6001
 msgid "<Tab> moves; <Space> selects; <Enter> activates buttons"
-msgstr "<Tab> מעביר בין עצמים; <Space> בוחר; <Enter> מפעיל את הכפתורים"
+msgstr "<Tab> מעבר בין פריטים; <Space> בחירה; <Enter> הפעלת הכפתורים"
 
 #. Type: text
 #. Description
@@ -192,16 +186,15 @@ msgstr "<Tab> מעביר בין עצמים; <Space> בוחר; <Enter> מפעיל
 #: ../cdebconf-newt-udeb.templates:7001
 msgid "<F1> for help; <Tab> moves; <Space> selects; <Enter> activates buttons"
 msgstr ""
-"<F1> לעזרה; <Tab> מעביר בין עצמים; <Space> בוחר; <Enter> מפעיל את הכפתורים"
+"<F1> לעזרה; <Tab> מעבר בין פריטים; <Space> בחירה; <Enter> הפעלת הכפתורים"
 
 #. Type: text
 #. Description
 #. Appears as a checkbox in the newt and GTK interfaces.
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
-#, fuzzy
 msgid "Show Password in Clear"
-msgstr "שגיאה בקליטת הסיסמה"
+msgstr "חשיפת הססמה"
 
 #. Type: text
 #. Description
@@ -241,7 +234,7 @@ msgstr "צילום מסך"
 #: ../cdebconf-gtk-udeb.templates:8001
 #, no-c-format
 msgid "Screenshot saved as %s"
-msgstr "צילום מסך נשמר כ-%s"
+msgstr "צילום המסך נשמר בשם %s"
 
 #. Type: text
 #. Description
@@ -264,14 +257,14 @@ msgstr "לחיצות מקשים:"
 #: ../cdebconf-text-udeb.templates:3001
 #, no-c-format
 msgid "'%c'"
-msgstr "'%c'"
+msgstr "‚%c’"
 
 #. Type: text
 #. Description
 #. :sl4:
 #: ../cdebconf-text-udeb.templates:4001
 msgid "Display this help message"
-msgstr "הצגת הודעת העזרה"
+msgstr "הצגת הודעת עזרה זו"
 
 #. Type: text
 #. Description
@@ -285,7 +278,7 @@ msgstr "חזרה לשאלה הקודמת"
 #. :sl4:
 #: ../cdebconf-text-udeb.templates:6001
 msgid "Select an empty entry"
-msgstr "בחירת כניסה ריקה"
+msgstr "בחירת רשומה ריקה"
 
 #. Type: text
 #. Description
@@ -293,7 +286,7 @@ msgstr "בחירת כניסה ריקה"
 #: ../cdebconf-text-udeb.templates:7001
 #, no-c-format
 msgid "Other choices are available with '%c' and '%c'"
-msgstr ""
+msgstr "אפשרויות אחרות זמינות עם ‚%c’ ועם ‚%c’"
 
 #. Type: text
 #. Description
@@ -301,7 +294,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:8001
 #, no-c-format
 msgid "Previous choices are available with '%c'"
-msgstr ""
+msgstr "האפשרויות הקודמות זמינות עם ‚%c’"
 
 #. Type: text
 #. Description
@@ -309,7 +302,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:9001
 #, no-c-format
 msgid "Next choices are available with '%c'"
-msgstr ""
+msgstr "האפשרויות הבאות זמינות עם ‚%c’"
 
 #. Type: text
 #. Description
@@ -317,7 +310,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:12001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%d> "
-msgstr "prompt: '%c' לעזרה, ברירת מחדל '%d'>"
+msgstr "prompt:‏ ‚%c’ לעזרה, בררת מחדל ‚%d’> "
 
 #. Type: text
 #. Description
@@ -325,7 +318,7 @@ msgstr "prompt: '%c' לעזרה, ברירת מחדל '%d'>"
 #: ../cdebconf-text-udeb.templates:13001
 #, no-c-format
 msgid "Prompt: '%c' for help> "
-msgstr "prompt: '%c' לעזרה>"
+msgstr "prompt:‏ ‚%c’ לעזרה> "
 
 #. Type: text
 #. Description
@@ -333,7 +326,7 @@ msgstr "prompt: '%c' לעזרה>"
 #: ../cdebconf-text-udeb.templates:14001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%s> "
-msgstr "prompt: '%c' לעזרה, ברירת מחדל '%s'>"
+msgstr "prompt:‏ ‚%c’ לעזרה, בררת מחדל ‚%s’> "
 
 #. Type: text
 #. Description
@@ -347,7 +340,7 @@ msgstr "[יש ללחוץ enter להמשך]"
 #. :sl4:
 #: ../cdebconf.templates:1001
 msgid "Interface to use:"
-msgstr "ממשק משתמש לשימוש:"
+msgstr "מנשק משתמש לשימוש:"
 
 #. Type: select
 #. Description
@@ -357,8 +350,8 @@ msgid ""
 "Packages that use debconf for configuration share a common look and feel. "
 "You can select the type of user interface they use."
 msgstr ""
-"חבילות, שמשתמשות ב-debconf לקונפיגורציה, דומות במראה ובהתנהגות ממשק המשתמש "
-"שלהן. תוכל לבחור את סוג ממשק המשתמש, שבו הן ישתמשו."
+"חבילות שמשתמשות ב־debconf לתצורה, דומות במראה ובהתנהגות מנשק המשתמש שלהן. "
+"ניתן לבחור את סוג מנשק המשתמש בו הן ישתמשו."
 
 #. Type: string
 #. Description
@@ -372,7 +365,7 @@ msgstr "אין"
 #. :sl4:
 #: ../cdebconf.templates:2001
 msgid "'None' will never ask you any question."
-msgstr "'אין' לעולם לא ישאל אותך שאלות."
+msgstr "‚אין’  - לא תופענה שאלות."
 
 #. Type: string
 #. Description
@@ -386,7 +379,7 @@ msgstr "טקסט"
 #. :sl4:
 #: ../cdebconf.templates:3001
 msgid "'Text' is a traditional plain text interface."
-msgstr "טקסט זה ממשק הטקסטואלי הפשוט והמסורתי."
+msgstr "‚טקסט’ הוא המנשק הטקסטואלי הפשוט והמסורתי."
 
 #. Type: string
 #. Description
@@ -400,7 +393,7 @@ msgstr "Newt"
 #. :sl4:
 #: ../cdebconf.templates:4001
 msgid "'Newt' is a full-screen, character based interface."
-msgstr "'Newt' הינו ממשק מסך מלא מבוסס על תווים."
+msgstr "'Newt' הנו מנשק מסך מלא מבוסס תווים."
 
 #. Type: string
 #. Description
@@ -415,4 +408,4 @@ msgstr "GTK"
 #: ../cdebconf.templates:5001
 msgid ""
 "'GTK' is a graphical interface that may be used in any graphical environment."
-msgstr "'GTK' הינו ממשק גרפי, שניתן להשתמש בו בסביבה גרפית כלשהי."
+msgstr "‚GTK’ הנו ממשק גרפי בו ניתן להשתמש בכל סביבה גרפית כלשהי."

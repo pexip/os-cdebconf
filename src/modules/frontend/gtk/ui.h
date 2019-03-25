@@ -60,6 +60,8 @@ void cdebconf_gtk_empty_target_box(struct frontend * fe);
 
 gint cdebconf_gtk_get_text_width(GtkWidget * widget, gchar * text);
 
+void cdebconf_gtk_callback_widget_destroy(GtkWidget *widget, gpointer data);
+
 #endif /* !_UI_H_ */
 
 /* vim: et sw=4 si

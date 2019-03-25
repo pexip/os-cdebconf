@@ -16,7 +16,9 @@
 # * I Gede Wijaya S (gwijayas@yahoo.com), 2004.
 # * Arief S F (arief@gurame.fisika.ui.ac.id), 2004-2007.
 # * Setyo Nugroho (setyo@gmx.net), 2004.
-# Arief S Fitrianto <arief@gurame.fisika.ui.ac.id>, 2008-2011.
+# * Arief S Fitrianto <arief@gurame.fisika.ui.ac.id>, 2008-2011.
+# * Al Qalit <qal.smith@gmail.com>, 2018.
+# * Andika Triwidada <andika@gmail.com>, 2018.
 #
 # Translations from iso-codes:
 #   Alastair McKinstry <mckinstry@computer.org>, 2002.
@@ -32,15 +34,16 @@ msgstr ""
 "Project-Id-Version: debian-installer (level1)\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
 "POT-Creation-Date: 2016-06-05 14:47+0000\n"
-"PO-Revision-Date: 2012-10-18 21:29+0700\n"
-"Last-Translator: T. Surya Fajri <kilelme@gmail.com>\n"
+"PO-Revision-Date: 2019-03-11 16:03+0000\n"
+"Last-Translator: Muhammad Rifqi Priyo Susanto "
+"<muhammadrifqipriyosusanto@gmail.com>\n"
 "Language-Team: Debian Indonesia Translators <debian-l10n-indonesian@lists."
 "debian.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #. Type: select
 #. Choices
@@ -205,9 +208,8 @@ msgstr ""
 #. Appears as a checkbox in the newt and GTK interfaces.
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
-#, fuzzy
 msgid "Show Password in Clear"
-msgstr "Salah memasukkan kata sandi"
+msgstr "Tampilkan Kata Sandi Polos"
 
 #. Type: text
 #. Description
@@ -255,7 +257,7 @@ msgstr "Cuplikan layar disimpan sebagai %s"
 #: ../cdebconf-text-udeb.templates:1001
 #, no-c-format
 msgid "!! ERROR: %s"
-msgstr "!! KESALAHAN: %s"
+msgstr "!! GALAT: %s"
 
 #. Type: text
 #. Description
@@ -299,7 +301,7 @@ msgstr "Pilih sebuah entri kosong"
 #: ../cdebconf-text-udeb.templates:7001
 #, no-c-format
 msgid "Other choices are available with '%c' and '%c'"
-msgstr ""
+msgstr "Pilihan lainnya tersedia dengan '%c' dan '%c'"
 
 #. Type: text
 #. Description
@@ -307,7 +309,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:8001
 #, no-c-format
 msgid "Previous choices are available with '%c'"
-msgstr ""
+msgstr "Pilihan sebelumnya tersedia dengan '%c'"
 
 #. Type: text
 #. Description
@@ -315,7 +317,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:9001
 #, no-c-format
 msgid "Next choices are available with '%c'"
-msgstr ""
+msgstr "Pilihan selanjutnya tersedia dengan '%c'"
 
 #. Type: text
 #. Description
@@ -323,7 +325,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:12001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%d> "
-msgstr "Prompt: '%c' untuk petunjuk, standar=%d> "
+msgstr "Prompt: '%c' untuk petunjuk, bawaan=%d> "
 
 #. Type: text
 #. Description
@@ -339,21 +341,21 @@ msgstr "Prompt: '%c' untuk petunjuk> "
 #: ../cdebconf-text-udeb.templates:14001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%s> "
-msgstr "Prompt: '%c' untuk petunjuk, standar=%s> "
+msgstr "Prompt: '%c' untuk petunjuk, bawaan=%s> "
 
 #. Type: text
 #. Description
 #. :sl4:
 #: ../cdebconf-text-udeb.templates:15001
 msgid "[Press enter to continue]"
-msgstr "[Tekan ENTER untuk meneruskan]"
+msgstr "[Tekan enter untuk melanjutkan]"
 
 #. Type: select
 #. Description
 #. :sl4:
 #: ../cdebconf.templates:1001
 msgid "Interface to use:"
-msgstr "Antarmuka yang dipakai: "
+msgstr "Antarmuka yang dipakai:"
 
 #. Type: select
 #. Description
@@ -363,22 +365,22 @@ msgid ""
 "Packages that use debconf for configuration share a common look and feel. "
 "You can select the type of user interface they use."
 msgstr ""
-"Paket-paket yang dikonfigurasi lewat debconf memakai antar muka yang "
-"seragam. Anda dapat memilih jenis antarmuka pengguna yang dipakai."
+"Paket-paket yang diatur lewat debconf memakai antarmuka yang seragam. Anda "
+"dapat memilih jenis antarmuka pengguna yang dipakai."
 
 #. Type: string
 #. Description
 #. :sl4:
 #: ../cdebconf.templates:2001
 msgid "None"
-msgstr "Tak Ada"
+msgstr "Tidak ada"
 
 #. Type: string
 #. Description
 #. :sl4:
 #: ../cdebconf.templates:2001
 msgid "'None' will never ask you any question."
-msgstr "`Tak Ada' yang akan bertanya."
+msgstr "\"Tidak ada\" tidak akan menanyai Anda."
 
 #. Type: string
 #. Description
@@ -392,7 +394,7 @@ msgstr "Teks"
 #. :sl4:
 #: ../cdebconf.templates:3001
 msgid "'Text' is a traditional plain text interface."
-msgstr "'Teks' merupakan antarmuka teks tradisional."
+msgstr "\"Teks\" adalah antarmuka teks tradisional."
 
 #. Type: string
 #. Description
@@ -406,7 +408,7 @@ msgstr "Newt"
 #. :sl4:
 #: ../cdebconf.templates:4001
 msgid "'Newt' is a full-screen, character based interface."
-msgstr "'Newt' merupakan antarmuka layar berbasis karakter."
+msgstr "\"Newt\" adalah antarmuka layar penuh berbasis karakter."
 
 #. Type: string
 #. Description
@@ -422,5 +424,4 @@ msgstr "GTK"
 msgid ""
 "'GTK' is a graphical interface that may be used in any graphical environment."
 msgstr ""
-"'GTK' merupakan antarmuka grafis yang dapat digunakan dalam lingkungan "
-"grafis."
+"\"GTK\" adalah antarmuka grafis yang dapat digunakan dalam lingkungan grafis."

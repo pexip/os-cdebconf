@@ -16,14 +16,15 @@
 # Marce Villarino <mvillarino@users.sourceforge.net>, 2009.
 # marce villarino <mvillarino@users.sourceforge.net>, 2009.
 # Marce Villarino <mvillarino@gmail.com>, 2009.
-# Jorge Barreiro <xurxo@findomundo.es>, 2010, 2011, 2012, 2013, 2014, 2015.
+# Jorge Barreiro <xurxo@findomundo.es>, 2010, 2011, 2012, 2013, 2014, 2015, 2017.
+# mantinan <github@manty.net>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
 "POT-Creation-Date: 2016-06-05 14:47+0000\n"
-"PO-Revision-Date: 2015-03-14 19:44+0100\n"
-"Last-Translator: Jorge Barreiro <xurxo@findomundo.es>\n"
+"PO-Revision-Date: 2018-09-18 21:24+0000\n"
+"Last-Translator: mantinan <github@manty.net>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
@@ -190,9 +191,8 @@ msgstr "<F1> axuda; <Tab> move; <Space> escolle; <Enter> activa botóns"
 #. Appears as a checkbox in the newt and GTK interfaces.
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
-#, fuzzy
 msgid "Show Password in Clear"
-msgstr "Erro na introdución do contrasinal"
+msgstr "Mostrar o contrasinal en claro"
 
 #. Type: text
 #. Description
@@ -284,7 +284,7 @@ msgstr "Escoller unha entrada baleira"
 #: ../cdebconf-text-udeb.templates:7001
 #, no-c-format
 msgid "Other choices are available with '%c' and '%c'"
-msgstr ""
+msgstr "Hai outras opcións dispoñíbeis con «%c» e «%c»"
 
 #. Type: text
 #. Description
@@ -292,7 +292,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:8001
 #, no-c-format
 msgid "Previous choices are available with '%c'"
-msgstr ""
+msgstr "As opcións anteriores están dispoñíbeis con '%c'"
 
 #. Type: text
 #. Description
@@ -300,7 +300,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:9001
 #, no-c-format
 msgid "Next choices are available with '%c'"
-msgstr ""
+msgstr "As opcións seguintes están dispoñíbeis con «%c»"
 
 #. Type: text
 #. Description

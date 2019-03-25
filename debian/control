@@ -9,8 +9,8 @@ Build-Depends:
  libtextwrap-dev (>= 0.1-5),
  libdebian-installer4-dev (>= 0.41) | libdebian-installer-dev,
  libglib2.0-dev (>= 2.31),
- libgtk2.0-dev (>= 2.24),
- libcairo2-dev (>= 1.8.10-3),
+ libgtk2.0-dev (>= 2.24) <!pkg.cdebconf.nogtk>,
+ libcairo2-dev (>= 1.8.10-3) <!pkg.cdebconf.nogtk>,
  libselinux1-dev (>= 2.3) [linux-any] | libselinux-dev [linux-any],
  dh-autoreconf,
  dh-exec,
@@ -18,18 +18,17 @@ Maintainer: Debian Install System Team <debian-boot@lists.debian.org>
 Uploaders:
  Colin Watson <cjwatson@debian.org>,
  Christian Perrier <bubulle@debian.org>,
- Regis Boudin <regis@debian.org>,
  Cyril Brulebois <kibi@debian.org>
 Standards-Version: 3.9.7
-Vcs-Browser: https://anonscm.debian.org/cgit/d-i/cdebconf.git
-Vcs-Git: https://anonscm.debian.org/git/d-i/cdebconf.git
+Vcs-Browser: https://salsa.debian.org/installer-team/cdebconf
+Vcs-Git: https://salsa.debian.org/installer-team/cdebconf.git
 
 Package: cdebconf
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, debconf, dpkg (>= 1.15.4)
 Provides: debconf-2.0
 Suggests: cdebconf-gtk
-Priority: extra
+Priority: optional
 Description: Debian Configuration Management System (C-implementation)
  Debconf is a configuration management system for Debian packages. It is
  used by some packages to prompt you for information before they are
@@ -41,7 +40,8 @@ Architecture: any
 Section: admin
 Depends: cdebconf, ${shlibs:Depends}, ${misc:Depends}
 Replaces: cdebconf (<< 0.144)
-Priority: extra
+Priority: optional
+Build-Profiles: <!pkg.cdebconf.nogtk>
 Description: Gtk+ frontend for Debian Configuration Management System
  Debconf is a configuration management system for Debian packages. It is
  used by some packages to prompt you for information before they are
@@ -151,6 +151,7 @@ Architecture: any
 Section: debian-installer
 Depends: cdebconf-udeb, ${shlibs:Depends}, ${misc:Depends}, rootskel-gtk [!s390 !s390x]
 Package-Type: udeb
+Build-Profiles: <!pkg.cdebconf.nogtk>
 Description: Gtk+ frontend for Debian Configuration Management System
  Debconf is a configuration management system for Debian packages. It is
  used by some packages to prompt you for information before they are
