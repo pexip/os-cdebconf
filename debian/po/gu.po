@@ -191,9 +191,8 @@ msgstr "<F1> મદદ માટે; <Tab> ખસેડો; <Space> પસંદ
 #. Appears as a checkbox in the newt and GTK interfaces.
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
-#, fuzzy
 msgid "Show Password in Clear"
-msgstr "પાસવર્ડ દાખલ કરવામાં ક્ષતિ"
+msgstr "પાસવર્ડ સ્પષ્ટ રીતે દર્શાવો"
 
 #. Type: text
 #. Description

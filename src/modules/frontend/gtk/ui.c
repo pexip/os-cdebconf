@@ -681,7 +681,7 @@ void cdebconf_gtk_empty_target_box(struct frontend * fe)
     struct frontend_data * fe_data = fe->data;
 
     gtk_container_forall(GTK_CONTAINER(fe_data->target_box),
-                         (GtkCallback) gtk_widget_destroy, NULL /* no data */);
+                         cdebconf_gtk_callback_widget_destroy, NULL /* no data */);
 }
 
 /** Returns the width (in pango units) of the given text.
@@ -700,6 +700,12 @@ gint cdebconf_gtk_get_text_width(GtkWidget * widget, gchar * text)
     g_object_unref(layout);
 
     return width;
+}
+
+/** GtkCallback wrapper for gtk_widget_destroy */
+void cdebconf_gtk_callback_widget_destroy(GtkWidget *widget, gpointer data)
+{
+    gtk_widget_destroy(widget);
 }
 
 /* vim: et sw=4 si

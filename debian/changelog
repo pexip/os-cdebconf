@@ -1,3 +1,216 @@
+cdebconf (0.249) unstable; urgency=medium
+  * Team upload.
+
+  [ Updated translations ]
+  * Indonesian (id.po) by Muhammad Rifqi Priyo Susanto
+
+ -- Holger Wansing <hwansing@mailbox.org>  Mon, 25 Mar 2019 20:47:50 +0100
+
+cdebconf (0.248) unstable; urgency=medium
+
+  * Disable paging in text frontend for now, espeakup does not pronounce the
+    keys to change pages (see #690343) and thus users are confounded and think
+    these are the only choices.
+
+ -- Samuel Thibault <sthibault@debian.org>  Fri, 01 Mar 2019 19:00:17 -0800
+
+cdebconf (0.247) unstable; urgency=medium
+  * Team upload.
+
+  * Remove Regis Boudin from Uploaders, as requested by the MIA team. 
+    (Closes: #891316)
+
+  [ Updated translations ]
+  * German (de.po) by Holger Wansing
+  * Persian (fa.po) by nima sahraneshin
+
+ -- Holger Wansing <hwansing@mailbox.org>  Sat, 09 Feb 2019 17:26:54 +0100
+
+cdebconf (0.246) unstable; urgency=medium
+  * Team upload.
+
+  [ Samuel Thibault ]
+  * Notify gtk-font-set of the zoom factor
+
+  [ Colin Watson ]
+  * Use /usr/share/dpkg/architecture.mk rather than setting DEB_HOST_ARCH
+    and DEB_HOST_ARCH_OS directly.
+
+  [ Holger Wansing ]
+  * Remove trailing whitespaces from changelog file, to fix lintian tag.
+
+  [ Updated translations ]
+  * Arabic (ar.po) by ButterflyOfFire
+  * Asturian (ast.po) by Xuacu Saturio
+  * Finnish (fi.po) by Juhani Numminen
+  * Latvian (lv.po) by Tranzistors
+  * Marathi (mr.po) by Nayan Nakhare
+
+ -- Holger Wansing <hwansing@mailbox.org>  Sun, 23 Dec 2018 18:39:22 +0100
+
+cdebconf (0.245) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Holger Wansing ]
+  * Change deprecated Priority: extra into optional.
+
+  [ Updated translations ]
+  * Galician (gl.po) by mantinan
+  * Hindi (hi.po) by Himanshu Awasthi
+  * Telugu (te.po) by Praveen Illa
+
+ -- Holger Wansing <hwansing@mailbox.org>  Wed, 26 Sep 2018 22:04:21 +0200
+
+cdebconf (0.244) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Cyril Brulebois ]
+  * Update Vcs-{Browser,Git} to point to salsa (alioth's replacement).
+
+  [ Julien Cristau ]
+  * Drop dh_testroot from clean target.
+  * Fix build failure in the gtk frontend with GCC 8 (closes: #897718).
+
+  [ Updated translations ]
+  * Arabic (ar.po) by ButterflyOfFire
+  * Finnish (fi.po)
+  * Hebrew (he.po) by Yaron Shahrabani
+  * Kannada (kn.po) by Prabodh C P (FSMK Localisation Team)
+
+ -- Julien Cristau <jcristau@debian.org>  Tue, 24 Jul 2018 11:50:24 +0200
+
+cdebconf (0.243) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Karsten Merker ]
+  * Add support for a pkg.cdebconf.nogtk build-profile that allows
+    building a subset of cdebconf's binary packages without requiring
+    gtk and cairo. (Closes: #893300)
+
+ -- Karsten Merker <merker@debian.org>  Mon, 26 Mar 2018 23:48:46 +0200
+
+cdebconf (0.242) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Welsh (cy.po) by Huw Waters
+  * Hebrew (he.po) by Yaron Shahrabani
+  * Indonesian (id.po) by Andika Triwidada
+
+ -- Christian Perrier <bubulle@debian.org>  Fri, 23 Mar 2018 06:38:05 +0100
+
+cdebconf (0.241) unstable; urgency=medium
+
+  [ Updated translations ]
+  * German (de.po) by Holger Wansing
+  * Tajik (tg.po) by Victor Ibragimov
+
+ -- Christian Perrier <bubulle@debian.org>  Mon, 12 Feb 2018 06:41:42 +0100
+
+cdebconf (0.240) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Tajik (tg.po) by Victor Ibragimov
+
+ -- Christian Perrier <bubulle@debian.org>  Wed, 07 Feb 2018 07:08:56 +0100
+
+cdebconf (0.239) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Persian (fa.po) by nima sahraneshin
+  * Indonesian (id.po) by Al Qalit
+  * Tajik (tg.po) by Victor Ibragimov
+
+ -- Christian Perrier <bubulle@debian.org>  Wed, 31 Jan 2018 06:39:54 +0100
+
+cdebconf (0.238) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Panjabi (pa.po) by Aman ALam
+
+ -- Christian Perrier <bubulle@debian.org>  Fri, 12 Jan 2018 07:15:22 +0100
+
+cdebconf (0.237) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Esperanto (eo.po) by Felipe Castro
+  * Nepali (ne.po) by Jeewal Kunwar
+
+ -- Christian Perrier <bubulle@debian.org>  Sat, 23 Dec 2017 08:00:38 +0100
+
+cdebconf (0.236) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Esperanto (eo.po) by Felipe Castro
+  * Swedish (sv.po) by Anders Jonsson
+
+ -- Christian Perrier <bubulle@debian.org>  Fri, 08 Dec 2017 07:18:11 +0100
+
+cdebconf (0.235) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Lithuanian (lt.po) by Rimas Kudelis
+  * Norwegian Nynorsk (nn.po) by Allan Nordhøy
+
+ -- Christian Perrier <bubulle@debian.org>  Mon, 27 Nov 2017 08:02:28 +0100
+
+cdebconf (0.234) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Greek (el.po) by Sotirios Vrachas
+  * Estonian (et.po) by Kristjan Räts
+  * Swedish (sv.po) by Anders Jonsson
+
+ -- Christian Perrier <bubulle@debian.org>  Wed, 22 Nov 2017 08:13:58 +0100
+
+cdebconf (0.233) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Panjabi (pa.po) by A S Alam
+
+ -- Christian Perrier <bubulle@debian.org>  Tue, 31 Oct 2017 08:02:59 +0100
+
+cdebconf (0.232) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Slovenian (sl.po) by Vanja Cvelbar
+
+ -- Christian Perrier <bubulle@debian.org>  Tue, 17 Oct 2017 07:28:27 +0200
+
+cdebconf (0.231) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Latvian (lv.po) by Rūdolfs Mazurs
+
+ -- Christian Perrier <bubulle@debian.org>  Fri, 13 Oct 2017 06:41:18 +0200
+
+cdebconf (0.230) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Greek (el.po) by Sotirios Vrachas
+  * Hebrew (he.po) by Lior Kaplan
+  * Albanian (sq.po) by Silva Arapi
+
+ -- Christian Perrier <bubulle@debian.org>  Wed, 13 Sep 2017 06:22:00 +0200
+
+cdebconf (0.229) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Bokmål, Norwegian (nb.po) by Petter Reinholdtsen
+
+ -- Christian Perrier <bubulle@debian.org>  Mon, 03 Jul 2017 08:13:42 +0200
+
+cdebconf (0.228) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Galician (gl.po) by Jorge Barreiro
+  * Simplified Chinese (zh_CN.po) by Yangfl
+  * Traditional Chinese (zh_TW.po) by Yao Wei (魏銘廷)
+
+ -- Christian Perrier <bubulle@debian.org>  Tue, 20 Jun 2017 10:52:33 +0200
+
 cdebconf (0.227pexip1) pexip; urgency=medium
 
   * Migrate to Stretch
@@ -364,10 +577,10 @@ cdebconf (0.185) unstable; urgency=low
 
   * Drop useless shlibs.local file. Thanks to Sven Joachim
     for pointing this. Closes: #720972
- 
+
   [ Updated translations ]
   * Tajik (tg.po) by Victor Ibragimov
- 
+
  -- Christian Perrier <bubulle@debian.org>  Fri, 30 Aug 2013 07:12:16 +0200
 
 cdebconf (0.184) unstable; urgency=low
@@ -564,7 +777,7 @@ cdebconf (0.171) unstable; urgency=low
 cdebconf (0.170) unstable; urgency=low
 
   * Team upload
-  
+
   [ Updated translations]
   * Malayalam (ml.po) by Praveen Arimbrathodiyil
 
@@ -1254,7 +1467,7 @@ cdebconf (0.132) unstable; urgency=low
     not is really better. But this doesn't need huge changes to cdebconf.
   * Handle the special case of a noninteractive select with no (or a bad)
     default the same as debconf does; when such a question is asked,
-    set the value to the first item in the select list. 
+    set the value to the first item in the select list.
     Closes: #486892, #247744
 
   [ Frans Pop ]
@@ -1278,7 +1491,7 @@ cdebconf (0.131) unstable; urgency=low
 
   [ Max Vozeler ]
   * Fix *_can_align() function signatures to match the prototype.
-  * Adapt ncurses, slang and bogl frontends to API changes made in 
+  * Adapt ncurses, slang and bogl frontends to API changes made in
     cdebconf 0.129 - q_get_*() and question_get_value().
 
   [ Jérémy Bobbio ]
@@ -2372,7 +2585,7 @@ cdebconf (0.82) unstable; urgency=low
   * Perform printf format string (requires gcc) and sentinel (requires gcc
     >= 4) checking on various function arguments.
 
-  * Updated translations: 
+  * Updated translations:
     - Bulgarian (bg.po) by Ognyan Kulev
     - Czech (cs.po) by Miroslav Kure
     - Danish (da.po) by Claus Hindsgaul
@@ -2636,7 +2849,7 @@ cdebconf (0.72) unstable; urgency=low
       + Drop the old back/continue buttons entirely, as they only appear
         sometimes and having both them and the druid-style buttons is very
         confusing. Fix sensitivity of druid-style buttons.
-  * Updated translations: 
+  * Updated translations:
     - Welsh (cy.po) by Dafydd Harries
     - Hebrew (he.po) by Lior Kaplan
     - Hungarian (hu.po) by VEROK Istvan
@@ -2772,7 +2985,7 @@ cdebconf (0.64) unstable; urgency=low
 
 cdebconf (0.63) unstable; urgency=low
 
-  * Updated translations: 
+  * Updated translations:
     - Bulgarian (bg.po) by Ognyan Kulev
     - Bokmal, Norwegian (nb.po) by Bjørn Steensrud
     - Norwegian Nynorsk (nn.po) by Håvard Korsvoll
@@ -2782,7 +2995,7 @@ cdebconf (0.63) unstable; urgency=low
 
 cdebconf (0.62) unstable; urgency=low
 
-  * Updated translations: 
+  * Updated translations:
     - Finnish (fi.po) by Tapio Lehtonen
     - Hebrew (he.po) by Lior Kaplan
     - Indonesian (id.po) by Parlin Imanuel Toh
@@ -2796,7 +3009,7 @@ cdebconf (0.61) unstable; urgency=low
   * Martin Sjögren
     - newt.c: Make sure we don't call NewtFinished if there's an active
       progress bar. Closes: #242976
-  * Updated translations: 
+  * Updated translations:
     - Catalan (ca.po) by Jordi Mallach
     - Gallegan (gl.po) by Héctor Fernández López
     - Italian (it.po) by Davide Viti
@@ -2826,7 +3039,7 @@ cdebconf (0.60) unstable; urgency=low
       from source files.
     - Rebuild cdebconf-text-udeb.templates to include strings added
       recently to the text frontend.
-  * Updated translations: 
+  * Updated translations:
     - Czech (cs.po) by Miroslav Kure
     - Danish (da.po) by Claus Hindsgaul
     - German (de.po) by Dennis Stampfer
@@ -2890,7 +3103,7 @@ cdebconf (0.58) unstable; urgency=low
   * Bastian Blank
     - Fix recognition of return in note.
     - Reorganize fd dups to properly handle closed stdin/-out.
-  * Updated translations: 
+  * Updated translations:
     - Bulgarian (bg.po) by Ognyan Kulev
     - Bosnian (bs.po) by Safir Šećerović
     - Catalan (ca.po) by Jordi Mallach
@@ -3354,7 +3567,7 @@ cdebconf (0.43) unstable; urgency=low
       titles. (Closes: #212923)
 
  -- Petter Reinholdtsen <pere@debian.org>  Sat, 27 Sep 2003 12:59:16 +0200
- 
+
 cdebconf (0.42) unstable; urgency=low
 
   * Sebastian Ley
@@ -3562,7 +3775,7 @@ cdebconf (0.31) unstable; urgency=low
   * Max Kosmach <max@tcen.ru>: initial russian translation
   * Denis Barbier
     - With the slang frontend, cursor must skip <Cancel> button even
-      when it is not displayed.  (Closes: #180299) 
+      when it is not displayed.  (Closes: #180299)
   * Thorsten Sauter
     - Added basic progress bar support fo shellscripts (Closes: #181083).
   * Martin Sjögren
@@ -3649,7 +3862,7 @@ cdebconf (0.27) unstable; urgency=low
     - use question_getvalue(...) not q->value.
     - check for value == NULL within command_get and command_metaget.
     - use default language for metaget.
-    - add STRDUP_NOTNULL with the old behaviour of STRDUP. the client 
+    - add STRDUP_NOTNULL with the old behaviour of STRDUP. the client
       doesn't expect a value of NULL.
     - add myself to Uploaders.
   * Denis Barbier:
@@ -3770,7 +3983,7 @@ cdebconf (0.21) unstable; urgency=low
 
   * walters: Make DEB_BUILD_OPTIONS=debug,nostrip work.
   * walters & tausq: Fix reference counting in textdb.
-  * tfheen: 
+  * tfheen:
       - fix various possible segfaults and off-by-one errors.
       - rewrite rfc822db.  again.  this time using tsearch and
         friends.
@@ -3797,7 +4010,7 @@ cdebconf (0.20) unstable; urgency=low
   * make /usr/bin/debconf cmd-line compatible with debconf
   * install dpkg-[p]reconfigure in standard places
   * rewrote database interfaces to be more consistent
-    with debconf; changed configuration file format to 
+    with debconf; changed configuration file format to
     support multiple database instances; fixed some bugs
     and introduced some new ones :-)
   * rename debconf-convertdb to debconf-copydb to be
@@ -3850,13 +4063,13 @@ cdebconf (0.10-7) unstable; urgency=medium
 
 cdebconf (0.10-6) unstable; urgency=low
 
-  * Don't ship convertdb binary in the udeb (closes: #116206) 
+  * Don't ship convertdb binary in the udeb (closes: #116206)
 
  -- Randolph Chung <tausq@debian.org>  Sun, 21 Oct 2001 22:07:21 -0700
 
 cdebconf (0.10-5) unstable; urgency=low
 
-  * provide shlibs (closes: #83096) 
+  * provide shlibs (closes: #83096)
   * rename conffile to cdebconf.conf
   * remove need for user-interaction in postinst
 

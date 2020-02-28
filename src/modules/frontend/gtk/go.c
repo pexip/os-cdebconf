@@ -306,7 +306,7 @@ static void destroy_buttons(struct frontend * fe)
     struct frontend_data * fe_data = fe->data;
     GtkContainer * action_box = GTK_CONTAINER(fe_data->action_box);
 
-    gtk_container_foreach(action_box, (GtkCallback) gtk_widget_destroy,
+    gtk_container_foreach(action_box, cdebconf_gtk_callback_widget_destroy,
                           NULL /* no user_data */);
 }
 

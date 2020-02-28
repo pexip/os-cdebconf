@@ -166,6 +166,9 @@ static void di_change_font_size(struct frontend *fe, float factor)
     char *size_s, *end;
     char *sed;
     long size, newsize;
+    FILE *zoom;
+    const char *zoom_path = "/var/lib/cdebconf/zoom";
+    unsigned old_factor;
 
     gsettings = gtk_settings_get_default ();
     g_object_get(gsettings, "gtk-font-name", &font_name, NULL);
@@ -192,6 +195,21 @@ static void di_change_font_size(struct frontend *fe, float factor)
     }
     if (newsize <= 0)
         newsize = 1;
+
+    zoom = fopen(zoom_path, "r");
+    if (!zoom)
+        old_factor = 100;
+    else {
+        if (fscanf(zoom, "%u", &old_factor) != 1)
+            old_factor = 100;
+        fclose(zoom);
+    }
+
+    zoom = fopen(zoom_path, "w");
+    if (!zoom)
+        return;
+    fprintf(zoom, "%u\n", (unsigned) (old_factor * factor));
+    fclose(zoom);
 
     asprintf(&sed, "sed -i 's/^gtk-font-name.*$/gtk-font-name = \"%.*s%d%s\"/' "
             "/etc/gtk-2.0/gtkrc",

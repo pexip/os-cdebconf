@@ -393,7 +393,11 @@ printlist (struct frontend *obj, unsigned max_lines, unsigned start, struct ques
 		}
 	}
 
-	if (max_lines >= num_lines - start)
+        /* Disable paging in text frontend for now, espeakup does not pronounce
+         * the keys to change pages (see #690343) and thus users are confounded
+         * and think these are the only choices. */
+	/*if (max_lines >= num_lines - start)*/
+	if (1)
 	{
 		/* More than enough room */
 		max_lines = num_lines - start;

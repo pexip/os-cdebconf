@@ -508,6 +508,11 @@ static void update_model_from_toggle_button(
     }
 }
 
+static void closure_gtk_tree_row_reference_free(GtkTreeRowReference *row_reference,
+                                                GClosure *closure) {
+    gtk_tree_row_reference_free(row_reference);
+}
+
 /** Connect a signal to an object for a specific row in the model.
  *
  * @param object object which will be connected
@@ -528,7 +533,7 @@ static gulong connect_signal_to_row(GObject * object, const gchar * signal,
     row_reference = gtk_tree_row_reference_new(model, path);
     gtk_tree_path_free(path);
     return g_signal_connect_data(object, "toggled", handler, row_reference,
-                                 (GClosureNotify) gtk_tree_row_reference_free,
+                                 (GClosureNotify) closure_gtk_tree_row_reference_free,
                                  0 /* no connect options */);
 }
 

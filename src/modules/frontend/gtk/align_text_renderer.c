@@ -47,7 +47,8 @@ enum {
 
 static gpointer cdebconf_gtk_align_text_renderer_parent_class;
 
-static void cdebconf_gtk_align_text_renderer_init(AlignTextRenderer * renderer)
+static void cdebconf_gtk_align_text_renderer_init(AlignTextRenderer * renderer,
+                                                  gpointer klass)
 {
     gtk_cell_renderer_set_alignment(GTK_CELL_RENDERER(renderer), 0.0, 0.5);
     gtk_cell_renderer_set_padding(GTK_CELL_RENDERER(renderer), 2, 2);
@@ -332,7 +333,8 @@ static void align_text_renderer_render(
 }
 
 static void cdebconf_gtk_align_text_renderer_class_init(
-    AlignTextRendererClass * klass)
+    AlignTextRendererClass * klass,
+    gpointer class_data)
 {
     GObjectClass * object_class = G_OBJECT_CLASS(klass);
     GtkCellRendererClass * cell_class = GTK_CELL_RENDERER_CLASS(klass);

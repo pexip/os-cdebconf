@@ -9,7 +9,7 @@
 #
 # Samuel Gimeno <sgimeno@gmail.com>, 2005.
 # Serge Leblanc <serge.leblanc@wanadoo.fr>, 2005, 2006, 2007.
-# Felipe Castro <fefcas@gmail.com>, 2008, 2009, 2010, 2011, 2012, 2013, 2014.
+# Felipe Castro <fefcas@gmail.com>, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2017.
 #
 # Translations from iso-codes:
 # Alastair McKInstry <mckinstry@computer.org>, 2001,2002.
@@ -22,13 +22,14 @@ msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
 "POT-Creation-Date: 2016-06-05 14:47+0000\n"
-"PO-Revision-Date: 2014-12-07 15:01-0300\n"
+"PO-Revision-Date: 2017-12-22 19:55+0000\n"
 "Last-Translator: Felipe Castro <fefcas@gmail.com>\n"
 "Language-Team: Esperanto <debian-l10n-esperanto@lists.debian.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #. Type: select
 #. Choices
@@ -189,9 +190,8 @@ msgstr ""
 #. Appears as a checkbox in the newt and GTK interfaces.
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
-#, fuzzy
 msgid "Show Password in Clear"
-msgstr "Mistajpita pasvorto"
+msgstr "Klare montri la pasvorton"
 
 #. Type: text
 #. Description
@@ -283,7 +283,7 @@ msgstr "Elektu malplenan registrokampon"
 #: ../cdebconf-text-udeb.templates:7001
 #, no-c-format
 msgid "Other choices are available with '%c' and '%c'"
-msgstr ""
+msgstr "Aliaj elektoj disponeblas per '%c' kaj '%c'"
 
 #. Type: text
 #. Description
@@ -291,7 +291,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:8001
 #, no-c-format
 msgid "Previous choices are available with '%c'"
-msgstr ""
+msgstr "Antaŭaj elektoj disponeblas per '%c'"
 
 #. Type: text
 #. Description
@@ -299,7 +299,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:9001
 #, no-c-format
 msgid "Next choices are available with '%c'"
-msgstr ""
+msgstr "Sekvaj elektoj disponeblas per '%c'"
 
 #. Type: text
 #. Description
@@ -383,7 +383,7 @@ msgstr "'Teksto' estas tradicia plata teksta interfaco."
 #. :sl4:
 #: ../cdebconf.templates:4001
 msgid "Newt"
-msgstr "Newt"
+msgstr "'Newt'"
 
 #. Type: string
 #. Description

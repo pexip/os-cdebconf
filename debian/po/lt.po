@@ -19,21 +19,21 @@
 # Gediminas Paulauskas <menesis@delfi.lt>, 2000-2001.
 # Alastair McKinstry <mckinstry@computer.org>, 2001,2002.
 # Kęstutis Biliūnas <kebil@kaunas.init.lt>, 2004, 2006, 2008, 2009, 2010.
-# Rimas Kudelis <rq@akl.lt>, 2012.
+# Rimas Kudelis <rq@akl.lt>, 2012, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
 "POT-Creation-Date: 2016-06-05 14:47+0000\n"
-"PO-Revision-Date: 2012-08-26 02:00+0300\n"
+"PO-Revision-Date: 2017-11-26 20:23+0000\n"
 "Last-Translator: Rimas Kudelis <rq@akl.lt>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
-"%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 0 : n%10>=2 && (n%100<10 || n"
+"%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3;\n"
 
 #. Type: select
 #. Choices
@@ -180,7 +180,8 @@ msgstr "Atsisakyti"
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:6001
 msgid "<Tab> moves; <Space> selects; <Enter> activates buttons"
-msgstr "<Tab> judėti tarp įrašų; <Space> pasirinkti; <Enter> vykdymo klavišas"
+msgstr ""
+"<Tab> judėti tarp įrašų; <Tarpas> pasirinkti; <Įvesti> aktyvinti mygtuką"
 
 #. Type: text
 #. Description
@@ -190,17 +191,16 @@ msgstr "<Tab> judėti tarp įrašų; <Space> pasirinkti; <Enter> vykdymo klaviš
 #: ../cdebconf-newt-udeb.templates:7001
 msgid "<F1> for help; <Tab> moves; <Space> selects; <Enter> activates buttons"
 msgstr ""
-"<F1> pagalba; <Tab> judėti tarp įrašų; <Space> pasirinkti; <Enter> vykdymo "
-"klavišas"
+"<F1> pagalba; <Tab> judėti tarp įrašų; <Tarpas> pasirinkti; <Įvesti> "
+"aktyvinti mygtuką"
 
 #. Type: text
 #. Description
 #. Appears as a checkbox in the newt and GTK interfaces.
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
-#, fuzzy
 msgid "Show Password in Clear"
-msgstr "Slaptažodžio įvedimo klaida"
+msgstr "Rodyti slaptažodį atviru tekstu"
 
 #. Type: text
 #. Description
@@ -292,7 +292,7 @@ msgstr "Pasirinkti tuščią eilutę"
 #: ../cdebconf-text-udeb.templates:7001
 #, no-c-format
 msgid "Other choices are available with '%c' and '%c'"
-msgstr ""
+msgstr "Kitos parinktys galimos naudojant '%c' ir '%c'"
 
 #. Type: text
 #. Description
@@ -300,7 +300,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:8001
 #, no-c-format
 msgid "Previous choices are available with '%c'"
-msgstr ""
+msgstr "Ankstesnės parinktys galimos naudojant '%c'"
 
 #. Type: text
 #. Description
@@ -308,7 +308,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:9001
 #, no-c-format
 msgid "Next choices are available with '%c'"
-msgstr ""
+msgstr "Tolimesnės parinktys galimos naudojant '%c'"
 
 #. Type: text
 #. Description
@@ -385,7 +385,7 @@ msgstr "Tekstas"
 #. :sl4:
 #: ../cdebconf.templates:3001
 msgid "'Text' is a traditional plain text interface."
-msgstr "„Tekstas“ – tai tradicinė grynojo teksto sąsaja"
+msgstr "„Tekstas“ – tai tradicinė grynojo teksto sąsaja."
 
 #. Type: string
 #. Description
