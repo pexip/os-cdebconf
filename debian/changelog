@@ -1,3 +1,9 @@
+cdebconf (0.260pexip1) pexip; urgency=medium
+
+  * Initial bullseye build
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Thu, 02 Jun 2022 14:42:04 +0100
+
 cdebconf (0.260) unstable; urgency=medium
 
   * Team upload
