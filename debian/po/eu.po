@@ -21,20 +21,21 @@
 # Piarres Beobide <pi@beobide.net>, 2008.
 # Xabier Bilbao <xabidu@gmail.com>, 2008.
 # Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2020.
+# Gontzal Manuel Pujana Onaindia <thadahdenyse@gmail.com>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: di-sublevel1_eu\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
 "POT-Creation-Date: 2016-06-05 14:47+0000\n"
-"PO-Revision-Date: 2020-11-03 18:23+0100\n"
-"Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
+"PO-Revision-Date: 2022-06-09 19:45+0000\n"
+"Last-Translator: Gontzal Manuel Pujana Onaindia <thadahdenyse@gmail.com>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #. Type: select
 #. Choices
@@ -98,12 +99,11 @@ msgid ""
 " - 'low' is for trivial items that have defaults that will work in\n"
 "   the vast majority of cases."
 msgstr ""
-"Ikusi nahi duzun galderaren gutxieneko lehentasuna hauta dezakezu:\n"
+"Ikusi nahi duzun galderaren gutxieneko lehentasuna hautatu dezakezu:\n"
 " - 'kritikoa' erabiltzaileak parte hartu ezean ziurrenik sistema\n"
-"   hondatuko duten elementuetarako da.\n"
+"    hondatuko duten elementuetarako da.\n"
 " - 'altua' zentzuzko ezarpen lehenetsirik ez duten elementuetarako da.\n"
-" - 'tartekoa' zentzuzko ezarpen lehenetsiak dituzten elementu\n"
-"   normaletarako da.\n"
+" - 'tartekoa' zentzuzko ezarpen lehenetsiak dituzten elementuetarako da.\n"
 " - 'baxua' kasu gehienetan funtzionatzen duten ezarpen lehenetsiak\n"
 "   dituzten elementu arruntetarako da."
 

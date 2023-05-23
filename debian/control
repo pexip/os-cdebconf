@@ -2,16 +2,17 @@ Source: cdebconf
 Section: utils
 Priority: optional
 Build-Depends:
- debhelper-compat (= 12),
- po-debconf (>= 0.5.0),
+ debhelper-compat (= 13),
+ po-debconf,
  libslang2-dev,
  libnewt-dev,
- libtextwrap-dev (>= 0.1-5),
- libdebian-installer4-dev (>= 0.41) | libdebian-installer-dev,
- libglib2.0-dev (>= 2.50),
- libgtk2.0-dev (>= 2.24) <!pkg.cdebconf.nogtk>,
- libcairo2-dev (>= 1.8.10-3) <!pkg.cdebconf.nogtk>,
- libselinux1-dev (>= 2.3) [linux-any] | libselinux-dev [linux-any],
+ libtextwrap-dev,
+ libreadline-dev (>= 8.1.2-1.1),
+ libdebian-installer4-dev | libdebian-installer-dev,
+ libglib2.0-dev,
+ libgtk2.0-dev <!pkg.cdebconf.nogtk>,
+ libcairo2-dev <!pkg.cdebconf.nogtk>,
+ libselinux1-dev [linux-any] | libselinux-dev [linux-any],
  dh-autoreconf,
  dh-exec,
 Maintainer: Debian Install System Team <debian-boot@lists.debian.org>
@@ -24,10 +25,9 @@ Vcs-Git: https://salsa.debian.org/installer-team/cdebconf.git
 
 Package: cdebconf
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, debconf, dpkg (>= 1.15.4)
+Depends: ${shlibs:Depends}, ${misc:Depends}, debconf
 Provides: debconf-2.0
 Suggests: cdebconf-gtk
-Priority: optional
 Description: Debian Configuration Management System (C-implementation)
  Debconf is a configuration management system for Debian packages. It is
  used by some packages to prompt you for information before they are
@@ -38,8 +38,6 @@ Package: cdebconf-gtk
 Architecture: any
 Section: admin
 Depends: cdebconf, ${shlibs:Depends}, ${misc:Depends}
-Replaces: cdebconf (<< 0.144)
-Priority: optional
 Build-Profiles: <!pkg.cdebconf.nogtk>
 Description: Gtk+ frontend for Debian Configuration Management System
  Debconf is a configuration management system for Debian packages. It is

@@ -56,9 +56,13 @@
 #include <stdlib.h>
 #include <termios.h>
 #include <unistd.h>
+#include <time.h>
 #include <sys/ioctl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+
+#include <readline/readline.h>
+#include <readline/history.h>
 
 struct frontend_data {
 	char *previous_title;
@@ -75,7 +79,17 @@ typedef int (text_handler)(struct frontend *obj, unsigned printed, struct questi
 #endif
 
 #define PROGRESS_NONE -10
+#define PROGRESS_STEP 10
 static int last_progress = PROGRESS_NONE;
+#define PROGRESS_TIME_STEP 60
+static int last_progress_time = 0;
+
+static sigset_t sigint_set;
+
+static const struct timespec null_timeout = {
+	.tv_sec = 0,
+	.tv_nsec = 0
+};
 
 /*
  * Function: getwidth
@@ -191,11 +205,15 @@ static unsigned text_handler_displaydesc(struct frontend *obj, unsigned printed,
 	return printed;
 }
 
-static void
-get_answer(char *answer, int size)
+static char *
+get_answer(const char *prompt)
 {
-	fgets(answer, size, stdin);
-	CHOMP(answer);
+	char *answer;
+	printf("%s\n", prompt);
+	answer = readline("");
+	if (!answer)
+		answer = strdup("");
+	return answer;
 }
 
 static unsigned
@@ -451,10 +469,11 @@ printlist (struct frontend *obj, unsigned max_lines, unsigned start, struct ques
  */
 static int text_handler_boolean(struct frontend *obj, unsigned printed, struct question *q)
 {
-	char buf[30];
+	char *buf;
 	int ans = 0;
 	int def = 0;
 	const char *defval;
+	char *prompt;
 
 	defval = question_getvalue(q, "");
 	if (defval)
@@ -465,31 +484,47 @@ static int text_handler_boolean(struct frontend *obj, unsigned printed, struct q
 			def = 2;
 	}
 
+	if (def)
+		asprintf(&prompt, question_get_text(obj, "debconf/text-prompt-default",
+				"Prompt: '%c' for help, default=%d> "), CHAR_HELP, def);
+	else
+		asprintf(&prompt, question_get_text(obj, "debconf/text-prompt",
+				"Prompt: '%c' for help> "), CHAR_HELP);
+
+	asprintf(&buf, "%d: %s%s", 2, question_get_text(obj, "debconf/no", "No"), def == 2 ? " [*]" : "");
+	add_history(buf);
+	free(buf);
+	asprintf(&buf, "%d: %s%s", 1, question_get_text(obj, "debconf/yes", "Yes"), def == 1 ? " [*]" : "");
+	add_history(buf);
+	free(buf);
+
 	do {
 		printf("  %d: %s%s", 1, question_get_text(obj, "debconf/yes", "Yes"), (1 == def ? " [*]" : "    "));
 		printf("  %d: %s%s", 2, question_get_text(obj, "debconf/no", "No"), (2 == def ? " [*]" : ""));
 		printf("\n");
-		if (def)
-			printf(question_get_text(obj, "debconf/text-prompt-default",
-					"Prompt: '%c' for help, default=%d> "), CHAR_HELP, def);
-		else
-			printf(question_get_text(obj, "debconf/text-prompt",
-					"Prompt: '%c' for help> "), CHAR_HELP);
-		get_answer(buf, sizeof(buf));
+		buf = get_answer(prompt);
 		if (buf[0] == CHAR_HELP && buf[1] == 0)
 			printed += show_help(obj, q);
 		else if (obj->methods.can_go_back (obj, q) &&
-		         buf[0] == CHAR_GOBACK && buf[1] == 0)
+		         buf[0] == CHAR_GOBACK && buf[1] == 0) {
+			clear_history();
+			free(buf);
+			free(prompt);
 			return DC_GOBACK;
+		}
 		else if (buf[0] == '1')
 			ans = 1;
 		else if (buf[0] == '2')
 			ans = 2;
 		else if (defval != 0 && ISEMPTY(buf))
 			ans = def;
+		free(buf);
 	} while (ans == 0);
 
 	question_setvalue(q, (ans == 1 ? "true" : "false"));
+
+	clear_history();
+	free(prompt);
 	return DC_OK;
 }
 
@@ -584,11 +619,13 @@ static int text_handler_multiselect(struct frontend *obj, unsigned printed, stru
 	struct choices *choices = NULL;
 	char **defaults;
 	char *defval, *cp;
-	char answer[4096] = {0};
+	char *answer = NULL;
+	size_t answer_len;
 	int i, j, dcount, choice;
 	int ret = DC_OK;
 	unsigned start = 0;
 	bool all;
+	char *prompt;
 
 	choices = choices_get(obj, q);
 	if (choices == NULL)
@@ -620,11 +657,12 @@ static int text_handler_multiselect(struct frontend *obj, unsigned printed, stru
 			strcat(defval, buf);
 		}
 
+	asprintf(&prompt, question_get_text(obj, "debconf/text-prompt-default-string",
+		"Prompt: '%c' for help, default=%s> "), CHAR_HELP, defval);
   DISPLAY:
 	all = printlist (obj, getheight() - printed - 1, start, q, choices);
-	printf(question_get_text(obj, "debconf/text-prompt-default-string", 
-		"Prompt: '%c' for help, default=%s> "), CHAR_HELP, defval);
-	get_answer(answer, sizeof(answer));
+	free(answer);
+	answer = get_answer(prompt);
 	if (answer[0] == CHAR_HELP && answer[1] == 0)
 	{
 		printed = 0;
@@ -676,19 +714,31 @@ static int text_handler_multiselect(struct frontend *obj, unsigned printed, stru
 		}
 	}
 
-	answer[0] = 0;
+	answer_len = 0;
+	for (i = 0; i < choices->count; i++)
+	{
+		if (choices->selected[i])
+			answer_len += strlen(choices->choices[i]) + 2;
+	}
+
+	free(answer);
+	answer = malloc(answer_len);
+	if (answer_len > 0)
+		answer[0] = 0;
 	for (i = 0; i < choices->count; i++)
 	{
 		if (choices->selected[i])
 		{
 			if (answer[0] != 0)
-				strvacat(answer, sizeof(answer), ", ", NULL);
-			strvacat(answer, sizeof(answer), choices->choices[i], NULL);
+				strvacat(answer, answer_len, ", ", NULL);
+			strvacat(answer, answer_len, choices->choices[i], NULL);
 		}
 	}
 	question_setvalue(q, answer);
 
   CleanUp_DEFVAL:
+	free(answer);
+	free(prompt);
 	free(defval);
 	choices_delete(choices);
 	
@@ -709,12 +759,13 @@ static int text_handler_multiselect(struct frontend *obj, unsigned printed, stru
 static int text_handler_select(struct frontend *obj, unsigned printed, struct question *q)
 {
 	struct choices *choices = NULL;
-	char answer[128];
+	char *answer;
 	int i, choice, def = -1;
 	const char *defval;
 	int ret = DC_OK;
 	unsigned start = 0;
 	bool all;
+	char *prompt;
 
 	choices = choices_get(obj, q);
 	if (choices == NULL)
@@ -735,19 +786,28 @@ static int text_handler_select(struct frontend *obj, unsigned printed, struct qu
 			}
 	}
 
+	if (def >= 0 && choices->choices_translated[def]) {
+		asprintf(&prompt, question_get_text(obj, "debconf/text-prompt-default",
+			"Prompt: '%c' for help, default=%d> "),
+				CHAR_HELP, def+1);
+	} else {
+		asprintf(&prompt, question_get_text(obj, "debconf/text-prompt",
+			"Prompt: '%c' for help> "), CHAR_HELP);
+	}
+
+	for (i = choices->count; i > 0; i--) {
+		asprintf(&answer, "%d: %s%s", i, choices->choices_translated[i-1], i == def+1 ? " [*]" : "");
+		add_history(answer);
+		free(answer);
+	}
+
+	answer = NULL;
 	i = 0;
 	choice = -1;
 	do {
 		all = printlist (obj, getheight() - printed - 1, start, q, choices);
-		if (def >= 0 && choices->choices_translated[def]) {
-			printf(question_get_text(obj, "debconf/text-prompt-default", 
-				"Prompt: '%c' for help, default=%d> "),
-					CHAR_HELP, def+1);
-		} else {
-			printf(question_get_text(obj, "debconf/text-prompt",
-				"Prompt: '%c' for help> "), CHAR_HELP);
-		}
-		get_answer(answer, sizeof(answer));
+		free(answer);
+		answer = get_answer(prompt);
 		if (answer[0] == CHAR_HELP)
 		{
 			printed += show_help(obj, q);
@@ -800,6 +860,9 @@ static int text_handler_select(struct frontend *obj, unsigned printed, struct qu
 	question_setvalue(q, choices->choices[choices->tindex[choice]]);
 
   CleanUp_SELECTED:
+	clear_history();
+	free(answer);
+	free(prompt);
 	choices_delete(choices);
 	
 	return ret;
@@ -816,21 +879,27 @@ static int text_handler_select(struct frontend *obj, unsigned printed, struct qu
  */
 static int text_handler_note(struct frontend *obj, unsigned printed, struct question *q)
 {
-	char buf[100] = {0};
-	printf("%s ", question_get_text(obj, "debconf/cont-prompt",
+	char *buf;
+	char *prompt;
+	asprintf(&prompt, "%s ", question_get_text(obj, "debconf/cont-prompt",
 			       "[Press enter to continue]"));
-	fflush(stdout);
 	while (1)
 	{
-		get_answer(buf, sizeof(buf));
+		buf = get_answer(prompt);
 		if (buf[0] == CHAR_HELP && buf[1] == 0)
 			printed += show_help(obj, q);
 		else if (obj->methods.can_go_back (obj, q) &&
-		         buf[0] == CHAR_GOBACK && buf[1] == 0)
+		         buf[0] == CHAR_GOBACK && buf[1] == 0) {
+			free(buf);
+			free(prompt);
 			return DC_GOBACK;
+		}
 		else
 			break;
+		free(buf);
 	}
+	free(buf);
+	free(prompt);
 	return DC_OK;
 }
 
@@ -899,23 +968,27 @@ static int text_handler_password(struct frontend *obj, unsigned printed, struct 
  */
 static int text_handler_string(struct frontend *obj, unsigned printed, struct question *q)
 {
-	char buf[1024] = {0};
+	char *buf;
 	const char *defval = question_getvalue(q, "");
+	char *prompt;
+	if (defval)
+		asprintf(&prompt, question_get_text(obj, "debconf/text-prompt-default-string", "Prompt: '%c' for help, default=%s> "), CHAR_HELP, defval);
+	else
+		asprintf(&prompt, question_get_text(obj, "debconf/text-prompt", "Prompt: '%c' for help> "), CHAR_HELP);
 	while (1) {
-		if (defval)
-			printf(question_get_text(obj, "debconf/text-prompt-default-string", "Prompt: '%c' for help, default=%s> "), CHAR_HELP, defval);
-		else
-			printf(question_get_text(obj, "debconf/text-prompt", "Prompt: '%c' for help> "), CHAR_HELP);
-		fflush(stdout);
-		get_answer(buf, sizeof(buf));
+		buf = get_answer(prompt);
 		if (buf[0] == CHAR_HELP && buf[1] == 0)
 			printed += show_help(obj, q);
 		else
 			break;
+		free(buf);
 	}
 	if (obj->methods.can_go_back (obj, q) &&
-	    buf[0] == CHAR_GOBACK && buf[1] == 0)
+	    buf[0] == CHAR_GOBACK && buf[1] == 0) {
+		free(buf);
+		free(prompt);
 		return DC_GOBACK;
+	}
 	if (ISEMPTY(buf) && defval == 0)
 		question_setvalue(q, "");
 	else if (ISEMPTY(buf) && defval != 0)
@@ -924,6 +997,8 @@ static int text_handler_string(struct frontend *obj, unsigned printed, struct qu
 		question_setvalue(q, "");
 	else
 		question_setvalue(q, buf);
+	free(buf);
+	free(prompt);
 	return DC_OK;
 }
 
@@ -978,9 +1053,6 @@ static struct question_handlers {
  * Output: int - DC_OK, DC_NOTOK
  * Description: initializes the text UI
  * Assumptions: none
- *
- * TODO: SIGINT is ignored by the text UI, otherwise it interfers with
- * the way question/answers are handled. this is probably not optimal
  */
 static int text_initialize(struct frontend *obj, struct configuration *conf)
 {
@@ -990,7 +1062,13 @@ static int text_initialize(struct frontend *obj, struct configuration *conf)
 	data->previous_title = NULL;
 	obj->data = data;
 	obj->interactive = 1;
+
+	/* Prepare for catching SIGINT synchronously */
 	signal(SIGINT, SIG_IGN);
+	sigemptyset(&sigint_set);
+	sigaddset(&sigint_set, SIGINT);
+	sigprocmask(SIG_BLOCK, &sigint_set, NULL);
+
 	if (palette && !strcmp(palette, "dark") &&
 			term && (!strcmp(term, "linux") || !strcmp(term, "bterm"))) {
 		/* Hard-code for these cases */
@@ -1025,6 +1103,19 @@ static bool
 text_can_go_back(struct frontend *obj, struct question *q)
 {
 	return (obj->capability & DCF_CAPB_BACKUP);
+}
+
+/*
+ * Function: text_can_cancel_progress
+ * Input: struct frontend *obj - frontend object
+ * Output: boolean
+ * Description: tells whether confmodule supports cancelling a step
+ * Assumptions: none
+ */
+static bool
+text_can_cancel_progress(struct frontend *obj)
+{
+    return (obj->capability & DCF_CAPB_PROGRESSCANCEL);
 }
 
 /*
@@ -1084,6 +1175,7 @@ static int text_go(struct frontend *obj)
 	/* Make sure that after asking the questions we show that we are back to
 	 * progressing. */
 	last_progress = PROGRESS_NONE;
+	last_progress_time = 0;
 
 	while (q != NULL) {
 		for (i = 0; i < DIM(question_handlers); i++) {
@@ -1169,21 +1261,34 @@ static void text_progress_start(struct frontend *obj, int min, int max, struct q
 	printf("%s  ", title_desc);
 	free(title_desc);
 	fflush(stdout);
+
+	/* Clear any previous SIGINT */
+	int res = sigtimedwait(&sigint_set, NULL, &null_timeout);
 }
 
 static int text_progress_set(struct frontend *obj, int val)
 {
 	int new;
+	time_t now = time(NULL);
+
+	/* Catch SIGINT, and in that case, cancel the current step */
+	if (obj->methods.can_cancel_progress(obj)
+		&& sigtimedwait(&sigint_set, NULL, &null_timeout) == SIGINT)
+		return DC_GOBACK;
 
 	obj->progress_cur = val;
 	new = ((double)(obj->progress_cur - obj->progress_min) / 
 		(double)(obj->progress_max - obj->progress_min) * 100.0);
 	if (new < last_progress)
 		last_progress = PROGRESS_NONE;
+	if (last_progress_time == 0)
+		last_progress_time = now;
 	/*  Prevent verbose output  */
-	if (new / 10 == last_progress / 10)
+	if (new / PROGRESS_STEP == last_progress / PROGRESS_STEP
+	    && now < last_progress_time + PROGRESS_TIME_STEP)
 		return DC_OK;
 	last_progress = new;
+	last_progress_time = now;
 	printf("... %d%%", new);
 	fflush(stdout);
 
@@ -1205,6 +1310,7 @@ struct frontend_module debconf_frontend_module =
 	.shutdown = text_shutdown,
 	.lookup_directive = text_lookup_directive,
 	.can_go_back = text_can_go_back,
+	.can_cancel_progress = text_can_cancel_progress,
 	.can_align = text_can_align,
 	.go = text_go,
 	.progress_start = text_progress_start,

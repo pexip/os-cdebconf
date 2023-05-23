@@ -5,7 +5,7 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-export DEB_LDFLAGS_MAINT_APPEND=-lpthread -Wl,--as-needed
+export DEB_LDFLAGS_MAINT_APPEND = -lpthread
 
 debbuild=debian/build-deb
 udebbuild=debian/build-udeb

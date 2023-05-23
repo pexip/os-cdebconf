@@ -12,14 +12,14 @@
 # Nguyễn Hùng Vũ <vuhung16@bigfoot.com>, 2001.
 # Clytie Siddall <clytie@riverland.net.au>, 2005-2010
 # Hai-Nam Nguyen <hainam@jcisio.com>, 2012
-# Trần Ngọc Quân <vnwildman@gmail.com>, 2018, 2019.
+# Trần Ngọc Quân <vnwildman@gmail.com>, 2018, 2019, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: debian-installer sublevel1\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
 "POT-Creation-Date: 2016-06-05 14:47+0000\n"
-"PO-Revision-Date: 2019-02-27 14:34+0700\n"
+"PO-Revision-Date: 2022-07-16 14:23+0700\n"
 "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <debian-l10n-vietnamese@lists.debian.org>\n"
 "Language: vi\n"
@@ -358,7 +358,7 @@ msgstr "Không"
 #. :sl4:
 #: ../cdebconf.templates:2001
 msgid "'None' will never ask you any question."
-msgstr "Sẽ không hỏi lại nếu chọn “Không”"
+msgstr "Sẽ không hỏi lại nếu chọn “Không”."
 
 #. Type: string
 #. Description

@@ -66,8 +66,13 @@ struct frontend_data
      */
     int logo_width;
     int logo_height;
-    bool logo_adjusted;
     GtkWidget * logo_widget;
+    GtkWidget * logo_widget_l;
+    GtkWidget * logo_widget_r;
+    GtkJustification banner_label_position;
+    bool banner_expands_left;
+    bool banner_expands_right;
+    bool banner_adjusted;
 
     /** Workaround for #882804, GTK 2 only
      *

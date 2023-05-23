@@ -8,7 +8,7 @@
 # This file is distributed under the same license as debian-installer.
 #
 # Talgat Daniyarov
-# Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2008-2016
+# Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2008-2022
 # Dauren Sarsenov <daur88@inbox.ru>, 2008, 2009
 #
 # Translations from iso-codes:
@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
 "POT-Creation-Date: 2016-06-05 14:47+0000\n"
-"PO-Revision-Date: 2016-11-17 11:17+0500\n"
+"PO-Revision-Date: 2022-12-04 17:19+0600\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh\n"
 "Language: kk\n"
@@ -92,15 +92,15 @@ msgid ""
 " - 'low' is for trivial items that have defaults that will work in\n"
 "   the vast majority of cases."
 msgstr ""
-"Көргіңіз келетін сұрақтардың маңыздылық деңгейін таңдаңыз:\n"
+"Көргіңіз келетін сұрақтардың ең төмен маңыздылық деңгейін таңдаңыз:\n"
 " - 'өте маңызды' деңгейі пайдаланушының араласуын міндетті \n"
 "    түрде сұрайтын сұрақтарына сәйкес келеді\n"
-" - 'жоғары' деңгейі әдеттегі жауаптары жарамайтын \n"
+" - 'жоғары' деңгейі әдеттегі жауаптары жарамайтын\n"
 "    сұрақтарға сәйкес келеді.\n"
-" - 'орташа' деңгейі әдеттегі жауаптары көп жағдайда жарайтын \n"
+" - 'орташа' деңгейі әдеттегі жауаптары көп жағдайда жарайтын\n"
 "    сұрақтарға сәйкес келеді.\n"
-" - 'төмен' деңгейі әдеттегі жауаптары жарай беретін \n"
-"    сұрақтарға сәйкес келеді"
+" - 'төмен' деңгейі әдеттегі жауаптары жарай беретін\n"
+"    сұрақтарға сәйкес келеді."
 
 #. Type: select
 #. Description

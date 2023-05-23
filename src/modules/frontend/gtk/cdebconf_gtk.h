@@ -73,6 +73,8 @@
     BASE_IMAGE_PATH "/logo_installer.png"
 #define LOGO_DARK_IMAGE_PATH \
     BASE_IMAGE_PATH "/logo_installer_dark.png"
+#define LOGO_CONFIG_PATH \
+    BASE_IMAGE_PATH "/logo_installer.ini"
 
 /** Can the progress be canceled within the current frontend run? */
 #define CAN_CANCEL_PROGRESS(Frontend) \

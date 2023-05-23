@@ -198,6 +198,22 @@ cdebconf_newt_setup(void)
     newtCls();
 }
 
+int
+cdebconf_newt_brl(void)
+{
+    if (access("/var/run/brltty.pid", O_RDONLY) == 0)
+        return 1;
+    return 0;
+}
+
+int
+cdebconf_newt_left(int left)
+{
+    if (cdebconf_newt_brl())
+        return 1;
+    return left;
+}
+
 /* cdebconf-newt-terminal needs this in order to be able to restore the
  * display properly after tearing down the terminal.
  */
@@ -245,12 +261,17 @@ cdebconf_newt_create_window(const int width, const int height, const char *title
             if (asprintf(&buf, "[%s] %s", sigils[i][1], title) == -1)
                 buf = NULL;
     }
-    if (buf != NULL) {
-        newtCenteredWindow(width, height, buf);
-        free(buf);
-    } else {
+
+    if (buf != NULL)
+        title = buf;
+
+    if (cdebconf_newt_brl())
+        newtOpenWindow(1, 1, width, height, title);
+    else
         newtCenteredWindow(width, height, title);
-    }
+
+    if (buf != NULL)
+        free(buf);
 }
 
 int
@@ -445,7 +466,7 @@ show_separate_window(struct frontend *obj, struct question *q, int is_help)
     cdebconf_newt_create_window(win_width, win_height, obj->title, q->priority);
     form = cdebconf_newt_create_form(NULL);
     if (format_note)
-        newtFormAddComponent(form, newtLabel((win_width - strwidth(descr))/2, 1, descr));
+        newtFormAddComponent(form, newtLabel(cdebconf_newt_left((win_width - strwidth(descr))/2), 1, descr));
     textbox = newtTextbox(TEXT_PADDING, 1 + t_voffset, t_width, t_height, flags);
     assert(textbox);
     newtTextboxSetText(textbox, full_description);
@@ -455,7 +476,7 @@ show_separate_window(struct frontend *obj, struct question *q, int is_help)
         bCancel = newtCompactButton(TEXT_PADDING + BUTTON_PADDING - 1,  win_height-2, goback_text(obj));
         newtFormAddComponents(form, bCancel, textbox, bOk, NULL);
     } else {
-        bOk     = newtCompactButton((win_width-strwidth(continue_text(obj))-2)/2 - 1, win_height-2, continue_text(obj));
+        bOk     = newtCompactButton(cdebconf_newt_left((win_width-strwidth(continue_text(obj))-2)/2 - 1), win_height-2, continue_text(obj));
         bCancel = NULL;
         newtFormAddComponents(form, textbox, bOk, NULL);
     }
@@ -555,7 +576,7 @@ generic_handler_string(struct frontend *obj, struct question *q, int eflags)
         bCancel = newtCompactButton(TEXT_PADDING + BUTTON_PADDING - 1, win_height-2, goback_text(obj));
         newtFormAddComponent(form, bCancel);
     } else {
-        bOk     = newtCompactButton((win_width-strwidth(continue_text(obj))-2)/2 - 1, win_height-2, continue_text(obj));
+        bOk     = newtCompactButton(cdebconf_newt_left((win_width-strwidth(continue_text(obj))-2)/2 - 1), win_height-2, continue_text(obj));
         bCancel = NULL;
     }
     newtFormAddComponents(form, textbox, entry, NULL);
@@ -676,7 +697,8 @@ show_multiselect_window(struct frontend *obj, struct question *q, int show_ext_d
     }
     cdebconf_newt_create_window(win_width, win_height, obj->title, q->priority);
     if (count > sel_height) {
-        scrollbar = newtVerticalScrollbar((win_width+sel_width+5)/2, 1+t_height+1, sel_height,
+        int left = cdebconf_newt_brl() ? sel_width + 5: (win_width+sel_width+5)/2;
+        scrollbar = newtVerticalScrollbar(left, 1+t_height+1, sel_height,
                 NEWT_COLORSET_WINDOW, NEWT_COLORSET_ACTCHECKBOX);
         newtFormAddComponent(form, scrollbar);
     }
@@ -691,7 +713,7 @@ show_multiselect_window(struct frontend *obj, struct question *q, int show_ext_d
         for (k = 0; k < defcount; k++)
             if (strcmp(choices[tindex[i]], defvals[k]) == 0)
                 def = 1;
-        checkbox = newtCheckbox((win_width-sel_width-3)/2, 1+t_height+1+i, choices_trans[i], def ? '*' : ' ', " *", &answer[tindex[i]]);
+	checkbox = newtCheckbox(cdebconf_newt_left((win_width-sel_width-3)/2), 1+t_height+1+i, choices_trans[i], def ? '*' : ' ', " *", &answer[tindex[i]]);
         newtCheckboxSetFlags(checkbox, NEWT_FLAG_RETURNEXIT, NEWT_FLAGS_SET);
         newtFormAddComponent(sform, checkbox);
     }
@@ -700,7 +722,7 @@ show_multiselect_window(struct frontend *obj, struct question *q, int show_ext_d
         bCancel = newtCompactButton(TEXT_PADDING + BUTTON_PADDING - 1, win_height-2, goback_text(obj));
         newtFormAddComponents(form, bCancel, sform, bOk, NULL);
     } else {
-        bOk     = newtCompactButton((win_width-strwidth(continue_text(obj))-2)/2 - 1, win_height-2, continue_text(obj));
+        bOk     = newtCompactButton(cdebconf_newt_left((win_width-strwidth(continue_text(obj))-2)/2 - 1), win_height-2, continue_text(obj));
         bCancel = NULL;
         newtFormAddComponents(form, sform, bOk, NULL);
     }
@@ -846,7 +868,7 @@ show_select_window(struct frontend *obj, struct question *q, int show_ext_desc)
     if (count > sel_height)
         listflags |= NEWT_FLAG_SCROLL;
     cdebconf_newt_create_window(win_width, win_height, obj->title, q->priority);
-    listbox = newtListbox((win_width-sel_width-3)/2, select_list_top, sel_height, listflags);
+    listbox = newtListbox(cdebconf_newt_left((win_width-sel_width-3)/2), select_list_top, sel_height, listflags);
     defval = (char *)question_getvalue(q, "");
     for (i = 0; i < count; i++) {
         newtListboxAppendEntry(listbox, choices_trans[i], choices[tindex[i]]);
@@ -1358,7 +1380,7 @@ newt_make_progress_bar(struct frontend *obj, struct question *info)
         else
             win_height = height - 5;
         title_desc = q_get_raw_description(obj->progress_title);
-        newtCenteredWindow(win_width, win_height, title_desc);
+        cdebconf_newt_create_window(win_width, win_height, title_desc, NULL);
         free(title_desc);
         data->scale_bar = newtScale(TEXT_PADDING, 1, win_width-2*TEXT_PADDING, obj->progress_max - obj->progress_min);
         data->scale_textbox = newtTextbox(TEXT_PADDING, 3, win_width-2*TEXT_PADDING, text_height, flags);

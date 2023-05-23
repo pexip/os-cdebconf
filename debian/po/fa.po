@@ -26,8 +26,8 @@ msgstr ""
 "Project-Id-Version: fa sublevel1\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
 "POT-Creation-Date: 2016-06-05 14:47+0000\n"
-"PO-Revision-Date: 2020-10-24 17:09+0000\n"
-"Last-Translator: سهیل خانعلی‌پور <soheilkhanalipur@tutanota.com>\n"
+"PO-Revision-Date: 2022-12-11 11:40+0000\n"
+"Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Debian-l10n-persian <debian-l10n-persian@lists.debian.org>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
@@ -177,7 +177,7 @@ msgstr "لغو"
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:6001
 msgid "<Tab> moves; <Space> selects; <Enter> activates buttons"
-msgstr "<Tab> حرکت بین گزینه‌ها; <Space> انتخاب; <Enter> اعمال دکمه ها"
+msgstr "<جهش> حرکت؛ <فاصله> گزینش؛ <ورود> فعّال‌سازی دکمه‌ها"
 
 #. Type: text
 #. Description
@@ -186,9 +186,7 @@ msgstr "<Tab> حرکت بین گزینه‌ها; <Space> انتخاب; <Enter> �
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:7001
 msgid "<F1> for help; <Tab> moves; <Space> selects; <Enter> activates buttons"
-msgstr ""
-"<F1> برای کمک و راهنمایی; <Tab> حرکت بین گزینه‌ها; <Space> انتخاب; <Enter> "
-"اعمال دکمه ها"
+msgstr "<F1> برای کمک؛ <جهش> حرکت؛ <فاصله> گزینش؛ <ورود> فعّال‌سازی دکمه‌ها"
 
 #. Type: text
 #. Description
@@ -196,7 +194,7 @@ msgstr ""
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
 msgid "Show Password in Clear"
-msgstr "نمایش واضح کلمه عبور"
+msgstr "نمایش واضح گذرواژه"
 
 #. Type: text
 #. Description
@@ -236,7 +234,7 @@ msgstr "نماگرفت"
 #: ../cdebconf-gtk-udeb.templates:8001
 #, no-c-format
 msgid "Screenshot saved as %s"
-msgstr "عکس از صفحه در %s ذخیره شد"
+msgstr "نماگرفت به نام %s ذخیره شد"
 
 #. Type: text
 #. Description
@@ -280,7 +278,7 @@ msgstr "بازگشت به سوال پیشین"
 #. :sl4:
 #: ../cdebconf-text-udeb.templates:6001
 msgid "Select an empty entry"
-msgstr "یک گزینه‌ی خالی را انتخاب کنید"
+msgstr "وردی‌ای خالی را برگزینید"
 
 #. Type: text
 #. Description
@@ -288,7 +286,7 @@ msgstr "یک گزینه‌ی خالی را انتخاب کنید"
 #: ../cdebconf-text-udeb.templates:7001
 #, no-c-format
 msgid "Other choices are available with '%c' and '%c'"
-msgstr ""
+msgstr "دیگر گزینه‌ها با %c و %c در دسترسند"
 
 #. Type: text
 #. Description
@@ -296,7 +294,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:8001
 #, no-c-format
 msgid "Previous choices are available with '%c'"
-msgstr ""
+msgstr "گزینه‌های پیشین با %c در دسترسند"
 
 #. Type: text
 #. Description
@@ -304,7 +302,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:9001
 #, no-c-format
 msgid "Next choices are available with '%c'"
-msgstr ""
+msgstr "گزینه‌های بعدی با %c در دسترسند"
 
 #. Type: text
 #. Description
