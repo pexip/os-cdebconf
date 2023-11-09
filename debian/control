@@ -22,7 +22,7 @@ XSBC-Pexip-Original-Uploaders:
 Standards-Version: 3.9.7
 Vcs-Browser: https://salsa.debian.org/installer-team/cdebconf
 Vcs-Git: https://salsa.debian.org/installer-team/cdebconf.git
-XS-Pexip-Upstream: http://deb.debian.org/debian/ bullseye
+XS-Pexip-Upstream: http://deb.debian.org/debian/ bookworm
 
 Package: cdebconf
 Architecture: any
