@@ -186,7 +186,6 @@ GtkWidget * cdebconf_gtk_create_screenshot_button(struct frontend * fe)
     GtkWidget * button;
     char * label;
 
-    /* XXX: check NULL! */
     label = cdebconf_gtk_get_text(fe, "debconf/gtk-button-screenshot",
                                   "Screenshot");
     button = gtk_button_new_with_label(label);

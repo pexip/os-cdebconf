@@ -105,24 +105,63 @@ static gboolean handle_exposed_banner(GtkWidget * widget,
      * defer (possibly) adjusting the logo size until the first expose
      * event.
      */
-    if (TRUE != fe_data->logo_adjusted) {
-        fprintf(stderr, "Checking the need for logo adjustment.\n");
-
-        /* If logo and window widths differ, scale. */
+    if (TRUE != fe_data->banner_adjusted) {
+        /* If logo is smaller than the window, scale and show the relevant
+         * left/right side(s). Equal is usual, greater is also possible.
+         */
+        GdkPixbuf * scaled;
         GtkAllocation allocation;
         gtk_widget_get_allocation(fe_data->window, &allocation);
-        if (fe_data->logo_width != allocation.width) {
-            fprintf(stderr, "Logo needs scaling: width from %d to %d pixels.\n", fe_data->logo_width, allocation.width);
-            GdkPixbuf * scaled_pixbuf = gdk_pixbuf_scale_simple(gtk_image_get_pixbuf(GTK_IMAGE(fe_data->logo_widget)),
-                                                                allocation.width,
-                                                                fe_data->logo_height,
-                                                                GDK_INTERP_BILINEAR);
-            gtk_image_set_from_pixbuf(GTK_IMAGE(fe_data->logo_widget), scaled_pixbuf);
-            fe_data->logo_width = allocation.width;
+        fprintf(stderr, "Checking widths: logo (%d) vs. window (%d): ",
+                fe_data->logo_width, allocation.width);
+
+        if (fe_data->logo_width < allocation.width) {
+            if (fe_data->banner_expands_left && fe_data->banner_expands_right) {
+              /* Keep track of left_width to avoid an (improbable) off-by-one */
+              int left_width = (allocation.width - fe_data->logo_width ) / 2;
+              scaled = gdk_pixbuf_scale_simple(gtk_image_get_pixbuf(GTK_IMAGE(fe_data->logo_widget_l)),
+                                               left_width,
+                                               fe_data->logo_height,
+                                               GDK_INTERP_BILINEAR);
+              gtk_image_set_from_pixbuf(GTK_IMAGE(fe_data->logo_widget_l), scaled);
+              gtk_widget_show(fe_data->logo_widget_l);
+
+              scaled = gdk_pixbuf_scale_simple(gtk_image_get_pixbuf(GTK_IMAGE(fe_data->logo_widget_r)),
+                                               allocation.width - fe_data->logo_width - left_width,
+                                               fe_data->logo_height,
+                                               GDK_INTERP_BILINEAR);
+              gtk_image_set_from_pixbuf(GTK_IMAGE(fe_data->logo_widget_r), scaled);
+              gtk_widget_show(fe_data->logo_widget_r);
+
+              fprintf(stderr, "both sides scaled.\n");
+            }
+            else if (fe_data->banner_expands_left) {
+              scaled = gdk_pixbuf_scale_simple(gtk_image_get_pixbuf(GTK_IMAGE(fe_data->logo_widget_l)),
+                                               allocation.width - fe_data->logo_width,
+                                               fe_data->logo_height,
+                                               GDK_INTERP_BILINEAR);
+              gtk_image_set_from_pixbuf(GTK_IMAGE(fe_data->logo_widget_l), scaled);
+              gtk_widget_show(fe_data->logo_widget_l);
+
+              fprintf(stderr, "left side scaled.\n");
+            }
+            else if (fe_data->banner_expands_right) {
+              scaled = gdk_pixbuf_scale_simple(gtk_image_get_pixbuf(GTK_IMAGE(fe_data->logo_widget_r)),
+                                                           allocation.width - fe_data->logo_width,
+                                                           fe_data->logo_height,
+                                                           GDK_INTERP_BILINEAR);
+              gtk_image_set_from_pixbuf(GTK_IMAGE(fe_data->logo_widget_r), scaled);
+              gtk_widget_show(fe_data->logo_widget_r);
+              fprintf(stderr, "right side scaled.\n");
+            }
+            else {
+              /* Default settings and config parsing should make that impossible */
+              fprintf(stderr, "no sides scaled!\n");
+            }
         } else {
-            fprintf(stderr, "Logo needs no scaling: width stays at %d pixels.\n", allocation.width);
+            fprintf(stderr, "no scaling needed.\n");
         }
-        fe_data->logo_adjusted = TRUE;
+        fe_data->banner_adjusted = TRUE;
     }
 
     if (NULL != fe->info) {
@@ -137,10 +176,13 @@ static gboolean handle_exposed_banner(GtkWidget * widget,
         pango_layout_get_pixel_size(layout, &text_width, &text_height);
         screen = gtk_window_get_screen(GTK_WINDOW(fe_data->window));
         window = gtk_widget_get_window(widget);
-        /* Right-align, vertically-center */
+        /* Align according to banner metadata, always vertically-center */
+        int position_x = fe_data->banner_label_position == GTK_JUSTIFY_RIGHT
+                         ? gdk_screen_get_width(screen) - text_width - DEFAULT_PADDING * 2
+                         : DEFAULT_PADDING * 2;
         cairo_t *cr = gdk_cairo_create(window);
         cairo_move_to(cr,
-                      gdk_screen_get_width(screen) - text_width - DEFAULT_PADDING * 2,
+                      position_x,
                       (fe_data->logo_height - text_height) / 2);
         pango_cairo_show_layout(cr, layout);
         cairo_destroy(cr);
@@ -172,9 +214,68 @@ static char * get_gtk_theme_name()
     return theme_name;
 }
 
+/** Configure the banner
+ *
+ * This makes it possible for the package providing the logo to also configure
+ * where the label should be placed, and which side(s) can be expanded when the
+ * GTK window is wider than the logo.
+ *
+ * @param fe cdebconf frontend
+ * @see LOGO_CONFIG_PATH
+ */
+static void initialize_banner_metadata(struct frontend * fe) {
+    struct frontend_data * fe_data = fe->data;
+
+    GKeyFile * config = NULL;
+    gchar * value;
+
+    /* Default settings */
+    fe_data->banner_label_position = GTK_JUSTIFY_RIGHT;
+    fe_data->banner_expands_left = FALSE;
+    fe_data->banner_expands_right = TRUE;
+
+    /* Mini config file shipped by rootskel-gtk */
+    config = g_key_file_new();
+    g_return_if_fail(g_key_file_load_from_file(config, LOGO_CONFIG_PATH, G_KEY_FILE_NONE, NULL) == TRUE);
+    g_return_if_fail(config != NULL);
+
+    value = g_key_file_get_string(config, "banner", "label-position", NULL);
+    if (value) {
+      if (!strcmp(value, "left"))
+        fe_data->banner_label_position = GTK_JUSTIFY_LEFT;
+      else if (value && !strcmp(value, "right"))
+        fe_data->banner_label_position = GTK_JUSTIFY_RIGHT;
+      else
+        fprintf(stderr, "unsupported value for banner.label-position: %s\n", value);
+    }
+
+    value = g_key_file_get_string(config, "banner", "expand-direction", NULL);
+    if (value) {
+      if (!strcmp(value, "both")) {
+        fe_data->banner_expands_left = TRUE;
+        fe_data->banner_expands_right = TRUE;
+      }
+      else if (!strcmp(value, "left")) {
+        fe_data->banner_expands_left = TRUE;
+        fe_data->banner_expands_right = FALSE;
+      }
+      else if (!strcmp(value, "right")) {
+        fe_data->banner_expands_left = FALSE;
+        fe_data->banner_expands_right = TRUE;
+      }
+      else
+        fprintf(stderr, "unsupported value for expand-direction: %s\n", value);
+    }
+
+    g_key_file_free(config);
+}
+
 /** Create the banner with the logo inside the given container.
  *
- * The logo will be centered in the banner.
+ * The logo will be centered in the banner initially. Upon the initial expose
+ * event, if the GTK window is wider than the logo, based on banner metadata,
+ * the left-most and/or the right-most 1-px column can be repeated to cover the
+ * full width of the GTK window.
  *
  * @param fe cdebconf frontend
  * @param container container in which the banner will be added
@@ -185,8 +286,9 @@ static void create_banner(struct frontend * fe, GtkWidget * container)
 {
     struct frontend_data * fe_data = fe->data;
     GtkWidget * banner;
-    GtkWidget * logo;
-    GdkPixbuf * pixbuf;
+    GtkWidget * banner_box;
+    GtkWidget * logo, * logo_l, * logo_r;
+    GdkPixbuf * pixbuf, * pixbuf_l, * pixbuf_r;
     const char * banner_path = LOGO_IMAGE_PATH;
     char * theme_name;
 
@@ -204,12 +306,38 @@ static void create_banner(struct frontend * fe, GtkWidget * container)
     }
     g_free(theme_name);
 
-    /* XXX: check NULL! */
+    initialize_banner_metadata(fe);
+
     banner = gtk_event_box_new();
+    banner_box = gtk_hbox_new(FALSE, 0);
     logo = gtk_image_new_from_file(banner_path);
-    gtk_misc_set_alignment(GTK_MISC(logo), 0.5 /* center */, 0 /* top */);
-    gtk_misc_set_padding(GTK_MISC(logo), 0, 0);
-    gtk_container_add(GTK_CONTAINER(banner), logo);
+    pixbuf = gtk_image_get_pixbuf(GTK_IMAGE(logo));
+
+    /* Extract first and last column (left and right) to build an object in any
+     * case, let the first expose event deal with a possible resize.
+     */
+    pixbuf_l = gdk_pixbuf_new_subpixbuf(pixbuf,
+                                        0, 0,
+                                        1, gdk_pixbuf_get_height(pixbuf));
+    pixbuf_r = gdk_pixbuf_new_subpixbuf(pixbuf,
+                                        gdk_pixbuf_get_width(pixbuf)-1, 0,
+                                        1, gdk_pixbuf_get_height(pixbuf));
+    logo_l = gtk_image_new_from_pixbuf(pixbuf_l);
+    logo_r = gtk_image_new_from_pixbuf(pixbuf_r);
+
+    gtk_box_pack_start(GTK_BOX(banner_box), GTK_WIDGET(logo_l),
+                       TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(banner_box), GTK_WIDGET(logo),
+                       FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(banner_box), GTK_WIDGET(logo_r),
+                       TRUE, TRUE, 0);
+    gtk_container_add(GTK_CONTAINER(banner), banner_box);
+
+    /* Hide both expanders by default, leaving the main logo a chance to be
+     * displayed properly from the get-go.
+     */
+    gtk_widget_hide(logo_l);
+    gtk_widget_hide(logo_r);
 
     /* Remember the logo size: */
     if (gtk_image_get_storage_type(GTK_IMAGE(logo)) == GTK_IMAGE_PIXBUF)
@@ -217,14 +345,19 @@ static void create_banner(struct frontend * fe, GtkWidget * container)
         pixbuf = gtk_image_get_pixbuf(GTK_IMAGE(logo));
         fe_data->logo_width = gdk_pixbuf_get_width(pixbuf);
         fe_data->logo_height = gdk_pixbuf_get_height(pixbuf);
-        fe_data->logo_adjusted = FALSE;
+        fe_data->banner_adjusted = FALSE;
     }
     else
     {
+        /* kibi/2023-05-19: does that ever happen? kept as is for now, but would
+         * probably error out way before, with the two new images and pixbufs.
+         */
         fe_data->logo_height = 24;
-        fe_data->logo_adjusted = TRUE;
+        fe_data->banner_adjusted = TRUE;
     }
     fe_data->logo_widget = logo;
+    fe_data->logo_widget_l = logo_l;
+    fe_data->logo_widget_r = logo_r;
 
 #if GTK_CHECK_VERSION(3,0,0)
     g_signal_connect_after(G_OBJECT(banner), "draw",
@@ -252,7 +385,6 @@ static void create_label_title(struct frontend * fe, GtkWidget * container)
     struct frontend_data * fe_data = fe->data;
     GtkWidget * label_title;
 
-    /* check NULL! */
     label_title = gtk_label_new(NULL /* no label */);
 
     gtk_misc_set_alignment(GTK_MISC(label_title), 0 /* left */, 0 /* top */);
@@ -300,7 +432,6 @@ static void create_action_box(struct frontend * fe, GtkWidget * container)
 
     g_assert(NULL == fe_data->action_box);
 
-    /* check NULL! */
     action_box = gtk_hbutton_box_new();
 
     gtk_button_box_set_layout(GTK_BUTTON_BOX(action_box), GTK_BUTTONBOX_END);
@@ -328,14 +459,11 @@ static void create_main_widgets(struct frontend * fe, GtkWidget * window)
     GtkWidget * v_mainbox;
     GtkWidget * h_mainbox;
 
-    /* check NULL! */
     outer_box = gtk_vbox_new(FALSE /* don't make children equal */,
                              0 /* padding */);
     create_banner(fe, outer_box);
-    /* check NULL! */
     v_mainbox = gtk_vbox_new(FALSE /* don't make children equal */,
                              0 /* padding */);
-    /* check NULL! */
     h_mainbox = gtk_hbox_new(FALSE /* don't make children equal */,
                              0 /* padding */);
     create_label_title(fe, v_mainbox);
@@ -438,7 +566,6 @@ void cdebconf_gtk_add_global_key_handler(struct frontend * fe,
     struct frontend_data * fe_data = fe->data;
     struct shortcut * shortcut;
 
-    /* XXX: check NULL! */
     shortcut = g_malloc0(sizeof (struct shortcut));
     shortcut->window = fe_data->window;
     shortcut->handler_id = g_signal_connect_after(
@@ -472,10 +599,8 @@ void cdebconf_gtk_center_widget(GtkWidget ** widget, guint horizontal_padding,
     GtkWidget * vbox;
     GtkWidget * hbox;
 
-    /* XXX: check NULL! */
     vbox = gtk_vbox_new(FALSE /* don't make children equal */,
                         0 /* padding */);
-    /* XXX: check NULL! */
     hbox = gtk_hbox_new(FALSE /* don't make children equal */,
                         0 /* padding */);
     gtk_box_pack_start(GTK_BOX(vbox), *widget, TRUE /* expand */,
@@ -498,12 +623,10 @@ static GtkWidget * create_dialog_action_box(struct frontend * fe,
     GtkWidget * close_button;
     char * label;
 
-    /* check NULL! */
     action_box = gtk_hbutton_box_new();
     gtk_button_box_set_layout(GTK_BUTTON_BOX(action_box), GTK_BUTTONBOX_END);
 
     label = cdebconf_gtk_get_text(fe, "debconf/button-continue", "Continue");
-    /* check NULL! */
     close_button = gtk_button_new_with_label(label);
     g_free(label);
 
@@ -525,7 +648,6 @@ static GtkWidget * create_dialog_title_label(const gchar * title)
     GtkWidget * label;
     gchar * markup;
 
-    /* check NULL! */
     label = gtk_label_new(NULL /* no text */);
     gtk_misc_set_alignment(GTK_MISC(label), 0 /* left aligned */,
                            0 /* top aligned */);
@@ -548,7 +670,6 @@ gboolean cdebconf_gtk_run_message_dialog(struct frontend * fe,
     GtkWidget * frame;
     GtkWidget * label;
 
-    /* XXX: check NULL! */
     dialog = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_modal(GTK_WINDOW(dialog), TRUE /* modal */);
     gtk_window_set_transient_for(GTK_WINDOW(dialog),
@@ -562,7 +683,6 @@ gboolean cdebconf_gtk_run_message_dialog(struct frontend * fe,
     label = gtk_label_new(message);
     gtk_label_set_line_wrap(GTK_LABEL(label), TRUE);
 
-    /* XXX: check NULL! */
     vbox = gtk_vbox_new(FALSE /* don't make children equal */,
                         DEFAULT_PADDING);
     gtk_box_pack_start(GTK_BOX(vbox), create_dialog_title_label(title),

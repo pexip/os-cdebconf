@@ -139,13 +139,14 @@ fi
 dnl Frontends - which to include.
 
 if test -z "$FRONTEND_MODULES"; then
-    FRONTEND_MODULES="passthrough text"
+    FRONTEND_MODULES="passthrough"
 
     AC_CHECK_LIB([bogl], [bowl_flush], [FRONTEND_MODULES="$FRONTEND_MODULES bogl"], [AC_MSG_WARN([cannot build BOGL frontend])])
     PKG_CHECK_EXISTS([glib-2.0 >= 2.31 gtk+-x11-2.0 >= 2.24 pango gdk-pixbuf-2.0], [FRONTEND_MODULES="$FRONTEND_MODULES gtk"], [AC_MSG_WARN([cannot build GTK frontend])])
     PKG_CHECK_EXISTS([ncurses], [FRONTEND_MODULES="$FRONTEND_MODULES ncurses"], [AC_MSG_WARN([cannot build ncurses frontend])])
     PKG_CHECK_EXISTS([libnewt slang], [FRONTEND_MODULES="$FRONTEND_MODULES newt"], [AC_MSG_WARN([cannot build Newt frontend])])
     PKG_CHECK_EXISTS([slang], [FRONTEND_MODULES="$FRONTEND_MODULES slang"], [AC_MSG_WARN([cannot build Slang frontend])])
+    PKG_CHECK_EXISTS([readline], [FRONTEND_MODULES="$FRONTEND_MODULES text"], [AC_MSG_WARN([cannot build text frontend])])
 fi
 
 FRONTEND_MODULES_BUILD=""
@@ -161,6 +162,8 @@ for frontend in $FRONTEND_MODULES; do
                                   [FRONTEND_MODULES_BUILD="$FRONTEND_MODULES_BUILD newt"]);;
       slang)    PKG_CHECK_MODULES([SLANG],[slang],
                                   [FRONTEND_MODULES_BUILD="$FRONTEND_MODULES_BUILD slang"]);;
+      text)     PKG_CHECK_MODULES([READLINE],[readline],
+                                  [FRONTEND_MODULES_BUILD="$FRONTEND_MODULES_BUILD text"]);;
       *) FRONTEND_MODULES_BUILD="$FRONTEND_MODULES_BUILD $frontend";;
     esac
 done

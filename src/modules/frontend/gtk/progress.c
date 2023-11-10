@@ -93,7 +93,6 @@ static void create_progress_bar(struct progress_data * progress_data,
 {
     GtkWidget * progress_bar;
 
-    /* XXX: check NULL! */
     progress_bar = gtk_progress_bar_new();
 
     gtk_progress_bar_set_ellipsize(GTK_PROGRESS_BAR(progress_bar),
@@ -186,7 +185,6 @@ static void create_progress_box(struct progress_data * progress_data)
 {
     GtkWidget * progress_box;
 
-    /* check NULL! */
     progress_box = gtk_vbox_new(FALSE /* don't make children equal */,
                                 0 /* padding */);
 
@@ -320,7 +318,6 @@ static void create_cancel_button(struct progress_data * progress_data)
     GtkWidget * button;
     char * label;
 
-    /* XXX: check NULL! */
     label = cdebconf_gtk_get_text(fe, "debconf/button-cancel", "Cancel");
     button = gtk_button_new_with_label(label);
     g_free(label);

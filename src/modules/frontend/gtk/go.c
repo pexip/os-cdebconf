@@ -94,7 +94,6 @@ void cdebconf_gtk_register_setter(struct frontend * fe, setter_function func,
     struct frontend_data * fe_data = fe->data;
     struct setter * setter;
 
-    /* check NULL! */
     setter = g_malloc0(sizeof (struct setter));
     setter->func = func;
     setter->question = question;
@@ -166,7 +165,6 @@ static void create_help_button(struct frontend * fe)
     char * label;
 
     label = cdebconf_gtk_get_text(fe, "debconf/button-help", "Help");
-    /* XXX: check NULL! */
     button = gtk_button_new_with_label(label);
     g_free(label);
 
@@ -208,7 +206,6 @@ static void create_goback_button(struct frontend * fe)
     char * label;
 
     label = cdebconf_gtk_get_text(fe, "debconf/button-goback", "Go Back");
-    /* XXX: check NULL! */
     button = gtk_button_new_with_label(label);
     g_free(label);
 
@@ -229,7 +226,6 @@ GtkWidget * cdebconf_gtk_create_continue_button(struct frontend * fe)
     GtkWidget * button;
     char * label;
 
-    /* XXX: check NULL! */
     label = cdebconf_gtk_get_text(fe, "debconf/button-continue", "Continue");
     button = gtk_button_new_with_label(label);
     g_free(label);
@@ -455,7 +451,6 @@ static GtkWidget * create_question_box(struct frontend * fe,
     GtkWidget * hpadding_box;
     GtkAdjustment *adj;
 
-    /* check NULL! */
     question_box = gtk_vbox_new(FALSE /* don't make children equal */,
                                 0 /* padding */);
 

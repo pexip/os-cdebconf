@@ -1,3 +1,149 @@
+cdebconf (0.270) unstable; urgency=medium
+
+  [ Cyril Brulebois ]
+  * gtk: Improve banner display when the installer logo's width doesn't
+    match the GTK window's width (See: #745359). Implement the following:
+     - No longer scale the installer logo, ever.
+     - If the logo is wider than the window, don't do anything. This can
+       happen with some graphics drivers under UEFI, e.g. when using a
+       small resolution like 640×480 with the virtio graphics driver. In
+       such cases, the logo is centered and is truncated on both sides.
+     - If the logo is narrower than the window, repeat the left-most 1-px
+       column to the left and/or the right-most 1-px column to the right,
+       to cover the whole window (see expand-direction below).
+  * gtk: Add support for banner metadata (See: #1036321). Until now,
+    depending on the logo design, the cdebconf code needed to be tweaked
+    to align the banner label (e.g. used to display “Rescue mode”) to the
+    left or to the right accordingly. Now, look for a logo_installer.ini
+    file in the same directory as the logo file(s), supporting two keys
+    under the [banner] section:
+     - label-position: left or right;
+     - expand-direction: left, right, or both.
+  * gtk: It is recommended to ship a banner metadata file matching the
+    logo design. If it is missing, or if it doesn't contain all supported
+    keys, the default settings have been arbitrarily set to the following
+    values, which are giving appropriate results with the Bookworm theme
+    (Emerald):
+     - label-position: right;
+     - expand-direction: both.
+
+  [ Updated translations ]
+  * Belarusian (be.po) by Viktar Siarheichyk
+  * Bengali (bn.po) by Indrani Roy
+  * Norwegian Nynorsk (nn.po) by Yngve Spjeld-Landro
+
+ -- Cyril Brulebois <kibi@debian.org>  Tue, 23 May 2023 12:00:51 +0200
+
+cdebconf (0.269) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Georgian (ka.po) by Temuri Doghonadze
+
+ -- Cyril Brulebois <kibi@debian.org>  Wed, 26 Apr 2023 00:54:54 +0200
+
+cdebconf (0.268) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Macedonian (mk.po) by Kristijan Fremen Velkovski
+
+ -- Cyril Brulebois <kibi@debian.org>  Wed, 29 Mar 2023 14:28:09 +0200
+
+cdebconf (0.267) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Spanish (es.po) by gallegonovato
+  * Macedonian (mk.po) by Kristijan Fremen Velkovski
+
+ -- Cyril Brulebois <kibi@debian.org>  Wed, 15 Feb 2023 16:50:49 +0100
+
+cdebconf (0.266) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Holger Wansing ]
+  * Fix missing GPL-2+ license in d/copyright. Closes: #1019919
+  * Revert 'No longer depend on debconf' for now (Closes: #1026858).
+
+  [ Updated translations ]
+  * Greek (el.po) by george kitsoukakis
+  * Persian (fa.po) by Danial Behzadi
+  * Kazakh (kk.po) by Baurzhan Muftakhidinov
+  * Polish (pl.po) by Matthaiks
+
+ -- Holger Wansing <hwansing@mailbox.org>  Sat, 31 Dec 2022 15:15:11 +0100
+
+cdebconf (0.265) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Samuel Thibault ]
+  * Make gbp tag produce the right tag format.
+  * text: During progression, provide user feedback at least every minute.
+  * newt: Align more items on top-left in braille mode.
+
+  [ Gioele Barabucci ]
+  * No longer depend on debconf (Closes: #1006492, #328498).
+
+  [ Updated translations ]
+  * Catalan (ca.po) by d
+  * Norwegian Nynorsk (nn.po) by anonymous
+
+ -- Holger Wansing <hwansing@mailbox.org>  Sat, 19 Nov 2022 23:47:52 +0100
+
+cdebconf (0.264) unstable; urgency=medium
+
+  * Team upload.
+
+  * Add missing changelog entries (translation updates) for 0.263 changelog
+
+  [ Updated translations ]
+  * Vietnamese (vi.po) by Trần Ngọc Quân
+
+ -- Holger Wansing <hwansing@mailbox.org>  Sun, 21 Aug 2022 16:56:59 +0200
+
+cdebconf (0.263) unstable; urgency=medium
+
+  * text: Add default marker in selection.
+  * newt: Align dialogs on the left when brltty is running.
+
+  [ Updated translations ]
+  * Catalan (ca.po) by d
+  * Basque (eu.po) by Gontzal Manuel Pujana Onaindia
+  * Galician (gl.po) by Jorge Teijeiro
+  * Norwegian Nynorsk (nn.po) by aujawindar
+  * Simplified Chinese (zh_CN.po) by Wenbin Lv
+
+ -- Samuel Thibault <sthibault@debian.org>  Sun, 12 Jun 2022 19:55:01 +0200
+
+cdebconf (0.262) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Holger Wansing ]
+  * Add missing changelog entries for 0.261
+
+  [ Samuel Thibault ]
+  * text: Use libreadline and history to allow choosing with arrows
+    (Closes: #791719).
+
+ -- Samuel Thibault <sthibault@debian.org>  Thu, 14 Apr 2022 00:36:19 +0200
+
+cdebconf (0.261) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Samuel Thibault ]
+  * Make gbp produce the right tag format
+  * text: make steps interruptible (Closes: #998424).
+
+  [ Simon McVittie ]
+  * gtk: Remove "check NULL" comments
+
+  [ Philip Hands ]
+  * Enable salsa-ci with branch2repo
+
+ -- Samuel Thibault <sthibault@debian.org>  Fri, 12 Nov 2021 20:25:16 +0100
+
 cdebconf (0.260pexip3) pexip-bullseye; urgency=medium
 
   * Bullseye rebuild for ARM64 inclusion

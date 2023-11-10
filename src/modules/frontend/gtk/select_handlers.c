@@ -309,7 +309,6 @@ static void insert_choice_column(struct frontend * fe, GtkTreeView * view)
     PangoTabArray * tab_array;
 
     if (CAN_ALIGN(fe)) {
-        /* XXX: check NULL */
         tab_array = pango_tab_array_new(0 /* start with no tabs */,
                                         FALSE /* use pango unit */);
         adjust_tabs(GTK_WIDGET(view), tab_array,
@@ -347,7 +346,6 @@ static int create_select_list(struct frontend * fe, struct question * question,
     GtkWidget * scroll;
     GtkWidget * frame;
 
-    /* check NULL! */
     view = gtk_tree_view_new_with_model(model);
 
     gtk_tree_view_set_headers_visible(GTK_TREE_VIEW(view),
@@ -449,7 +447,6 @@ static void set_value_from_multiselect(struct question * question,
     guint selected_index;
     gchar * result;
 
-    /* check NULL! */
     selected_values = g_malloc0(
         sizeof (char *) * (1 /* terminating NULL */ +
                            cdebconf_gtk_choice_model_get_length(model)));
@@ -739,9 +736,7 @@ static int create_select_combo(struct frontend * fe,
     GtkWidget * combo_box;
     GtkCellRenderer * text_renderer;
 
-    /* XXX: check NULL! */
     combo_box = gtk_combo_box_new_with_model(model);
-    /* XXX: check NULL! */
     text_renderer = gtk_cell_renderer_text_new();
     gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(combo_box), text_renderer,
                                TRUE /* expand */);

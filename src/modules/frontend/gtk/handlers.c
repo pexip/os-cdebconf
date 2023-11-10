@@ -193,7 +193,6 @@ static GtkWidget * create_entry_alignment(GtkWidget * entry)
 {
     GtkWidget * alignment;
 
-    /* check NULL! */
     alignment = gtk_alignment_new(0.0 /* left */, 0.0 /* top */,
                                   1.0 /* expand horizontally */,
                                   0.0 /* no vertical expansion */);
