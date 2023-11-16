@@ -1,3 +1,9 @@
+cdebconf (0.270pexip1) pexip-bookworm; urgency=medium
+
+  * Initial bookworm build
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Thu, 16 Nov 2023 09:56:22 +0000
+
 cdebconf (0.270) unstable; urgency=medium
 
   [ Cyril Brulebois ]
