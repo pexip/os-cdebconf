@@ -1,3 +1,9 @@
+cdebconf (0.270pexip2) pexip-bookworm; urgency=medium
+
+  * Bookworm build for product distribution
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Sat, 09 Dec 2023 22:52:02 +0000
+
 cdebconf (0.270pexip1) pexip-bookworm; urgency=medium
 
   * Initial bookworm build
