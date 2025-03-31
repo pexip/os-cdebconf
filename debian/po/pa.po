@@ -21,13 +21,14 @@
 # Amanpreet Singh Alam <aalam@users.sf.net>, 2008, 2009.
 # Amanpreet Singh Alam[ਆਲਮ] <amanpreetalam@yahoo.com>, 2005.
 # A S Alam <aalam@users.sf.net>, 2009, 2012, 2014, 2017.
+# Aman Alam <alam.yellow@gmail.com>, 2018, 2019, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: pa\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
 "POT-Creation-Date: 2016-06-05 14:47+0000\n"
-"PO-Revision-Date: 2018-01-04 06:20+0000\n"
-"Last-Translator: Aman ALam <alam.yellow@gmail.com>\n"
+"PO-Revision-Date: 2024-11-19 09:29+0000\n"
+"Last-Translator: Aman Alam <aalam@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
 "Language: pa\n"
 "MIME-Version: 1.0\n"
@@ -68,7 +69,7 @@ msgstr "ਘੱਟ"
 #. :sl2:
 #: ../cdebconf-udeb.templates:2002
 msgid "Ignore questions with a priority less than:"
-msgstr "ਇਸ ਤੋਂ ਘੱਟ ਦਰਜੇ ਵਾਲੇ ਸਵਾਲਾਂ ਨੂੰ ਅਣਡਿੱਠਾ ਕਰ ਦਿਓ:"
+msgstr "ਇਸ ਤੋਂ ਘੱਟ ਤਰਜੀਹ ਵਾਲੇ ਸਵਾਲਾਂ ਨੂੰ ਅਣਡਿੱਠਾ ਕਰ ਦਿਓ:"
 
 #. Type: select
 #. Description
@@ -96,7 +97,7 @@ msgid ""
 "   the vast majority of cases."
 msgstr ""
 "ਤੁਸੀਂ ਪ੍ਰਸ਼ਨ ਦੀ ਘੱਟ ਤਰਜੀਹ ਚੁਣ ਸਕਦੇ ਹੋ ਜਿਸ ਨੂੰ ਵੇਖਣਾ ਚਾਹੁੰਦੇ ਹੋ:\n"
-" - 'ਨਾਜ਼ੁਕ' ਉਹਨਾਂ ਆਈਟਮਾਂ ਲਈ ਹੈ, ਜੋ ਯੂਜ਼ਰ ਨੂੰ ਬਿਨ ਦੱਸਿਆਂ ਸਿਸਟਮ\n"
+" - 'ਨਾਜ਼ੁਕ' ਉਹਨਾਂ ਆਈਟਮਾਂ ਲਈ ਹੈ, ਜੋ ਵਰਤੋਂਕਾਰ ਨੂੰ ਬਿਨ ਦੱਸਿਆਂ ਸਿਸਟਮ\n"
 "    ਨੂੰ ਸੰਭਾਵੀ ਹੀ ਖਰਾਬ ਕਰਦਾ ਹੈ।\n"
 " - 'ਉੱਚ' ਉਹਨਾਂ ਆਈਟਮਾਂ ਲਈ ਹੈ, ਜੋ ਬਿਨਾਂ ਡਿਫਾਲਟ ਕਾਰਨ ਹੁੰਦੀਆਂ ਹਨ।\n"
 " - 'ਮੱਧਮ' ਆਮ ਆਈਟਮਾਂ ਲਈ ਹੈ, ਜੋ ਕਾਰਨ ਵਾਲਾ ਡਿਫਾਲਟ ਹੁੰਦਾ ਹੈ।\n"
@@ -111,15 +112,15 @@ msgid ""
 "For example, this question is of medium priority, and if your priority were "
 "already 'high' or 'critical', you wouldn't see this question."
 msgstr ""
-"ਉਦਾਹਰਨ ਵਜੋਂ, ਇਹ ਪ੍ਰਸ਼ਨ ਮੱਧਮ ਤਰਜੀਹ ਵਾਲਾ ਹੈ, ਅਤੇ ਜੇ ਤੁਹਾਡੀ ਤਰਜੀਹ ਪਹਿਲਾਂ ਹੀ 'ਉਚ' ਜਾਂ "
-"'ਨਾਜ਼ੁਕ' ਹੈ, ਤੁਸੀਂ ਇਹ ਪ੍ਰਸ਼ਨ ਵੇਖ ਨਹੀਂ ਸਕਦੇ।"
+"ਉਦਾਹਰਨ ਵਜੋਂ, ਇਹ ਸਵਾਲ ਮੱਧਮ ਤਰਜੀਹ ਵਾਲਾ ਹੈ, ਅਤੇ ਜੇ ਤੁਹਾਡੀ ਤਰਜੀਹ ਪਹਿਲਾਂ ਹੀ 'ਉਚ' ਜਾਂ "
+"'ਨਾਜ਼ੁਕ' ਹੈ, ਤੁਸੀਂ ਇਹ ਸਵਾਲ ਵੇਖ ਨਹੀਂ ਸਕਦੇ।"
 
 #. Type: text
 #. Description
 #. :sl2:
 #: ../cdebconf-priority.templates:1001
 msgid "Change debconf priority"
-msgstr "debconf ਦਰਜਾ ਬਦਲੋ"
+msgstr "debconf ਤਰਜੀਹ ਨੂੰ ਬਦਲੋ"
 
 #. Type: text
 #. Description
@@ -193,7 +194,7 @@ msgstr "<F1> ਮੱਦਦ ਲਈ; <Tab> ਹਿਲਾਉ; <Space> ਚੁਣੋ; <
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
 msgid "Show Password in Clear"
-msgstr "ਪਾਸਵਰਡ ਸਪਰਸ਼ਟ ਦਿਖਾਓ"
+msgstr "ਪਾਸਵਰਡ ਸਪਸ਼ਟ ਦਿਖਾਓ"
 
 #. Type: text
 #. Description
@@ -201,7 +202,7 @@ msgstr "ਪਾਸਵਰਡ ਸਪਰਸ਼ਟ ਦਿਖਾਓ"
 #. :sl1:
 #: ../cdebconf-gtk-udeb.templates:5001
 msgid "Help"
-msgstr "ਮੱਦਦ"
+msgstr "ਮਦਦ"
 
 #. Type: text
 #. Description
@@ -223,7 +224,7 @@ msgstr "LTR"
 #. :sl1:
 #: ../cdebconf-gtk-udeb.templates:7001
 msgid "Screenshot"
-msgstr "ਸਕਰੀਨ-ਸ਼ਾਂਟ"
+msgstr "ਸਕਰੀਨਸ਼ਾਟ"
 
 #. Type: text
 #. Description

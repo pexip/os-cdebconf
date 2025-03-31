@@ -24,7 +24,7 @@ msgstr ""
 "Project-Id-Version: Debian Installer Level 1\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
 "POT-Creation-Date: 2016-06-05 14:47+0000\n"
-"PO-Revision-Date: 2018-01-04 06:20+0000\n"
+"PO-Revision-Date: 2023-09-20 17:02+0000\n"
 "Last-Translator: Anish Sheela <aneesh.nl@gmail.com>\n"
 "Language-Team: Swatantra Malayalam Computing <discuss@lists.smc.org.in>\n"
 "Language: ml\n"
@@ -77,9 +77,9 @@ msgid ""
 "might ask you. Only questions with a certain priority or higher are actually "
 "shown to you; all less important questions are skipped."
 msgstr ""
-"ക്രമീകരണത്തിനായി ഡെബ്കോണ്‍ഫ് ഉപയോഗിക്കുന്ന പാക്കേജുകള്‍ അവ നിങ്ങളോട് ചോദിക്കുന്ന ചോദ്യങ്ങള്‍ക്ക് "
-"മുന്‍ഗണന നിശ്ചയിക്കും. ചില പ്രത്യേക മുന്‍ഗണനാക്രമമോ അതില്‍ ഉയര്‍ന്നതോ ആയ ചോദ്യങ്ങള്‍ മാത്രമേ "
-"ശരിക്കും നിങ്ങളെ കാണിക്കുകയുള്ളൂ; പ്രാധാന്യം കുറഞ്ഞ എല്ലാ ചോദ്യങ്ങളും ഒഴിവാക്കുന്നതായിരിയ്ക്കും."
+"ക്രമീകരണത്തിനായി ഡെബ്കോണ്‍ഫ് ഉപയോഗിക്കുന്ന പാക്കേജുകള്‍ അവ നിങ്ങളോട് ചോദിക്കുന്ന ചോദ്യങ്ങള്‍ക്ക് മുന്‍"
+"ഗണന നിശ്ചയിക്കും. ചില പ്രത്യേക മുന്‍ഗണനാക്രമമോ അതില്‍ ഉയര്‍ന്നതോ ആയ ചോദ്യങ്ങള്‍ മാത്രമേ ശരിക്കും "
+"നിങ്ങളെ കാണിക്കുകയുള്ളൂ; പ്രാധാന്യം കുറഞ്ഞ എല്ലാ ചോദ്യങ്ങളും ഒഴിവാക്കുന്നതായിരിയ്ക്കും."
 
 #. Type: select
 #. Description
@@ -349,8 +349,8 @@ msgid ""
 "Packages that use debconf for configuration share a common look and feel. "
 "You can select the type of user interface they use."
 msgstr ""
-"ക്രമീകരണത്തിനായി ഡെബ്കോണ്‍ഫ്  ഉപയോഗിക്കുന്ന പാക്കേജുകള്‍ ഒരു പൊതുവായ കാഴ്ചയും അനുഭവവും നല്കുന്നു. "
-"അവ ഉപയോഗിക്കുന്ന ഇന്റര്‍ഫേസിന്റെ തരം നിങ്ങളള്‍ക്ക് തിരഞ്ഞെടുക്കാം."
+"ക്രമീകരണത്തിനായി ഡെബ്കോണ്‍ഫ് ഉപയോഗിക്കുന്ന പാക്കേജുകള്‍ ഒരുപോലെ കാണാനുണ്ടാവും. നിങ്ങളള്‍ക്ക് "
+"ഇഷ്ടപ്പെട്ട രീതിയിൽ അത് കാണിക്കാൻ തെരഞ്ഞെടുക്കാം."
 
 #. Type: string
 #. Description

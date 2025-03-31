@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: debian-installer.2006071\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
 "POT-Creation-Date: 2016-06-05 14:47+0000\n"
-"PO-Revision-Date: 2023-04-09 20:53+0000\n"
+"PO-Revision-Date: 2024-09-21 07:40+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian\n"
 "Language: ka\n"
@@ -67,7 +67,7 @@ msgstr "დაბალი"
 #. :sl2:
 #: ../cdebconf-udeb.templates:2002
 msgid "Ignore questions with a priority less than:"
-msgstr "იგნორირება კითხვებისა, რომელთაც აქვთ ნაკლები პრიორიტეტი ვიდრე:"
+msgstr "კითხვების გამოტოვება, რომელთაც აქვთ ნაკლები პრიორიტეტი, ვიდრე:"
 
 #. Type: select
 #. Description
@@ -78,9 +78,9 @@ msgid ""
 "might ask you. Only questions with a certain priority or higher are actually "
 "shown to you; all less important questions are skipped."
 msgstr ""
-"debconf-ით მართვად პროგრამების დასმულ კითხვებს გააჩნიათ მნიშვნელოვანების "
-"სტატუსი. ანუ თქვენ ეკრანზე ხედავთ მხოლოდ გარკვეულზე მაღალი პრიორიტეტის მქონე "
-"კითხვებს, დანარჩენი კითხვები გამოტოვებულია."
+"debconf-ით მართვადი პროგრამების დასმულ კითხვებს პრიორიტეტები გააჩნიათ. ანუ "
+"თქვენ ეკრანზე ხედავთ მხოლოდ გარკვეულზე მაღალი პრიორიტეტის მქონე კითხვებს, "
+"დანარჩენი კითხვები გამოტოვებულია."
 
 #. Type: select
 #. Description
@@ -96,12 +96,12 @@ msgid ""
 "   the vast majority of cases."
 msgstr ""
 "მიუთითეთ უმდაბლესი პრიორიტეტი, რომლის მქონე კითხვები გამოჩნდება:\n"
-" - 'კრიტიკული'  -- სიტუაციები, როდესაც მომხმარებლის ჩარევის\n"
-"             გარეშე სისტემამ შეიძლება ავარია განიცადოს.\n"
-"  - 'მაღალი'  - კითხვები, რომელთაც არა აქვთ მისაღები ნაგულისხმები პასუხები.\n"
-"  - 'საშუალო'  - კითხვები მისაღები ნაგულისხმევი პასუხებით.\n"
-"  - 'დაბალი'  - სტანდარტული კითხვები, რომლებზეც ნაგულისხმები\n"
-"      პასუხები მისაღებია უმრავლეს შემთხვევაში."
+" - 'კრიტიკული'  - სიტუაციები, როდესაც მომხმარებლის ჩარევის\n"
+"                  გარეშე სისტემამ შეიძლება ავარია განიცადოს.\n"
+" - 'მაღალი'  - კითხვები, რომელთაც არა აქვთ მისაღები ნაგულისხმევი პასუხები.\n"
+" - 'საშუალო'  - კითხვები მისაღები ნაგულისხმევი პასუხებით.\n"
+" - 'დაბალი'  - სტანდარტული კითხვები, რომლებზეც ნაგულისხმევი\n"
+"               პასუხები მისაღებია უმრავლეს შემთხვევაში."
 
 #. Type: select
 #. Description
@@ -111,7 +111,7 @@ msgid ""
 "For example, this question is of medium priority, and if your priority were "
 "already 'high' or 'critical', you wouldn't see this question."
 msgstr ""
-"მაგალითად, ამ კითხვას საშუალო პრიორიტეტი აქვს, ამიტომ თუ თქვენ არჩეული "
+"მაგალითად, ამ კითხვას საშუალო პრიორიტეტი აქვს, ამიტომ, თუ თქვენ არჩეული "
 "გქონდათ \"მაღალი\" ან \"კრიტიკული\" პრიორიტეტი, ეს კითხვა თქვენთან არ "
 "გამოჩნდება."
 
@@ -120,7 +120,7 @@ msgstr ""
 #. :sl2:
 #: ../cdebconf-priority.templates:1001
 msgid "Change debconf priority"
-msgstr "debconf პრიორიტეტის შეცვლა"
+msgstr "debconf-ის პრიორიტეტის შეცვლა"
 
 #. Type: text
 #. Description
@@ -136,7 +136,7 @@ msgstr "გაგრძელება"
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:2001 ../cdebconf-gtk-udeb.templates:2001
 msgid "Go Back"
-msgstr "დაბრუნება"
+msgstr "უკან დაბრუნება"
 
 #. Type: text
 #. Description
@@ -177,7 +177,7 @@ msgstr "გაუქმება"
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:6001
 msgid "<Tab> moves; <Space> selects; <Enter> activates buttons"
-msgstr "<Tab> გადაადგილება; <Space> ამორჩევა; <Enter> ღილაკთა აქტივაცია"
+msgstr "<Tab> გადაადგილება; <Space> ამორჩევა; <Enter> ღილაკების გააქტიურება"
 
 #. Type: text
 #. Description
@@ -187,17 +187,16 @@ msgstr "<Tab> გადაადგილება; <Space> ამორჩე�
 #: ../cdebconf-newt-udeb.templates:7001
 msgid "<F1> for help; <Tab> moves; <Space> selects; <Enter> activates buttons"
 msgstr ""
-"<F1> დახმარება; <Tab> გადაადგილება; <Space> ამორჩევა; <Enter> ღილაკთა "
-"აქტივაცია"
+"<F1> დახმარებისთვის; <Tab> გადაადგილებისთვის; <Space> მოსანიშნად; <Enter> "
+"გაააქტიურებს ღილაკებს"
 
 #. Type: text
 #. Description
 #. Appears as a checkbox in the newt and GTK interfaces.
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
-#, fuzzy
 msgid "Show Password in Clear"
-msgstr "შეცდომა პაროლის შეყვანისას"
+msgstr "პაროლის გამოჩენა"
 
 #. Type: text
 #. Description
@@ -217,7 +216,7 @@ msgstr "დახმარება"
 #. :sl1:
 #: ../cdebconf-gtk-udeb.templates:6001
 msgid "LTR"
-msgstr "LTR"
+msgstr "მარცხნიდან მარჯვნივ"
 
 #. Type: text
 #. Description
@@ -237,7 +236,7 @@ msgstr "ეკრანის ანაბეჭდი"
 #: ../cdebconf-gtk-udeb.templates:8001
 #, no-c-format
 msgid "Screenshot saved as %s"
-msgstr "ეკრანის ანაბეჭდი შენახულია %s ფაილში"
+msgstr "ეკრანის ანაბეჭდი შენახულია ფაილში %s"
 
 #. Type: text
 #. Description
@@ -252,7 +251,7 @@ msgstr "!! შეცდომა: %s"
 #. :sl4:
 #: ../cdebconf-text-udeb.templates:2001
 msgid "KEYSTROKES:"
-msgstr "კლავიშები:"
+msgstr "ღილაკის დაჭერები:"
 
 #. Type: text
 #. Description
@@ -267,21 +266,21 @@ msgstr "'%c'"
 #. :sl4:
 #: ../cdebconf-text-udeb.templates:4001
 msgid "Display this help message"
-msgstr "ამ დახმარების ჩვენება"
+msgstr "ამ დახმარების გამოტანა"
 
 #. Type: text
 #. Description
 #. :sl4:
 #: ../cdebconf-text-udeb.templates:5001
 msgid "Go back to previous question"
-msgstr "წინა კითხვაზე დაბრუნება"
+msgstr "წინა კითხვაზე გადასვლა"
 
 #. Type: text
 #. Description
 #. :sl4:
 #: ../cdebconf-text-udeb.templates:6001
 msgid "Select an empty entry"
-msgstr "ცარიელი ჩანაწერის ამორჩევა"
+msgstr "აირჩიეთ ცარიელი ჩანაწერი"
 
 #. Type: text
 #. Description
@@ -297,7 +296,7 @@ msgstr "'%c'-სთან და '%c'-სთან ერთად სხვა 
 #: ../cdebconf-text-udeb.templates:8001
 #, no-c-format
 msgid "Previous choices are available with '%c'"
-msgstr ""
+msgstr "წინა არჩევანი ხელმისაწვდომია '%c'-სთან ერთად"
 
 #. Type: text
 #. Description
@@ -305,7 +304,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:9001
 #, no-c-format
 msgid "Next choices are available with '%c'"
-msgstr ""
+msgstr "შემდეგი არჩევნები ხელმისაწვდომია '%c'-სთან ერთად"
 
 #. Type: text
 #. Description
@@ -313,7 +312,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:12001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%d> "
-msgstr "ბრძანება: '%c' დახმარება, ნაგულისხმევი=%d> "
+msgstr "ბრძანება: '%c' დახმარებისთვის, ნაგულისხმევი=%d> "
 
 #. Type: text
 #. Description
@@ -321,7 +320,7 @@ msgstr "ბრძანება: '%c' დახმარება, ნაგუ
 #: ../cdebconf-text-udeb.templates:13001
 #, no-c-format
 msgid "Prompt: '%c' for help> "
-msgstr "ბრძანება: '%c' დახმარება> "
+msgstr "ბრძანება: '%c' დახმარებისთვის> "
 
 #. Type: text
 #. Description
@@ -329,21 +328,21 @@ msgstr "ბრძანება: '%c' დახმარება> "
 #: ../cdebconf-text-udeb.templates:14001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%s> "
-msgstr "ბრძანება: '%c' დახმარება, default=%s> "
+msgstr "ბრძანება: '%c' დახმარებისთვის, ნაგულისხმევი=%s> "
 
 #. Type: text
 #. Description
 #. :sl4:
 #: ../cdebconf-text-udeb.templates:15001
 msgid "[Press enter to continue]"
-msgstr "[გასაგრძელებლად დააჭირეთ შეყვანის ღილაკს]"
+msgstr "[გასაგრძელებლად დააჭირეთ ღილაკს 'Enter']"
 
 #. Type: select
 #. Description
 #. :sl4:
 #: ../cdebconf.templates:1001
 msgid "Interface to use:"
-msgstr "გამოსაყენებელი ინტერფეისები:"
+msgstr "აირჩიეთ გამოსაყენებელი ინტერფეისი:"
 
 #. Type: select
 #. Description
@@ -353,20 +352,23 @@ msgid ""
 "Packages that use debconf for configuration share a common look and feel. "
 "You can select the type of user interface they use."
 msgstr ""
+"პაკეტები, რომლებიც კონფიგურაციისთვის debconf- იყენებენ, ჩვეულებრივ, "
+"ერთმანეთს ჰგვანან. აირჩიეთ მომხმარებლის ინტერფეისი, რომლებიც გნებავთ, მათ "
+"გამოიყენონ."
 
 #. Type: string
 #. Description
 #. :sl4:
 #: ../cdebconf.templates:2001
 msgid "None"
-msgstr "არცერთი"
+msgstr "არაფერი"
 
 #. Type: string
 #. Description
 #. :sl4:
 #: ../cdebconf.templates:2001
 msgid "'None' will never ask you any question."
-msgstr "'არცერთ' კითხვებს არ დაგისვამთ."
+msgstr "'არც ერთი' კითხვებს არ დაგისვამთ."
 
 #. Type: string
 #. Description
@@ -380,7 +382,7 @@ msgstr "ტექსტი"
 #. :sl4:
 #: ../cdebconf.templates:3001
 msgid "'Text' is a traditional plain text interface."
-msgstr ""
+msgstr "'Text' ტრადიციული უბრალო ტექსტური ინტერფეისია."
 
 #. Type: string
 #. Description
@@ -394,7 +396,7 @@ msgstr "Newt"
 #. :sl4:
 #: ../cdebconf.templates:4001
 msgid "'Newt' is a full-screen, character based interface."
-msgstr ""
+msgstr "'New' სრულ ეკრანზე გაშლილი, ტექსტური ინტერფეისია."
 
 #. Type: string
 #. Description
@@ -410,3 +412,5 @@ msgstr "GTK"
 msgid ""
 "'GTK' is a graphical interface that may be used in any graphical environment."
 msgstr ""
+"'GTK' გრაფიკული ინტერფეისია, რომელიც ნებისმიერ გრაფიკულ გარემოში შეგიძლიათ, "
+"გამოიყენოთ."

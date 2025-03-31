@@ -10,6 +10,7 @@
 # Guillem Jover <guillem@debian.org>, 2005, 2007.
 # d <dmanye@gmail.com>, 2021.
 # Maite Guix <maite.guix@gmail.com>, 2022.
+# Innocent De Marchi <tangram.peces@gmail.com>, 2017.
 #
 # Translations from iso-codes:
 # Alastair McKinstry <mckinstry@computer.org>, 2001.
@@ -20,11 +21,11 @@
 # Traductor: Jordi Ferré <jordiferre@catalonia.altranet.fr>
 msgid ""
 msgstr ""
-"Project-Id-Version: debian-installer buster\n"
+"Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
 "POT-Creation-Date: 2016-06-05 14:47+0000\n"
-"PO-Revision-Date: 2022-09-16 09:23+0000\n"
-"Last-Translator: d <dmanye@gmail.com>\n"
+"PO-Revision-Date: 2024-03-24 21:01+0000\n"
+"Last-Translator: victor dargallo <victordargallo@disroot.org>\n"
 "Language-Team: Catalan <debian-l10n-catalan@lists.debian.org>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
@@ -184,7 +185,7 @@ msgstr "<Tab> mou; <Espai> selecciona; <Intro> activa els botons"
 #: ../cdebconf-newt-udeb.templates:7001
 msgid "<F1> for help; <Tab> moves; <Space> selects; <Enter> activates buttons"
 msgstr ""
-"<F1> per a ajuda; <Tab> mou; <Espai> selecciona; <Intro> activa els botons"
+"<F1> per a l'ajuda; <Tab> mou; <Espai> selecciona; <Intro> activa els botons"
 
 #. Type: text
 #. Description
