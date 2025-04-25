@@ -5,6 +5,7 @@
 #
 # Italian messages for debian-installer.
 # Copyright (C) 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2017 Software in the Public Interest, Inc.
+# Copyright (C) 2018 Software in the Public Interest, Inc.
 # This file is distributed under the same license as debian-installer.
 # The translation team (for all four levels):
 # Cristian Rigamonti <cri@linux.it>
@@ -19,6 +20,7 @@
 # Samuele Giovanni Tonon <samu@linuxasylum.net>
 # Stefano Canepa <sc@linux.it>
 # Stefano Melchior <stefano.melchior@openlabs.it>
+# Luca Monducci <luca.mo@tiscali.it>
 #
 #
 # Translations from iso-codes:
@@ -32,15 +34,15 @@
 # Marcello Raffa <mrooth@tiscalinet.it>, 2001
 # Tobias Toedter <t.toedter@gmx.net>, 2007.
 # Translations taken from ICU SVN on 2007-09-09
-# Milo Casagrande <milo@milo.name>, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2017.
+# Milo Casagrande <milo@milo.name>, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2017, 2018, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
 "POT-Creation-Date: 2016-06-05 14:47+0000\n"
-"PO-Revision-Date: 2017-02-14 11:35+0100\n"
-"Last-Translator: Milo Casagrande <milo@milo.name>\n"
+"PO-Revision-Date: 2025-01-03 17:52+0100\n"
+"Last-Translator: Giuseppe Sacco <eppesuig@debian.org>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -117,7 +119,7 @@ msgstr ""
 " - «alta» è assegnata a voci senza ragionevoli valori predefiniti\n"
 " - «media» è assegnata a voci che hanno valori predefiniti ragionevoli\n"
 " - «bassa» è assegnata a voci i cui valori predefiniti funzionano nella\n"
-"   maggioranza dei casi"
+"   maggioranza dei casi."
 
 #. Type: select
 #. Description

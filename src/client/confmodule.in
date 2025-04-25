@@ -5,21 +5,46 @@
 ###############################################################################
 # Initialization.
 
+_DEBCONF_IMPL=
+if [ "${DEBCONF_USE_CDEBCONF:-}" ]; then
+	# Use cdebconf if explicitly requested.
+	_DEBCONF_IMPL=cdebconf
+elif [ -x /usr/share/debconf/frontend ] && \
+     [ ! -h /usr/share/debconf/frontend ]; then
+	# Fall back to debconf, but only if installed.  (cdebconf currently
+	# installs /usr/share/debconf/frontend as a symlink to
+	# /usr/lib/cdebconf/debconf.)
+	_DEBCONF_IMPL=debconf
+else
+	# Last resort: use cdebconf although not explicitly requested.
+	_DEBCONF_IMPL=cdebconf
+fi
+
 # Check to see if a FrontEnd is running.
-if [ ! "$DEBIAN_HAS_FRONTEND" ]; then
+if [ ! "${DEBIAN_HAS_FRONTEND:-}" ]; then
 	# Since there is no FrontEnd, this program execs a FrontEnd.
 	# It will then run a new copy of $0 that can talk to it.
-	exec /usr/share/debconf/frontend -- $0 "$@"
+	if [ "$_DEBCONF_IMPL" = cdebconf ]; then
+		exec /usr/lib/cdebconf/debconf -- $0 "$@"
+	else
+		export PERL_DL_NONLAZY=1
+		exec /usr/share/debconf/frontend $0 "$@"
+	fi
 fi
 
 # Only do this once.
-if [ -z "$DEBCONF_REDIR" ]; then
+if [ -z "${DEBCONF_REDIR:-}" ]; then
 	# Redirect standard output to standard error. This prevents common
 	# mistakes by making all the output of the postinst or whatever
 	# script is using this library not be parsed as confmodule commands.
 	#
 	# To actually send something to standard output, send it to fd 3.
-	exec 3>&1 1>&5
+	exec 3>&1
+	if [ "$_DEBCONF_IMPL" = cdebconf ]; then
+		exec 1>&5
+	else
+		exec 1>&2
+	fi
 	DEBCONF_REDIR=1
 	export DEBCONF_REDIR
 fi
@@ -36,21 +61,38 @@ export DEBCONF_OLD_FD_BASE
 # Commands.
 
 _db_cmd () {
-	IFS=' ' printf '%s\n' "$*" >&3
+	local _db_internal_IFS="$IFS"
+	IFS=' '
+	printf '%s\n' "$*" >&3
 	# Set to newline to get whole line.
 	IFS='
-' read -r _db_internal_line
+'
+	read -r _db_internal_line
+	IFS="$_db_internal_IFS"
+
 	# Disgusting, but it's the only good way to split the line,
 	# preserving all other whitespace.
 	RET="${_db_internal_line#[! 	][ 	]}"
-	return ${_db_internal_line%%[ 	]*}
+	local _db_status="${_db_internal_line%%[ 	]*}"
+	case "$_db_status" in
+		1)	# escaped data
+			if [ "$_DEBCONF_IMPL" = cdebconf ]; then
+				_DEBCONF_ESCAPE=/usr/lib/cdebconf/debconf-escape
+			else
+				_DEBCONF_ESCAPE=debconf-escape
+			fi
+			RET="$(printf '%s' "$RET" | $_DEBCONF_ESCAPE -u)"
+			return 0
+			;;
+	esac
+	return "$_db_status"
 }
 
-REPEAT: db_@command@ ()	{ _db_cmd "@COMMAND@ $@"; }
+REPEAT: db_@command@ ()	{ _db_cmd "@COMMAND@" "$@"; }
 
 # An old alias for input.
 db_text () {
-	db_input $@
+	db_input "$@"
 }
 
 # Cannot read a return code, since there is none and it would block.

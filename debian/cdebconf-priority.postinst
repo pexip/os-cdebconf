@@ -9,4 +9,4 @@
 # question. Unset the seen flag for the same reason.
 db_fset debconf/priority seen false
 db_input critical debconf/priority || true
-db_go
+db_go || true

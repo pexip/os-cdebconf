@@ -26,7 +26,7 @@ msgstr ""
 "Project-Id-Version: fa sublevel1\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
 "POT-Creation-Date: 2016-06-05 14:47+0000\n"
-"PO-Revision-Date: 2022-12-11 11:40+0000\n"
+"PO-Revision-Date: 2025-01-05 13:44+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Debian-l10n-persian <debian-l10n-persian@lists.debian.org>\n"
 "Language: fa\n"
@@ -278,7 +278,7 @@ msgstr "بازگشت به سوال پیشین"
 #. :sl4:
 #: ../cdebconf-text-udeb.templates:6001
 msgid "Select an empty entry"
-msgstr "وردی‌ای خالی را برگزینید"
+msgstr "گزینش مدخلی خالی"
 
 #. Type: text
 #. Description
@@ -310,7 +310,7 @@ msgstr "گزینه‌های بعدی با %c در دسترسند"
 #: ../cdebconf-text-udeb.templates:12001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%d> "
-msgstr "نمایش '%c'  برای کمک، مقدار پیش‌فرض:%d>"
+msgstr "اعلان: ‪%c‬ برای راهنمایی. پیش‌گزیده=‪%d‬> "
 
 #. Type: text
 #. Description
@@ -318,7 +318,7 @@ msgstr "نمایش '%c'  برای کمک، مقدار پیش‌فرض:%d>"
 #: ../cdebconf-text-udeb.templates:13001
 #, no-c-format
 msgid "Prompt: '%c' for help> "
-msgstr "نمایش '%c' برای کمک>"
+msgstr "اعلان: ‪%c‬ برای راهنمایی> "
 
 #. Type: text
 #. Description
@@ -326,21 +326,21 @@ msgstr "نمایش '%c' برای کمک>"
 #: ../cdebconf-text-udeb.templates:14001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%s> "
-msgstr "نمایش '%c'  برای کمک، مقدار پیش‌فرض:%s> "
+msgstr "اعلان: ‪%c‬ برای راهنمایی. پیش‌گزیده=‪%s‬> "
 
 #. Type: text
 #. Description
 #. :sl4:
 #: ../cdebconf-text-udeb.templates:15001
 msgid "[Press enter to continue]"
-msgstr "[برای ادامه enter  را فشار دهید]"
+msgstr "[زدن ورود برای ادامه]"
 
 #. Type: select
 #. Description
 #. :sl4:
 #: ../cdebconf.templates:1001
 msgid "Interface to use:"
-msgstr "رابط مورد استفاده:"
+msgstr "میانای مورد استفاده:"
 
 #. Type: select
 #. Description
@@ -350,22 +350,22 @@ msgid ""
 "Packages that use debconf for configuration share a common look and feel. "
 "You can select the type of user interface they use."
 msgstr ""
-"بسته هایی که از debconf برای پیکربندی استفاده می کنند، ظاهر یکسانی دارند. "
-"شما می توانید نوع رابط کاربری که استفاده  میکنند را انتخاب کنید."
+"بسته‌هایی که از debconf برای پیکربندی استفاده می‌کنند ظاهر یکسانی دارند. "
+"می‌توانید گونهٔ میانای کاربری‌ای که استفاده می‌کنند را برگزینید."
 
 #. Type: string
 #. Description
 #. :sl4:
 #: ../cdebconf.templates:2001
 msgid "None"
-msgstr "هیچکدام"
+msgstr "هیچ‌کدام"
 
 #. Type: string
 #. Description
 #. :sl4:
 #: ../cdebconf.templates:2001
 msgid "'None' will never ask you any question."
-msgstr "هیچکدام' هرگز از شما سوالی پرسیده نشود."
+msgstr "«هیچ‌کدام» هرگز پرسش نخواهد کرد."
 
 #. Type: string
 #. Description
@@ -379,21 +379,21 @@ msgstr "متنی"
 #. :sl4:
 #: ../cdebconf.templates:3001
 msgid "'Text' is a traditional plain text interface."
-msgstr "متنی' یک رابط متنی ساده است"
+msgstr "«متنی» میانای متن خامی سنّتی است."
 
 #. Type: string
 #. Description
 #. :sl4:
 #: ../cdebconf.templates:4001
 msgid "Newt"
-msgstr "رابط Newt"
+msgstr "Newt"
 
 #. Type: string
 #. Description
 #. :sl4:
 #: ../cdebconf.templates:4001
 msgid "'Newt' is a full-screen, character based interface."
-msgstr "Newt یک رابط تمام صفحه و مبتنی بر کاراکتر است. "
+msgstr "«Newt» میانایی تمام‌صفحه برپایهٔ نویسه‌هاست."
 
 #. Type: string
 #. Description
@@ -408,4 +408,5 @@ msgstr "جی‌تی‌کی"
 #: ../cdebconf.templates:5001
 msgid ""
 "'GTK' is a graphical interface that may be used in any graphical environment."
-msgstr "'GTK' یک رابط گرافیکی است که ممکن است در هر محیط گرافیکی استفاده شود."
+msgstr ""
+"«جی‌تی‌کی» میانایی نگاشتاری است که می‌تواند در هر محیط نگاشتاری‌ای استفاده شود."

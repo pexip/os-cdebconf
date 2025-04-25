@@ -30,21 +30,22 @@
 # Michał Kułach <michal.kulach@gmail.com>, 2012, 2013, 2014, 2015, 2016, 2017, 2018.
 # Bartosz Feński <fenio@debian.org>, 2020.
 # Matthaiks <kitynska@gmail.com>, 2021, 2022.
+# Łukasz Dulny <BartekChom@poczta.onet.pl>, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
 "POT-Creation-Date: 2016-06-05 14:47+0000\n"
-"PO-Revision-Date: 2022-11-29 23:50+0000\n"
+"PO-Revision-Date: 2025-01-31 14:41+0000\n"
 "Last-Translator: Matthaiks <kitynska@gmail.com>\n"
 "Language-Team: Polish <debian-l10n-polish@lists.debian.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 
 #. Type: select
 #. Choices
@@ -92,7 +93,7 @@ msgid ""
 msgstr ""
 "Pakiety używające debconfa do konfiguracji nadają zadawanym pytaniom "
 "priorytety. Tylko pytania o pewnym lub wyższym priorytecie są Tobie zadawane "
-"- wszystkie mniej ważne są pomijane."
+"— wszystkie mniej ważne są pomijane."
 
 #. Type: select
 #. Description
@@ -125,8 +126,8 @@ msgid ""
 "For example, this question is of medium priority, and if your priority were "
 "already 'high' or 'critical', you wouldn't see this question."
 msgstr ""
-"Dla przykładu, to pytanie ma średni priorytet, więc gdyby do tej pory Twój "
-"priorytet był 'wysoki' lub 'krytyczny', nie zobaczyłbyś tego pytania."
+"Na przykład, to pytanie ma średni priorytet, a gdyby Twój priorytet był już "
+"„wysoki” lub „krytyczny”, nie byłoby tego pytania."
 
 #. Type: text
 #. Description
@@ -323,7 +324,7 @@ msgstr "Następne pola do wyboru są dostępne za pomocą \"%c\""
 #: ../cdebconf-text-udeb.templates:12001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%d> "
-msgstr "Wprowadź: '%c' by uzyskać pomoc, domyślnie=%d> "
+msgstr "Wpisz: '%c', aby uzyskać pomoc, domyślnie=%d> "
 
 #. Type: text
 #. Description
@@ -331,7 +332,7 @@ msgstr "Wprowadź: '%c' by uzyskać pomoc, domyślnie=%d> "
 #: ../cdebconf-text-udeb.templates:13001
 #, no-c-format
 msgid "Prompt: '%c' for help> "
-msgstr "Wpisz: '%c' by uzyskać pomoc> "
+msgstr "Wpisz: '%c', aby uzyskać pomoc> "
 
 #. Type: text
 #. Description
@@ -339,7 +340,7 @@ msgstr "Wpisz: '%c' by uzyskać pomoc> "
 #: ../cdebconf-text-udeb.templates:14001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%s> "
-msgstr "Wprowadź: '%c' by uzyskać pomoc, domyślnie=%s> "
+msgstr "Wprowadź: '%c', aby uzyskać pomoc, domyślnie=%s> "
 
 #. Type: text
 #. Description

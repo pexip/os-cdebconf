@@ -39,8 +39,8 @@ msgstr ""
 "Project-Id-Version: ro\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
 "POT-Creation-Date: 2016-06-05 14:47+0000\n"
-"PO-Revision-Date: 2020-12-12 08:29+0000\n"
-"Last-Translator: Sergiu <adinfinitvm@wail.ch>\n"
+"PO-Revision-Date: 2024-12-04 12:00+0000\n"
+"Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <debian-l10n-romanian@lists.debian.org>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
@@ -54,35 +54,35 @@ msgstr ""
 #. :sl2:
 #: ../cdebconf-udeb.templates:2001
 msgid "critical"
-msgstr "critic"
+msgstr "critică"
 
 #. Type: select
 #. Choices
 #. :sl2:
 #: ../cdebconf-udeb.templates:2001
 msgid "high"
-msgstr "ridicat"
+msgstr "ridicată"
 
 #. Type: select
 #. Choices
 #. :sl2:
 #: ../cdebconf-udeb.templates:2001
 msgid "medium"
-msgstr "mediu"
+msgstr "medie"
 
 #. Type: select
 #. Choices
 #. :sl2:
 #: ../cdebconf-udeb.templates:2001
 msgid "low"
-msgstr "scăzut"
+msgstr "scăzută"
 
 #. Type: select
 #. Description
 #. :sl2:
 #: ../cdebconf-udeb.templates:2002
 msgid "Ignore questions with a priority less than:"
-msgstr "Ignoră întrebările cu nivelul de prioritate mai mic decât:"
+msgstr "Ignoră întrebările cu prioritatea mai mică decât cea:"
 
 #. Type: select
 #. Description
@@ -93,9 +93,9 @@ msgid ""
 "might ask you. Only questions with a certain priority or higher are actually "
 "shown to you; all less important questions are skipped."
 msgstr ""
-"Pachetele care utilizează debconf pentru configurare asociază priorități la "
-"posibilele întrebări. Numai întrebările cu o anumită prioritate sau mai mare "
-"vă sunt arătate. Toate întrebările mai puțin importante sunt omise."
+"Pachetele care utilizează «debconf» pentru configurare asociază priorități "
+"la posibilele întrebări. Numai întrebările cu o anumită prioritate sau mai "
+"mare vă sunt arătate. Toate întrebările mai puțin importante sunt omise."
 
 #. Type: select
 #. Description
@@ -110,13 +110,13 @@ msgid ""
 " - 'low' is for trivial items that have defaults that will work in\n"
 "   the vast majority of cases."
 msgstr ""
-"Puteți selecta cel mai scăzut nivel de prioritate a întrebărilor pe care "
-"doriți să le vedeți:\n"
-" - 'critic' pentru elemente care probabil vor strica sistemul fără\n"
+"Puteți selecta cea mai mică prioritate a întrebărilor pe care doriți să le "
+"vedeți:\n"
+" - „critică” pentru elemente care probabil vor strica sistemul fără\n"
 "   intervenția utilizatorului.\n"
-" - 'ridicat' pentru elemente care nu au valori implicite rezonabile.\n"
-" - 'mediu' pentru elemente normale care au valori implicite rezonabile.\n"
-" - 'scăzut' pentru elemente triviale cu valori implicite care funcționează\n"
+" - „ridicată” pentru elemente care nu au valori implicite rezonabile.\n"
+" - „medie” pentru elemente normale care au valori implicite rezonabile.\n"
+" - „scăzută” pentru elemente triviale cu valori implicite care funcționează\n"
 "   pentru o vastă majoritate a cazurilor."
 
 #. Type: select
@@ -127,15 +127,16 @@ msgid ""
 "For example, this question is of medium priority, and if your priority were "
 "already 'high' or 'critical', you wouldn't see this question."
 msgstr ""
-"De exemplu, aceasta este o întrebare de nivel mediu, și dacă nivelul ales ar "
-"fi 'ridicat' sau 'critic', nu ați vedea această întrebare."
+"De exemplu, aceasta este o întrebare de prioritate medie, și dacă "
+"prioritatea aleasă ar fi „ridicată” sau „critică”, nu ați vedea această "
+"întrebare."
 
 #. Type: text
 #. Description
 #. :sl2:
 #: ../cdebconf-priority.templates:1001
 msgid "Change debconf priority"
-msgstr "Schimbare a priorității debconf"
+msgstr "Schimbare a priorității «debconf»"
 
 #. Type: text
 #. Description
@@ -192,7 +193,7 @@ msgstr "Anulează"
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:6001
 msgid "<Tab> moves; <Space> selects; <Enter> activates buttons"
-msgstr "<Tab> deplasare; <Spațiu> selectează; <Enter> activează butoane"
+msgstr "«Tab» deplasare; «Spațiu» selectează; «Enter» activează butoane"
 
 #. Type: text
 #. Description
@@ -202,7 +203,7 @@ msgstr "<Tab> deplasare; <Spațiu> selectează; <Enter> activează butoane"
 #: ../cdebconf-newt-udeb.templates:7001
 msgid "<F1> for help; <Tab> moves; <Space> selects; <Enter> activates buttons"
 msgstr ""
-"<F1> ajutor; <Tab> deplasare; <Spațiu> selectează; <Enter> activează butoane"
+"«F1» ajutor; «Tab» deplasare; «Spațiu» selectează; «Enter» activează butoane"
 
 #. Type: text
 #. Description
@@ -240,7 +241,7 @@ msgstr "LTR"
 #. :sl1:
 #: ../cdebconf-gtk-udeb.templates:7001
 msgid "Screenshot"
-msgstr "Captură"
+msgstr "Captură de ecran"
 
 #. Type: text
 #. Description
@@ -250,7 +251,7 @@ msgstr "Captură"
 #: ../cdebconf-gtk-udeb.templates:8001
 #, no-c-format
 msgid "Screenshot saved as %s"
-msgstr "Captura a fost salvată ca %s"
+msgstr "Captura de ecran a fost salvată ca %s"
 
 #. Type: text
 #. Description
@@ -265,7 +266,7 @@ msgstr "!! EROARE: %s"
 #. :sl4:
 #: ../cdebconf-text-udeb.templates:2001
 msgid "KEYSTROKES:"
-msgstr "TASTE:"
+msgstr "COMBINAȚII TASTE:"
 
 #. Type: text
 #. Description
@@ -302,7 +303,7 @@ msgstr "Selectează o intrare goală"
 #: ../cdebconf-text-udeb.templates:7001
 #, no-c-format
 msgid "Other choices are available with '%c' and '%c'"
-msgstr "Alte opțiuni sunt disponibile cu „%c” și „%c”"
+msgstr "Alte opțiuni sunt disponibile cu «%c» și «%c»"
 
 #. Type: text
 #. Description
@@ -310,7 +311,7 @@ msgstr "Alte opțiuni sunt disponibile cu „%c” și „%c”"
 #: ../cdebconf-text-udeb.templates:8001
 #, no-c-format
 msgid "Previous choices are available with '%c'"
-msgstr "Opțiunile precedente sunt disponibile cu „%c”"
+msgstr "Opțiunile precedente sunt disponibile cu «%c»"
 
 #. Type: text
 #. Description
@@ -318,7 +319,7 @@ msgstr "Opțiunile precedente sunt disponibile cu „%c”"
 #: ../cdebconf-text-udeb.templates:9001
 #, no-c-format
 msgid "Next choices are available with '%c'"
-msgstr "Opțiunile următoare sunt disponibile cu „%c”"
+msgstr "Opțiunile următoare sunt disponibile cu «%c»"
 
 #. Type: text
 #. Description
@@ -326,7 +327,7 @@ msgstr "Opțiunile următoare sunt disponibile cu „%c”"
 #: ../cdebconf-text-udeb.templates:12001
 #, no-c-format
 msgid "Prompt: '%c' for help, default=%d> "
-msgstr "Prompt: '%c' pentru ajutor, implicit=%d> "
+msgstr "Prompt: «%c» pentru ajutor, implicit=%d> "
 
 #. Type: text
 #. Description
@@ -334,7 +335,7 @@ msgstr "Prompt: '%c' pentru ajutor, implicit=%d> "
 #: ../cdebconf-text-udeb.templates:13001
 #, no-c-format
 msgid "Prompt: '%c' for help> "
-msgstr "Prompt: '%c' pentru ajutor> "
+msgstr "Prompt: «%c» pentru ajutor> "
 
 #. Type: text
 #. Description
@@ -349,7 +350,7 @@ msgstr "Prompt: '%c' pentru ajutor, implicit=%s> "
 #. :sl4:
 #: ../cdebconf-text-udeb.templates:15001
 msgid "[Press enter to continue]"
-msgstr "[Apăsați enter pentru a continua]"
+msgstr "[Apăsați «Enter» pentru a continua]"
 
 #. Type: select
 #. Description
@@ -366,7 +367,7 @@ msgid ""
 "Packages that use debconf for configuration share a common look and feel. "
 "You can select the type of user interface they use."
 msgstr ""
-"Pachetele care folosesc debconf pentru configurare, sunt asemănătoare în "
+"Pachetele care folosesc «debconf» pentru configurare, sunt asemănătoare în "
 "aspect și comportament. Puteți selecta tipul de interfață utilizat de ele."
 
 #. Type: string
@@ -374,14 +375,14 @@ msgstr ""
 #. :sl4:
 #: ../cdebconf.templates:2001
 msgid "None"
-msgstr "Nici una"
+msgstr "Niciuna"
 
 #. Type: string
 #. Description
 #. :sl4:
 #: ../cdebconf.templates:2001
 msgid "'None' will never ask you any question."
-msgstr "Alegând „Nici una” nu vor mai fi întrebări."
+msgstr "Alegând «Niciuna» nu vor mai fi întrebări."
 
 #. Type: string
 #. Description
