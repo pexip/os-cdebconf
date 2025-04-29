@@ -1,3 +1,9 @@
+cdebconf (0.278+pexip25u1) pexip-trixie; urgency=medium
+
+  * Initial trixie build
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Tue, 29 Apr 2025 22:28:56 +0100
+
 cdebconf (0.278) unstable; urgency=medium
 
   * Team upload.
