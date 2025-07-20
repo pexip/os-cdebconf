@@ -1,3 +1,25 @@
+cdebconf (0.280) unstable; urgency=medium
+
+  [ Updated translations ]
+  * Hungarian (hu.po) by Szia Tomi
+  * Malayalam (ml.po) by Nandakumar Edamana
+  * Russian (ru.po) by Алексей Шилин
+  * Telugu (te.po) by Divakar
+
+ -- Cyril Brulebois <kibi@debian.org>  Sun, 20 Jul 2025 06:33:07 +0200
+
+cdebconf (0.279) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Updated translations ]
+  * Belarusian (be.po) by Joe
+  * Kabyle (kab.po) by ButterflyOfFire
+  * Russian (ru.po) by vladiruzz
+  * Uyghur (ug.po) by Abduqadir Abliz
+
+ -- Holger Wansing <hwansing@mailbox.org>  Wed, 25 Jun 2025 20:17:54 +0200
+
 cdebconf (0.278) unstable; urgency=medium
 
   * Team upload.

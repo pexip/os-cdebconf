@@ -3,7 +3,8 @@
 #
 # DO NOT MODIFY THIS FILE DIRECTLY: SUCH CHANGES WILL BE LOST
 #
-#
+# Abdusalam <1810010207@s.upc.edu.cn>, 2020.
+# Abduqadir Abliz <sahran.ug@gmail.com>, 2017.
 #
 # Debian Installer master translation for Uyghur
 # Don't forget to properly fill-in the header of PO files
@@ -19,13 +20,14 @@ msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
 "POT-Creation-Date: 2016-06-05 14:47+0000\n"
-"PO-Revision-Date: 2014-03-03 14:41+0600\n"
-"Last-Translator: Abduqadir Abliz <sahran.ug@gmail.com>\n"
+"PO-Revision-Date: 2025-05-30 13:03+0000\n"
+"Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
 "Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #. Type: select
 #. Choices
@@ -188,9 +190,8 @@ msgstr ""
 #. Appears as a checkbox in the newt and GTK interfaces.
 #. :sl1:
 #: ../cdebconf-newt-udeb.templates:8001 ../cdebconf-gtk-udeb.templates:9001
-#, fuzzy
 msgid "Show Password in Clear"
-msgstr "كىرگۈزگەن ئىم خاتا"
+msgstr "ئىمنى ئوچۇق كۆرسەت"
 
 #. Type: text
 #. Description
@@ -282,7 +283,7 @@ msgstr "بوش قالدۇرۇلغاننى تاللايدۇ"
 #: ../cdebconf-text-udeb.templates:7001
 #, no-c-format
 msgid "Other choices are available with '%c' and '%c'"
-msgstr ""
+msgstr "«%c» ۋە «%c» باشقا تاللاش بار"
 
 #. Type: text
 #. Description
@@ -290,7 +291,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:8001
 #, no-c-format
 msgid "Previous choices are available with '%c'"
-msgstr ""
+msgstr "«%c» ئالدىنقى تاللىشى بار"
 
 #. Type: text
 #. Description
@@ -298,7 +299,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:9001
 #, no-c-format
 msgid "Next choices are available with '%c'"
-msgstr ""
+msgstr "«%c» كېيىنكى تاللىشى بار"
 
 #. Type: text
 #. Description

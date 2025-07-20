@@ -6,20 +6,21 @@
 # Kabyle translation for debian-installer
 # Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
 # This file is distributed under the same license as the debian-installer package.
-# Slimane Selyan Amiri <selyan.kab@gmail.com>, 2020.
+# Slimane Selyan Amiri <selyan.kab@gmail.com>, 2020, 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: debian-installer sublevel1\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
 "POT-Creation-Date: 2016-06-05 14:47+0000\n"
-"PO-Revision-Date: 2020-10-24 15:08+0100\n"
-"Last-Translator: Slimane Selyan Amiri <selyan.kab@gmail.com>\n"
+"PO-Revision-Date: 2025-06-15 10:01+0000\n"
+"Last-Translator: ButterflyOfFire <boffire@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Kabyle <kab@li.org>\n"
 "Language: kab\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
 
 #. Type: select
 #. Choices
@@ -100,8 +101,8 @@ msgid ""
 "For example, this question is of medium priority, and if your priority were "
 "already 'high' or 'critical', you wouldn't see this question."
 msgstr ""
-"Amedya, Tuttra-agi tesεa tazwart talemast, ma yella tazwart-ik tella yakan "
-"'ugar' neγ d 'tabayakt',ur ttmuqul ara tuttra-agi."
+"Amedya, Tuttra-agi tesɛa tazwart talemast, ma yella tazwart-ik tella yakan "
+"'ugar' neɣ d 'tabayakt',ur ttmuqul ara tuttra-agi."
 
 #. Type: text
 #. Description

@@ -24,8 +24,8 @@ msgstr ""
 "Project-Id-Version: Debian Installer Level 1\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
 "POT-Creation-Date: 2016-06-05 14:47+0000\n"
-"PO-Revision-Date: 2023-09-20 17:02+0000\n"
-"Last-Translator: Anish Sheela <aneesh.nl@gmail.com>\n"
+"PO-Revision-Date: 2025-06-30 12:54+0000\n"
+"Last-Translator: Nandakumar Edamana <nandakumar@nandakumar.co.in>\n"
 "Language-Team: Swatantra Malayalam Computing <discuss@lists.smc.org.in>\n"
 "Language: ml\n"
 "MIME-Version: 1.0\n"
@@ -285,7 +285,7 @@ msgstr "ഒരു ശൂന്യ വരി തെരഞ്ഞെടുക്ക
 #: ../cdebconf-text-udeb.templates:7001
 #, no-c-format
 msgid "Other choices are available with '%c' and '%c'"
-msgstr ""
+msgstr "മറ്റു സാദ്ധ്യതകള്‍ '%c', '%c' എന്നിവ വഴി ലഭ്യമാണ്"
 
 #. Type: text
 #. Description
@@ -293,7 +293,7 @@ msgstr ""
 #: ../cdebconf-text-udeb.templates:8001
 #, no-c-format
 msgid "Previous choices are available with '%c'"
-msgstr ""
+msgstr "മുമ്പ് തിരഞ്ഞെടുത്തവ '%c' ഉപയോഗിച്ച് ലഭ്യമാക്കാം"
 
 #. Type: text
 #. Description
@@ -408,4 +408,4 @@ msgstr "GTK"
 msgid ""
 "'GTK' is a graphical interface that may be used in any graphical environment."
 msgstr ""
-"'GTK' എന്നത് ഏതൊരു ഗ്രാഫിക്കല്‍ പരിസ്ഥിതിയിലും ഉപയോകിക്കാവുന്ന ഒരു ഗ്രാഫിക്കല്‍ ഇന്റര്‍ഫേസ് ആണ്."
+"'GTK' എന്നത് ഏതൊരു ഗ്രാഫിക്കല്‍ പരിസ്ഥിതിയിലും ഉപയോഗിക്കാവുന്ന ഒരു ഗ്രാഫിക്കല്‍ ഇന്റര്‍ഫേസ് ആണ്."
