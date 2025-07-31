@@ -29,7 +29,7 @@ msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: cdebconf@packages.debian.org\n"
 "POT-Creation-Date: 2016-06-05 14:47+0000\n"
-"PO-Revision-Date: 2025-03-03 12:24+0000\n"
+"PO-Revision-Date: 2025-07-07 20:50+0000\n"
 "Last-Translator: Szia Tomi <sziatomi01@gmail.com>\n"
 "Language-Team: Debian L10n Hungarian <debian-l10n-hungarian@lists.debian."
 "org>\n"
@@ -291,7 +291,7 @@ msgstr "!! HIBA: %s"
 #. :sl4:
 #: ../cdebconf-text-udeb.templates:2001
 msgid "KEYSTROKES:"
-msgstr "GOMBNYOMÁSOK:"
+msgstr "BILLENTYŰLEÜTÉSEK:"
 
 #. Type: text
 #. Description
@@ -299,14 +299,14 @@ msgstr "GOMBNYOMÁSOK:"
 #: ../cdebconf-text-udeb.templates:3001
 #, no-c-format
 msgid "'%c'"
-msgstr "'%c'"
+msgstr "„%c”"
 
 #. Type: text
 #. Description
 #. :sl4:
 #: ../cdebconf-text-udeb.templates:4001
 msgid "Display this help message"
-msgstr "E súgóüzenet megjelenítése"
+msgstr "Megjeleníti ezt a súgóüzenetet"
 
 #. Type: text
 #. Description
@@ -320,7 +320,7 @@ msgstr "Vissza az előző kérdéshez"
 #. :sl4:
 #: ../cdebconf-text-udeb.templates:6001
 msgid "Select an empty entry"
-msgstr "Üres elem kiválasztása"
+msgstr "Válassz egy üres bejegyzést"
 
 #. Type: text
 #. Description
@@ -328,7 +328,7 @@ msgstr "Üres elem kiválasztása"
 #: ../cdebconf-text-udeb.templates:7001
 #, no-c-format
 msgid "Other choices are available with '%c' and '%c'"
-msgstr "Egyéb lehetőségek elérhetőek: '%c' és '%c'"
+msgstr "Egyéb választási lehetőségek érhetőek el %c és %c segítségével"
 
 #. Type: text
 #. Description
@@ -336,7 +336,7 @@ msgstr "Egyéb lehetőségek elérhetőek: '%c' és '%c'"
 #: ../cdebconf-text-udeb.templates:8001
 #, no-c-format
 msgid "Previous choices are available with '%c'"
-msgstr "Az előző lehetőségek elérhetőek: '%c'"
+msgstr "Az előző választási lehetőségek %c segítségével érhetők el"
 
 #. Type: text
 #. Description
@@ -344,7 +344,7 @@ msgstr "Az előző lehetőségek elérhetőek: '%c'"
 #: ../cdebconf-text-udeb.templates:9001
 #, no-c-format
 msgid "Next choices are available with '%c'"
-msgstr "További lehetőségek elérhetőek: '%c'"
+msgstr "További választási lehetőségek érhetők el %c segítségével"
 
 #. Type: text
 #. Description
@@ -375,7 +375,7 @@ msgstr "Kérdés: '%c' a súgóhoz, alapérték=%s> "
 #. :sl4:
 #: ../cdebconf-text-udeb.templates:15001
 msgid "[Press enter to continue]"
-msgstr "[Üss entert a folytatáshoz]"
+msgstr "[Nyomd meg az entert a folytatáshoz]"
 
 #. Type: select
 #. Description
@@ -393,7 +393,7 @@ msgid ""
 "You can select the type of user interface they use."
 msgstr ""
 "A debconf-ot használó csomagok egységes felületet használnak. Itt lehet "
-"kiválasztani, melyik legyen az."
+"kiválasztani, hogy melyik legyen az."
 
 #. Type: string
 #. Description
@@ -407,7 +407,7 @@ msgstr "Nincs"
 #. :sl4:
 #: ../cdebconf.templates:2001
 msgid "'None' will never ask you any question."
-msgstr "A 'Nincs' lehetőség sosem kérdez."
+msgstr "A „Nincs” lehetőség sosem kérdez."
 
 #. Type: string
 #. Description
@@ -421,7 +421,7 @@ msgstr "Szöveg"
 #. :sl4:
 #: ../cdebconf.templates:3001
 msgid "'Text' is a traditional plain text interface."
-msgstr "A 'Szöveg' a hagyományos szöveges felület."
+msgstr "A „Szöveg” a hagyományos szöveges felület."
 
 #. Type: string
 #. Description
@@ -435,7 +435,7 @@ msgstr "Newt"
 #. :sl4:
 #: ../cdebconf.templates:4001
 msgid "'Newt' is a full-screen, character based interface."
-msgstr "A 'Newt' egy teljes képernyős karakter alapú felület."
+msgstr "A „Newt” egy teljes képernyős karakter alapú felület."
 
 #. Type: string
 #. Description
@@ -451,4 +451,5 @@ msgstr "GTK"
 msgid ""
 "'GTK' is a graphical interface that may be used in any graphical environment."
 msgstr ""
-"A 'GTK' egy grafikus felület, mely bármely grafikus környezetben használható."
+"A „GTK” egy grafikus felület, mely bármelyik grafikus környezetben "
+"használható."
